@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['cats'] = category::All();
+        $data['cats'] = Category::All();
         return view('backend.category.index', $data);
         //  return view('backend.category.index');
 
@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $data['cat'] = category::find($id);
+        $data['cat'] = Category::find($id);
         return view('backend.category.edit', $data);
     }
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, string $id)
 {
-    $category = category::find($id);
+    $category = Category::find($id);
 
     if (!$category) {
         return redirect('category')->with('error', 'Category not found');

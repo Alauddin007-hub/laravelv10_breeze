@@ -26,7 +26,7 @@
                         <h5 class="card-title">General Form Elements</h5>
 
                         <!-- General Form Elements -->
-                        <form method="post" action="{{route('product.update')}}">
+                        <form method="post" action="{{route('product.update', ['id' => $product['id']])}}">
                             @csrf
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Name</label>
@@ -45,7 +45,7 @@
                                 <label for="inputNumber" class="col-sm-2 col-form-label">Image Upload</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="file" id="formFile" name="img" value="{{old('img')? old('img'):$product['img']}}">
-                                    <img src="" width="60px" height="50px" alt="">
+                                    <img src="frontend/assets/imgs/" width="60px" height="50px" alt="">
                                     <!-- ('upload/'.$product->img) -->
                                 </div>
                             </div>

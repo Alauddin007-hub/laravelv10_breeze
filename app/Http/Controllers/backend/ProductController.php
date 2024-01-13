@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\category;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data ['cats'] = category::All();
+        $data ['cats'] = Category::All();
         return view('backend.product.create',$data);
     }
 
@@ -58,17 +58,41 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $data['cats'] = category::All();
+        $data['cats'] = Category::all();
         $data['product'] = Product::find($id);
+    
+        if (!$data['product']) {
+            return redirect('products')->with('error', 'Product not found');
+        }
+    
         return view('backend.product.edit', $data);
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+
+    if (!$product) {
+        return redirect('products')->with('error', 'Product not found');
+    }
+
+    $data = [
+        'name' => $request->name,
+        'price' => $request->price,
+        'img' => $request->img,
+        'description' => $request->description,
+        'category_id' => $request->category,
+    ];
+
+    if ($product->update($data)) {
+        return redirect('products')->with('msg', 'Product Updated');
+    } else {
+        return redirect('products')->with('error', 'Failed to update Product');
+    }
     }
 
     /**

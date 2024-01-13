@@ -58,7 +58,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->description}}</td>
                                     <td>{{$product->price}}</td>
-                                    <td>{{$product->category_id}}</td>
+                                    <td>{{$product->category->name ?? 'N/A'}}</td>
                                     <td>{{$product->created_at}}</td>
                                     <td>{{$product->updated_at}}</td>
                                     <td>
