@@ -33,7 +33,7 @@
                                 <div class="p-2">
                                     <h5 class="mb-5 text-center">Registration</h5>
                                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
-                                        @csrf
+                                    @csrf
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group mb-4">
@@ -50,7 +50,7 @@
                                                 </div>
                                                 <div class="form-group mb-4">
                                                     <label for="con_password">Confirm Password</label>
-                                                    <input type="password" class="form-control" name="con_password" id="con_password" placeholder="Confirmation password">
+                                                    <input type="password" class="form-control" name="password_confirmation" id="con_password" placeholder="Confirmation password">
                                                 </div>
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="term-conditionCheck" required>

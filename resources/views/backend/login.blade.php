@@ -42,17 +42,18 @@
                             <div class="card-body p-4">
                                 <div class="p-2">
                                     <h5 class="mb-5 text-center">Sign in to continue to Apaxy.</h5>
-                                    <form class="form-horizontal" action="index.html">
+                                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                                        @csrf
 
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group mb-4">
-                                                    <label for="username">Username</label>
-                                                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email">
                                                 </div>
                                                 <div class="form-group mb-4">
                                                     <label for="userpassword">Password</label>
-                                                    <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                                    <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
                                                 </div>
 
                                                 <div class="row">
