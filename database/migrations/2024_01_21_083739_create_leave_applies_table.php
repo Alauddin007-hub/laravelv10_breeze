@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('designations', function (Blueprint $table) {
-            $table->id();
-            $table->string('designation_name');
-            $table->boolean('status');
+        Schema::create('leave_applies', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('dateFrom');
+            $table->date('dateTo');
+            $table->string('reason');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('designations');
+        Schema::dropIfExists('leave_applies');
     }
 };

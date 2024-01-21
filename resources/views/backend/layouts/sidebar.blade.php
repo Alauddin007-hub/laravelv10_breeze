@@ -9,7 +9,7 @@
                             <li class="menu-title">Menu</li>
 
                             <li>
-                                <a href="index.html" class="waves-effect">
+                                <a href="/dashboard" class="waves-effect">
                                     <i class="mdi mdi-view-dashboard"></i><span class="badge badge-pill badge-success float-right">3</span>
                                     <span>Dashboard</span>
                                 </a>
@@ -37,31 +37,32 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-account-group"></i>
-                                    <span>Authentication</span>
+                                    <span>Employee Management</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="auth-login.html">Login</a></li>
-                                    <li><a href="auth-register.html">Register</a></li>
-                                    <li><a href="auth-recoverpw.html">Recover Password</a></li>
-                                    <li><a href="auth-lock-screen.html">Lock Screen</a></li>
+                                    <li><a href="{{URL('employees')}}">Employees</a></li>
+                                    <li><a href="{{URL('department')}}">Department</a></li>
+                                    <li><a href="{{URL('designation')}}">Designation</a></li>
+                                    <li><a href="{{URL('branch')}}">Branch</a></li>
+                                    <li><a href="auth-lock-screen.html">Warning</a></li>
+                                    <li><a href="auth-lock-screen.html">Termination</a></li>
+                                    <li><a href="auth-lock-screen.html">Promotion</a></li>
+                                    <li><a href="auth-lock-screen.html">Employee Parmanent</a></li>
                                 </ul>
                             </li>
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-google-pages"></i>
-                                    <span>Pages</span>
+                                    <span>Leave Management</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="pages-starter.html">Starter Page</a></li>
-                                    <li><a href="pages-maintenance.html">Maintenance</a></li>
-                                    <li><a href="pages-comingsoon.html">Coming Soon</a></li>
-                                    <li><a href="pages-timeline.html">Timeline</a></li>
-                                    <li><a href="pages-gallery.html">Gallery</a></li>
-                                    <li><a href="pages-faqs.html">FAQs</a></li>
-                                    <li><a href="pages-pricing.html">Pricing</a></li>
-                                    <li><a href="pages-404.html">Error 404</a></li>
-                                    <li><a href="pages-500.html">Error 500</a></li>
+                                    <li><a href="pages-starter.html">Manage Holiday</a></li>
+                                    <li><a href="pages-maintenance.html">Public Holiday</a></li>
+                                    <li><a href="pages-comingsoon.html">Weekly Type</a></li>
+                                    <li><a href="pages-timeline.html">Leave Type</a></li>
+                                    <li><a href="pages-gallery.html">Earn leave configure</a></li>
+                                    
                                 </ul>
                             </li>
 
@@ -70,33 +71,20 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-format-underline"></i>
-                                    <span>Bootstrap UI</span>
+                                    <span>Leave Application</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="ui-alerts.html">Alerts</a></li>
-                                    <li><a href="ui-badge.html">Badge</a></li>
-                                    <li><a href="ui-buttons.html">Buttons</a></li>
-                                    <li><a href="ui-cards.html">Cards</a></li>
-                                    <li><a href="ui-dropdowns.html">Dropdowns</a></li>
-                                    <li><a href="ui-navs.html">Navs</a></li>
-                                    <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                    <li><a href="ui-modals.html">Modals</a></li>
-                                    <li><a href="ui-images.html">Images</a></li>
-                                    <li><a href="ui-progressbars.html">Progress Bars</a></li>
-                                    <li><a href="ui-pagination.html">Pagination</a></li>
-                                    <li><a href="ui-popover-tooltips.html">Popover & Tooltips</a></li>
-                                    <li><a href="ui-spinner.html">Spinner</a></li>
-                                    <li><a href="ui-carousel.html">Carousel</a></li>
-                                    <li><a href="ui-video.html">Video</a></li>
-                                    <li><a href="ui-typography.html">Typography</a></li>
-                                    <li><a href="ui-grid.html">Grid</a></li>
+                                    <li><a href="ui-alerts.html">Apply for leave</a></li>
+                                    <li><a href="ui-badge.html">Leave Report</a></li>
+                                    <li><a href="ui-buttons.html">Summary Report</a></li>
+                                    <li><a href="ui-cards.html">My Leave Report</a></li>
                                 </ul>
                             </li>
 
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-package-variant-closed"></i>
-                                    <span>Advanced UI</span>
+                                    <span>Attendence</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="advanced-alertify.html">Alertify</a></li>
@@ -112,7 +100,7 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-black-mesa"></i>
-                                    <span>Icons</span>
+                                    <span>Calculation</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="icons-materialdesign.html">Material Design</a></li>
@@ -125,7 +113,7 @@
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-table-settings"></i>
-                                    <span>Tables</span>
+                                    <span>Salary Sheet</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="tables-basic.html">Basic Tables</a></li>
@@ -139,7 +127,7 @@
                                 <a href="javascript: void(0);" class="waves-effect">
                                     <i class="mdi mdi-file-document-box-check-outline"></i>
                                     <span class="badge badge-pill badge-danger float-right">07</span>
-                                    <span>Forms</span>
+                                    <span>Payroll</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="form-elements.html">Form Elements</a></li>

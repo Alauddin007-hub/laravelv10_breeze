@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('weekends', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('leave_uploads', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('seller_name');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('weekends');
+        Schema::dropIfExists('leave_uploads');
     }
 };

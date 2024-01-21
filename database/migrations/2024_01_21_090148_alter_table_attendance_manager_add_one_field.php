@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('holydays', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        // \Schema::table('attendence_managers', function(Blueprint $table)
+        // {
+        //     if(!\Schema::hasColumn('leave_status','attendence_managers'))
+        //     {
+        //         $table->string('leave_status')->after('status');
+        //     }
+        // });
     }
 
     /**
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('holydays');
+        //
     }
 };
