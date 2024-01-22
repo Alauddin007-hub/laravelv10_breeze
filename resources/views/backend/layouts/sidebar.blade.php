@@ -40,9 +40,9 @@
                                     <span>Employee Management</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{URL('employees')}}">Employees</a></li>
                                     <li><a href="{{URL('department')}}">Department</a></li>
                                     <li><a href="{{URL('designation')}}">Designation</a></li>
+                                    <li><a href="{{URL('employees')}}">Employees</a></li>
                                     <li><a href="{{URL('branch')}}">Branch</a></li>
                                     <li><a href="auth-lock-screen.html">Warning</a></li>
                                     <li><a href="auth-lock-screen.html">Termination</a></li>

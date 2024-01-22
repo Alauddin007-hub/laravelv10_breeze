@@ -68,12 +68,27 @@ Route::middleware('auth')->group(function () {
     Route::get('employee/entry', [EmployeeController::class, 'create'])
         ->name('employee.create');
 
+    Route::post('employee/entry', [DesignationController::class, 'store'])
+        ->name('employee.store');
+
+    Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])
+        ->name('employee.edit');
+
+    Route::put('employee/update',[EmployeeController::class,'update'])
+        ->name('employee.update');
+
+    Route::delete('employee/delete',[EmployeeController::class,'destroy'])
+        ->name('employee.destroy');
+
     //Department
     Route::get('department', [DepartmentController::class, 'index'])
         ->name('department.index');
 
     Route::get('department/entry', [DepartmentController::class, 'create'])
         ->name('department.create');
+
+    Route::post('department/store', [DepartmentController::class, 'store'])
+        ->name('departments');
 
 
     //Designation
@@ -82,6 +97,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('designation/entry', [DesignationController::class, 'create'])
         ->name('designation.create');
+
+    Route::post('designation/entry', [DesignationController::class, 'store'])
+        ->name('designations');
 
     //Branch
     Route::get('branch', [BranchController::class, 'index'])

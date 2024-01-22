@@ -12,7 +12,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('backend.employee_manage.department.index');
+        $title = "Departments";
+        $departments = Department::get();
+        return view('backend.employee_manage.department.index',compact('title','departments'));
     }
 
     /**
@@ -28,7 +30,10 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,['name'=>'required|max:100']);
+
+        Department::create($request->all());
+        return redirect('department')->with('success',"Department has been added successfully!!.");
     }
 
     /**

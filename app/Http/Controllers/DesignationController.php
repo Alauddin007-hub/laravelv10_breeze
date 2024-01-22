@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Designation;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        return view('backend.employee_manage.designation.index');
+        $title = "Designations";
+        $designations = Designation::with('department')->get();
+
+        return view('backend.employee_manage.designation.index',compact('title','designations'));
     }
 
     /**
@@ -20,7 +24,8 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        return view('backend.employee_manage.designation.create');
+        $departments = Department::get();
+        return view('backend.employee_manage.designation.create',compact('departments'));
     }
 
     /**
@@ -28,7 +33,15 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'designation'=>'required|max:200',
+            'department'=>'required',
+        ]);
+        Designation::create([
+            'name'=>$request->designation,
+            'department_id'=>$request->department,
+        ]);
+        return redirect('designation')->with('success','Designation added successfully!!!');
     }
 
     /**
