@@ -28,7 +28,7 @@ class EmployeeController extends Controller
     public function create()
     {
         $designations = Designation::get();
-       $departments = Department::get();
+        $departments = Department::get();
 
         return view('backend.employee_manage.employee.create',compact('designations','departments'));
     }
@@ -38,34 +38,40 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        $validate = $this->validate($request,[
             'firstname'=>'required',
             'lastname'=>'required',
             'email'=>'required|email',
             'phone'=>'nullable|max:15',
             'company'=>'required|max:200',
-            'avatar'=>'file|image|mimes:jpg,jpeg,png,gif',
+            'avatar'=>'image|mimes:jpg,jpeg,png,gif',
             'department'=>'required',
             'designation'=>'required',
         ]);
-        $imageName = Null;
-        if ($request->hasFile('avatar')){
-            $imageName = time().'.'.$request->avatar->extension();
-            $request->avatar->move(public_path('storage/employees'), $imageName);
+        // $imageName = Null;
+        $imageName = time().'.'.$request->avatar->extension();
+            
+        
+        // echo $imageName;
+
+        $uuid = IdGenerator::generate(['table' => 'employees','field'=>'uuid', 'length' => 7, 'prefix' =>'EMP-']);
+
+        if($validate){
+            $request->avatar->move(('storage/employees'), $imageName);
+            
+            Employee::create([
+                'uuid' =>$uuid,
+                'firstname'=>$request->firstname,
+                'lastname'=>$request->lastname,
+                'email'=>$request->email,
+                'phone'=>$request->phone,
+                'company'=>$request->company,
+                'department_id'=>$request->department,
+                'designation_id'=>$request->designation,
+                'avatar'=>$imageName,
+            ]);
+            return redirect('employees')->with('success',"Employee has been added");
         }
-        // $uuid = IdGenerator::generate(['table' => 'employees','field'=>'uuid', 'length' => 7, 'prefix' =>'EMP-']);
-        Employee::create([
-            // 'uuid' =>$uuid,
-            'firstname'=>$request->firstname,
-            'lastname'=>$request->lastname,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'company'=>$request->company,
-            'department_id'=>$request->department,
-            'designation_id'=>$request->designation,
-            'avatar'=>$imageName,
-        ]);
-        return back()->with('success',"Employee has been added");
     }
 
     /**
@@ -79,11 +85,11 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
         $designations = Designation::get();
        $departments = Department::get();
-       $employees = Employee::find($employee);
+       $employees = Employee::find($id);
 
         return view('backend.employee_manage.employee.edit',compact('designations','departments','employees'));
     }
@@ -93,7 +99,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $this->validate($request,[
+        $validate = $this->validate($request,[
             'firstname'=>'required',
             'lastname'=>'required',
             'email'=>'required|email',
@@ -103,14 +109,19 @@ class EmployeeController extends Controller
             'department'=>'required',
             'designation'=>'required',
         ]);
-        if ($request->hasFile('avatar')){
-            $imageName = time().'.'.$request->avatar->extension();
-            $request->avatar->move(public_path('storage/employees'), $imageName);
-        }else{
-            $imageName = Null;
-        }
+        // if ($request->hasFile('avatar')){
+        //     $imageName = time().'.'.$request->avatar->extension();
+        //     $request->avatar->move(public_path('storage/employees'), $imageName);
+        // }else{
+        //     $imageName = Null;
+        // }
+
+        $imageName = time().'.'.$request->avatar->extension();
         
         $employee = Employee::find($request->id);
+
+        if($validate){
+            $request->avatar->move(('storage/employees'), $imageName);
         $employee->update([
             'uuid' => $employee->uuid,
             'firstname'=>$request->firstname,
@@ -122,14 +133,17 @@ class EmployeeController extends Controller
             'designation_id'=>$request->designation,
             'avatar'=>$imageName,
         ]);
-        return back()->with('success',"Employee details has been updated");
+        return redirect('employees')->with('success',"Employee details has been updated");
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy(Request $request)
     {
-        //
+        $employee = Employee::find($request->id);
+        $employee->delete();
+        return back()->with('success',"Employee has been deleted");
     }
 }

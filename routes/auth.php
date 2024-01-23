@@ -13,6 +13,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LeaveTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -68,16 +69,16 @@ Route::middleware('auth')->group(function () {
     Route::get('employee/entry', [EmployeeController::class, 'create'])
         ->name('employee.create');
 
-    Route::post('employee/entry', [DesignationController::class, 'store'])
+    Route::post('employee/entry', [EmployeeController::class, 'store'])
         ->name('employee.store');
 
     Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])
         ->name('employee.edit');
 
-    Route::put('employee/update',[EmployeeController::class,'update'])
+    Route::post('employee/update/{id}',[EmployeeController::class,'update'])
         ->name('employee.update');
 
-    Route::delete('employee/delete',[EmployeeController::class,'destroy'])
+    Route::get('employee/delete/{id}',[EmployeeController::class,'destroy'])
         ->name('employee.destroy');
 
     //Department
@@ -107,4 +108,23 @@ Route::middleware('auth')->group(function () {
 
     Route::get('branch/entry', [BranchController::class, 'create'])
         ->name('branch.create');
+
+    //Leave-Type
+    Route::get('leavetype', [LeaveTypeController::class, 'index'])
+        ->name('leavetype.index');
+
+    Route::get('leavetype/entry', [LeaveTypeController::class, 'create'])
+        ->name('leavetype.create');
+
+    Route::post('leavetype/entry', [LeaveTypeController::class, 'store'])
+        ->name('leavetype.store');
+
+    Route::get('leavetype/edit/{id}', [LeaveTypeController::class, 'edit'])
+        ->name('leavetype.edit');
+
+    Route::post('leavetype/update/{id}',[LeaveTypeController::class,'update'])
+        ->name('leavetype.update');
+
+    Route::get('leavetype/delete/{id}',[LeaveTypeController::class,'destroy'])
+        ->name('leavetype.destroy');
 });

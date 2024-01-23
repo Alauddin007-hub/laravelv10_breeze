@@ -33,26 +33,35 @@
 
                             <h4 class="header-title">Emplyee Entry</h4>
 
-                            <form class="custom-validation" action="{{route('employee.store')}}" method="post" enctype="multipart/form-data">
+                            @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                <li>{{$err}}</li>
+                                @endforeach
+                            </div>
+                            @endif
+
+                            <form class="custom-validation" action="{{route('employee.update',$employees->id)}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input type="text" class="form-control" name="fname" required placeholder="Type something" />
+                                    <input type="text" class="form-control" name="firstname" value="{{$employees->firstname ? $employees->firstname : old('firstname') }}" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    <input type="text" class="form-control" name="lname" required placeholder="Type something" />
+                                    <input type="text" class="form-control" name="lastname" value="{{$employees->lastname ? $employees->lastname : old('lastname') }}" required placeholder="Type something" />
                                 </div>
 
                                 <div class="form-group">
                                     <label>E-Mail</label>
                                     <div>
-                                        <input type="email" class="form-control" name="email" required parsley-type="email" placeholder="Enter a valid e-mail" />
+                                        <input type="email" class="form-control" name="email" value="{{$employees->email ? $employees->email : old('email') }}" required parsley-type="email" placeholder="Enter a valid e-mail" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Phone Number</label>
                                     <div>
-                                        <input data-parsley-type="number" type="text" name="phone" class="form-control" required placeholder="Enter only numbers" />
+                                        <input data-parsley-type="number" type="text" name="phone" value="{{$employees->phone ? $employees->phone : old('phone') }}" class="form-control" required placeholder="Enter only numbers" />
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -61,36 +70,37 @@
                                     <option disabled selected>Selected once</option>
                                         @if(!empty($departments->count()))
                                         @foreach($departments as $department)
-                                        <option value="{{$department->id}}">{{$department->name}}</option>
+                                        <option value="{{$department->id}}" @selected(old('department', $employees->department_id) == $department->id) >{{$department->name}}</option>
                                         @endforeach
                                         @endif
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Designation <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="department" title="Select Department">
+                                    <select class="custom-select" name="designation" title="Select Department">
                                     <option disabled selected>Selected once</option>
                                         @if(!empty($designations->count()))
                                         @foreach($designations as $designations)
-                                        <option value="{{$designations->id}}">{{$designations->name}}</option>
+                                        <option value="{{$designations->id}}" @selected(old('designation', $employees->designation_id) == $designations->id) >{{$designations->name}}</option>
                                         @endforeach
                                         @endif
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" class="form-control" name="fname" required placeholder="Type something" />
+                                    <input type="text" class="form-control" name="company" value="{{$employees->company ? $employees->company : old('company') }}" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Photo Uploade</label>
                                     <div>
-                                    <input name="file" type="file" class="form-control" name="avatar" multiple="multiple">
+                                    <img src="{{asset('storage/employees/'.$employees->avatar)}}" width="60px" height="50px" alt="">
+                                    <input type="file" class="form-control" name="avatar" multiple="multiple">
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div>
                                         <button type="submit" class="btn btn-primary waves-effect waves-light mr-1">
-                                            Submit
+                                            Update
                                         </button>
                                         <button type="reset" class="btn btn-secondary waves-effect">
                                             Cancel

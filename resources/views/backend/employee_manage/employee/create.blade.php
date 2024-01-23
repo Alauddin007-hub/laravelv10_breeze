@@ -32,15 +32,23 @@
                         <div class="card-body">
 
                             <h4 class="header-title">Emplyee Entry</h4>
+                            @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $err)
+                                <li>{{$err}}</li>
+                                @endforeach
+                            </div>
+                            @endif
 
                             <form class="custom-validation" action="{{route('employee.store')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input type="text" class="form-control" name="fname" required placeholder="Type something" />
+                                    <input type="text" class="form-control" name="firstname" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    <input type="text" class="form-control" name="lname" required placeholder="Type something" />
+                                    <input type="text" class="form-control" name="lastname" required placeholder="Type something" />
                                 </div>
 
                                 <div class="form-group">
@@ -58,7 +66,7 @@
                                 <div class="form-group">
                                     <label>Department <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="department" title="Select Department">
-                                    <option disabled selected>Selected once</option>
+                                        <option disabled selected>Selected once</option>
                                         @if(!empty($departments->count()))
                                         @foreach($departments as $department)
                                         <option value="{{$department->id}}">{{$department->name}}</option>
@@ -68,8 +76,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Designation <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="department" title="Select Department">
-                                    <option disabled selected>Selected once</option>
+                                    <select class="custom-select" name="designation" title="Select Department">
+                                        <option disabled selected>Selected once</option>
                                         @if(!empty($designations->count()))
                                         @foreach($designations as $designations)
                                         <option value="{{$designations->id}}">{{$designations->name}}</option>
@@ -79,12 +87,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Company</label>
-                                    <input type="text" class="form-control" name="fname" required placeholder="Type something" />
+                                    <input type="text" class="form-control" name="company" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Photo Uploade</label>
                                     <div>
-                                    <input name="file" type="file" class="form-control" name="avatar" multiple="multiple">
+                                        <input type="file" class="form-control" name="avatar" multiple="multiple">
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">

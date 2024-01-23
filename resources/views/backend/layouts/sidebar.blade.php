@@ -50,7 +50,7 @@
                                     <li><a href="auth-lock-screen.html">Employee Parmanent</a></li>
                                 </ul>
                             </li>
-
+                            
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="mdi mdi-google-pages"></i>
@@ -60,7 +60,7 @@
                                     <li><a href="pages-starter.html">Manage Holiday</a></li>
                                     <li><a href="pages-maintenance.html">Public Holiday</a></li>
                                     <li><a href="pages-comingsoon.html">Weekly Type</a></li>
-                                    <li><a href="pages-timeline.html">Leave Type</a></li>
+                                    <li><a href="{{URL('leavetype')}}">Leave Type</a></li>
                                     <li><a href="pages-gallery.html">Earn leave configure</a></li>
                                     
                                 </ul>

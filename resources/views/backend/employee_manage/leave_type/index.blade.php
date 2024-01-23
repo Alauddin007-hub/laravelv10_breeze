@@ -33,9 +33,9 @@
 
                             <h4 class="header-title">Buttons example</h4>
                             <div>
-                                <a href="{{route('employee.create')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                                <a href="{{route('leavetype.create')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
                             </div><br>
-                            
+
                             @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -45,40 +45,26 @@
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Employee ID</th>
-                                        <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th class="text-nowrap">Join Date</th>
-                                        <th>Designation</th>
-                                        <th class="text-right no-sort">Action</th>
+                                        <th>Leave Type</th>
+                                        <th>Leave Days</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
-
                                 <tbody>
-                                    @foreach ($employees as $employee)
+                                    @if(!empty($leave_types->count()))
+                                    @foreach($leave_types as $leave_type)
                                     <tr>
-                                        <td>
-                                            <div class="table-avatar">
-                                                <a href="javascript:void(0)" class="avatar"><img alt="avatar" src="@if(!empty($employee->avatar)) {{asset('storage/employees/'.$employee->avatar)}} @else assets/img/profiles/default.jpg @endif" width="50px" height="50px"></a>
-                                                <a href="javascript:void(0)">{{$employee->firstname}} {{$employee->lastname}}</a>
-                                            </div>
-                                        </td>
-                                        <td>{{$employee->uuid}}</td>
-                                        <td>{{$employee->email}}</td>
-                                        <td>{{$employee->phone}}</td>
-                                        <td>{{date_format(date_create($employee->date_created),"d M,Y")}}</td>
-                                        <td>
-                                            {{$employee->designation->name}}
-                                        </td>
-                                        <td>
-                                        <a class="btn btn-secondary" href="{{route('employee.edit', $employee->id)}}"><i class="bi bi-pencil-square">Edit</i></a>
+                                        <td>{{$leave_type->type}}</td>
+                                        <td>{{$leave_type->days}} {{ Str::plural('day',$leave_type->days) }}</td>
+                                        <th>
+                                            <a class="btn btn-secondary" href="{{route('leavetype.edit', $leave_type->id)}}"><i class="bi bi-pencil-square">Edit</i></a>
 
-                                        <a class="btn btn-danger" href="{{route('employee.destroy', $employee->id)}}" onclick="return confirm('Are you sure to delete')"><i class="bi bi-trash">Delete</i></a>
-                                        </td>
+                                            <a class="btn btn-danger" href="{{route('leavetype.destroy', $leave_type->id)}}" onclick="return confirm('Are you sure to delete')"><i class="bi bi-trash">Delete</i></a>
+                                        </th>
                                     </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
