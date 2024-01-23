@@ -13,6 +13,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\LeaveTypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -127,4 +128,26 @@ Route::middleware('auth')->group(function () {
 
     Route::get('leavetype/delete/{id}',[LeaveTypeController::class,'destroy'])
         ->name('leavetype.destroy');
+
+    //Holidays
+    Route::get('holidays',[HolidayController::class,'index'])
+        ->name('holidays');
+
+    Route::get('holidays/entry', [HolidayController::class, 'create'])
+        ->name('holidays.create');
+
+    Route::post('holidays',[HolidayController::class,'store'])
+        ->name('holidays.store');
+
+    Route::post('holidays/{holiday}',[HolidayController::class,'completed'])
+        ->name('completed');
+
+    Route::put('holidays',[HolidayController::class,'edit'])
+        ->name('holidays.edit');
+
+    Route::put('holidays',[HolidayController::class,'update'])
+        ->name('holidays.update');
+
+    Route::delete('holidays',[HolidayController::class,'destroy'])
+        ->name('holiday.destroy');
 });

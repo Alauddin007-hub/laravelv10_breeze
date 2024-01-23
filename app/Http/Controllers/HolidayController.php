@@ -12,7 +12,10 @@ class HolidayController extends Controller
      */
     public function index()
     {
-        //
+        $title = "holidays";
+        $holidays = Holiday::get();
+        
+        return view('backend.employee_manage.holiday.index',compact('title','holidays'));
     }
 
     /**
