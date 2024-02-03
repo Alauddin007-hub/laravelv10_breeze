@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
+use App\Http\Controllers\EmployeeAttendenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\LeaveTypeController;
@@ -150,4 +151,23 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('holidays',[HolidayController::class,'destroy'])
         ->name('holiday.destroy');
+
+    // Attendence
+    Route::get('attendences',[EmployeeAttendenceController::class,'index'])
+        ->name('attendences');
+
+    Route::get('attendence/entry', [EmployeeAttendenceController::class, 'create'])
+        ->name('attendence.create');
+
+    Route::post('attendence_checkIn',[EmployeeAttendenceController::class,'store'])
+        ->name('attendence.store');
+
+    Route::post('attendence',[EmployeeAttendenceController::class,'edit'])
+        ->name('attendence.edit');
+
+    Route::post('attendence_checkOut',[EmployeeAttendenceController::class,'update'])
+        ->name('attendence.update');
+
+    Route::get('checkin',[EmployeeAttendenceController::class,'checkin'])
+        ->name('attendence.checkin');
 });

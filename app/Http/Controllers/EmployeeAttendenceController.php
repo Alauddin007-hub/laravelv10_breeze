@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\EmployeeAttendence;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,7 @@ class EmployeeAttendenceController extends Controller
     {
         $title = 'employee attendance';
         $attendances = EmployeeAttendence::latest()->get();
-        return view('backend.attendance', compact(
-            'title',
-            'attendances'
-        ));
+        return view('backend.attendance', compact('title', 'attendances'));
     }
 
     /**
@@ -25,7 +23,10 @@ class EmployeeAttendenceController extends Controller
      */
     public function create()
     {
-        //
+        $employees = Employee::get();
+
+        
+        return view('backend.employee_attendence.attendence_checkIn', compact('employees'));
     }
 
     /**
@@ -33,6 +34,14 @@ class EmployeeAttendenceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $attendances = EmployeeAttendence::latest()->get();
+
+        if(!$attendances->employee_id && !$attendances->checkin){
+            return view('backend.employee_attendence.attendence_checkIn');
+        } else {
+            return view('backend.employee_attendence.attendence_checkOut');
+        }
         // $this->validate($request,[
         //     'employee' => 'required',
         //     'checkin' => 'required',
@@ -90,5 +99,10 @@ class EmployeeAttendenceController extends Controller
     public function destroy(EmployeeAttendence $employeeAttendence)
     {
         //
+    }
+
+    public function checkin(){
+        $employees = Employee::get();
+        return view('backend.employee_attendence.attendence_checkOut', compact('employees'));
     }
 }
