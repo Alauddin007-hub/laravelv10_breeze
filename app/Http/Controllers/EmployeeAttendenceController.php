@@ -18,15 +18,37 @@ class EmployeeAttendenceController extends Controller
         return view('backend.attendance', compact('title', 'attendances'));
     }
 
+    public function attendence()
+    {
+        $employees = Employee::get();
+        return view('backend.employee_attendence.attendence_view', compact('employees'));
+
+    }
+
+    public function checking(Request $request)
+    {
+        $currentDate = now();
+        EmployeeAttendence::find($request->employee_id)->Where();
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
+        // echo $request->employee_id;
+        $currentDate = now();
         $employees = Employee::get();
+        $empAttendence = EmployeeAttendence::where($request->id, 'employee_id')->where($currentDate, 'created_at');
+        if ($empAttendence) {
+            // dd('1');
+            return view('backend.employee_attendence.attendence_checkout', compact('employees'));
 
-        
-        return view('backend.employee_attendence.attendence_checkIn', compact('employees'));
+        } else {
+            # code...
+            return view('backend.employee_attendence.attendence_checkIn', compact('employees'));
+        }
     }
 
     /**
@@ -35,13 +57,13 @@ class EmployeeAttendenceController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $attendances = EmployeeAttendence::latest()->get();
+        // $attendances = EmployeeAttendence::latest()->get();
 
-        if(!$attendances->employee_id && !$attendances->checkin){
-            return view('backend.employee_attendence.attendence_checkIn');
-        } else {
-            return view('backend.employee_attendence.attendence_checkOut');
-        }
+        // if(!$attendances->employee_id && !$attendances->checkin){
+        //     return view('backend.employee_attendence.attendence_checkIn');
+        // } else {
+        //     return view('backend.employee_attendence.attendence_checkOut');
+        // }
         // $this->validate($request,[
         //     'employee' => 'required',
         //     'checkin' => 'required',
@@ -82,7 +104,8 @@ class EmployeeAttendenceController extends Controller
      */
     public function edit(EmployeeAttendence $employeeAttendence)
     {
-        //
+        // $employees = Employee::get();
+        // return view('backend.employee_attendence.attendence_checkOut', compact('employees'));
     }
 
     /**
@@ -101,7 +124,7 @@ class EmployeeAttendenceController extends Controller
         //
     }
 
-    public function checkin(){
+    public function checkout(){
         $employees = Employee::get();
         return view('backend.employee_attendence.attendence_checkOut', compact('employees'));
     }

@@ -56,9 +56,9 @@
                                                 <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Check In</button>
                                             </div>
 
-                                            <div class="mt-4">
+                                            <!-- <div class="mt-4">
                                                 <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Check Out</button>
-                                            </div>
+                                            </div> -->
 
                                             <div class="mt-4 text-center">
                                                 <a href="auth-login.html" class="text-muted"><i class="mdi mdi-account-circle mr-1"></i> Already have account?</a>
@@ -77,6 +77,8 @@
     </div>
     <!-- end Account pages -->
 
+    
+
     <!-- JAVASCRIPT -->
     <script src="{{asset('')}}assets/libs/jquery/jquery.min.js"></script>
     <script src="{{asset('')}}assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -85,6 +87,14 @@
     <script src="{{asset('')}}assets/libs/node-waves/waves.min.js"></script>
 
     <script src="{{asset('')}}assets/js/app.js"></script>
+
+
+    <!-- jquery -->
+    <script>
+        //  $("").on('', function (){
+
+        //  });
+    </script>
 
 </body>
 

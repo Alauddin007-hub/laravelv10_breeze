@@ -130,6 +130,16 @@ Route::middleware('auth')->group(function () {
     Route::get('leavetype/delete/{id}',[LeaveTypeController::class,'destroy'])
         ->name('leavetype.destroy');
 
+        // Applicant
+    Route::get('leave/applicant',[LeaveTypeController::class,'leave_apply_index'])
+        ->name('leavetype.leave_apply_index');
+
+    Route::get('leave/apply_form',[LeaveTypeController::class,'leave_application'])
+        ->name('leave.leave_form');
+
+    Route::post('leave/apply_form',[LeaveTypeController::class,'leave_application'])
+        ->name('leave.leave_apply');
+
     //Holidays
     Route::get('holidays',[HolidayController::class,'index'])
         ->name('holidays');
@@ -156,18 +166,21 @@ Route::middleware('auth')->group(function () {
     Route::get('attendences',[EmployeeAttendenceController::class,'index'])
         ->name('attendences');
 
-    Route::get('attendence/entry', [EmployeeAttendenceController::class, 'create'])
+    Route::get('attendence',[EmployeeAttendenceController::class,'attendence'])
+        ->name('employee.attendence');
+
+    Route::get('checkin', [EmployeeAttendenceController::class, 'create'])
         ->name('attendence.create');
 
     Route::post('attendence_checkIn',[EmployeeAttendenceController::class,'store'])
         ->name('attendence.store');
 
-    Route::post('attendence',[EmployeeAttendenceController::class,'edit'])
+    Route::get('checkout',[EmployeeAttendenceController::class,'edit'])
         ->name('attendence.edit');
 
     Route::post('attendence_checkOut',[EmployeeAttendenceController::class,'update'])
         ->name('attendence.update');
 
-    Route::get('checkin',[EmployeeAttendenceController::class,'checkin'])
-        ->name('attendence.checkin');
+    // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
+    //     ->name('attendence.checkout');
 });

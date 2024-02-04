@@ -9,6 +9,8 @@ class EmployeeAttendence extends Model
 {
     use HasFactory;
 
+    protected $table = 'employee_attendances';
+
     protected $fillable = [
         'employee_id','checkin','checkout','status'
     ];

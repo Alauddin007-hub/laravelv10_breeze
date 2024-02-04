@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\LeaveType;
 use Illuminate\Http\Request;
 
@@ -73,5 +74,17 @@ class LeaveTypeController extends Controller
         $leave_type = LeaveType::find($request->id);
         $leave_type->delete();
         return back()->with('success',"Leave Type has been deleted successfully!!");
+    }
+
+    public function leave_apply_index()
+    {
+        return view('backend.leave_apply.index');
+    }
+
+    public function leave_application()
+    {
+        $employees = Employee::get();
+        $leave_types = LeaveType::get();
+        return view('backend.leave_apply.leave_application', compact('employees','leave_types'));
     }
 }
