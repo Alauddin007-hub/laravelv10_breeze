@@ -14,6 +14,7 @@ class EmployeeAttendence extends Model
     protected $fillable = [
         'employee_id','checkin','checkout','status'
     ];
+    
 
     public function employee(){
         return $this->belongsTo(Employee::class, 'employee_id');

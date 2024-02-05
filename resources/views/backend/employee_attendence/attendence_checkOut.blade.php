@@ -33,23 +33,25 @@
                             <div class="p-2">
                                 <h5 class="mb-5 text-center">Attendence</h5>
                                
-                                <form class="form-horizontal" method="POST" action="{{ route('attendence.store') }}">
+                                <form class="form-horizontal" method="POST" action="{{ route('attendence.update', $employees->id) }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
+
+                                        
 
                                             <div class="form-group mb-4">
                                                 <label>Employee Name <span class="text-danger">*</span></label>
                                                 <select class="custom-select" name="employee_id" title="Select Department">
                                                     <option disabled selected>Selected once</option>
                                                     @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}">{{$employee->lastname}}</option>
+                                                    <option value="{{$employee->id}}" {{old('employee_id') == $employee->id ? 'selected':''}}>{{$employee->lastname}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
 
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="term-conditionCheck" required>
+                                                <input type="checkbox" class="custom-control-input" id="term-conditionCheck" checked required>
                                                 <label class="custom-control-label font-weight-normal" for="term-conditionCheck">I accept <a href="#" class="text-primary">Terms and Conditions</a></label>
                                             </div>
                                             <!-- <div class="mt-4">

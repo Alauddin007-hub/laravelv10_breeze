@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\EmployeeAttendence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeAttendenceController extends Controller
 {
@@ -21,6 +22,7 @@ class EmployeeAttendenceController extends Controller
     public function attendence()
     {
         $employees = Employee::get();
+        // print_r($employees);        
         return view('backend.employee_attendence.attendence_view', compact('employees'));
 
     }
@@ -38,11 +40,16 @@ class EmployeeAttendenceController extends Controller
     public function create(Request $request)
     {
         // echo $request->employee_id;
-        $currentDate = now();
+        $currentDate = getdate();
+        $date = $currentDate['mday'];
+
+
+        $query = DB::table('employee_attendances')->where('employee_id', $request->employee_id)->whereDay('created_at',$date)->first(); 
+        // dd($query);
+        // return $query->checkin;
         $employees = Employee::get();
-        $empAttendence = EmployeeAttendence::where($request->id, 'employee_id')->where($currentDate, 'created_at');
-        if ($empAttendence) {
-            // dd('1');
+        // $empAttendence = EmployeeAttendence::where('employee_id', $request->id)->where($currentDate, 'created_at');
+        if (isset($query)) {
             return view('backend.employee_attendence.attendence_checkout', compact('employees'));
 
         } else {
@@ -56,6 +63,30 @@ class EmployeeAttendenceController extends Controller
      */
     public function store(Request $request)
     {
+        date_default_timezone_set('Asia/Dhaka');
+        $time = date('H:i');
+        $data = [
+            'checkin' => $time,
+        ];
+        // print_r($data);
+
+        if($data['checkin']){
+            if($time < '09:15'){
+                $status = 'ontime';
+            }else{
+                $status = 'late';
+            }
+        }
+
+        EmployeeAttendence::insert([
+            'employee_id' => $request->employee_id,
+            'checkin' => $time,
+            'status' => $status,
+    ]);
+
+    return redirect('attendence')->with('success', 'Checkin are successfully done');
+
+
         // dd($request->all());
         // $attendances = EmployeeAttendence::latest()->get();
 
@@ -111,9 +142,17 @@ class EmployeeAttendenceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EmployeeAttendence $employeeAttendence)
+    public function updated(Request $request, EmployeeAttendence $employeeAttendence)
     {
-        //
+        date_default_timezone_set('Asia/Dhaka');
+        // $time = date('H:i');
+        // date_default_timezone_get($time);
+        $employeeAttendence = EmployeeAttendence::find($request->id);
+        $employeeAttendence->update([
+            'employee_id' => $request->employee_id,
+            // 'checkout'=>$time,
+            
+        ]);
     }
 
     /**

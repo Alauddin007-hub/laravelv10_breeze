@@ -178,7 +178,7 @@ Route::middleware('auth')->group(function () {
     Route::get('checkout',[EmployeeAttendenceController::class,'edit'])
         ->name('attendence.edit');
 
-    Route::post('attendence_checkOut',[EmployeeAttendenceController::class,'update'])
+    Route::post('attendence_checkOut/{id}',[EmployeeAttendenceController::class,'updated'])
         ->name('attendence.update');
 
     // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])

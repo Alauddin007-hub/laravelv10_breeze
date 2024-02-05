@@ -43,7 +43,7 @@
                                                 <select class="custom-select" name="employee_id" title="Select Department">
                                                     <option disabled selected>Selected once</option>
                                                     @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}">{{$employee->lastname}}</option>
+                                                    <option value="{{$employee->id}}" {{old('employee_id') == $employee->id ? 'selected':''}}>{{$employee->lastname}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -53,7 +53,7 @@
                                                 <label class="custom-control-label font-weight-normal" for="term-conditionCheck">I accept <a href="#" class="text-primary">Terms and Conditions</a></label>
                                             </div>
                                             <div class="mt-4">
-                                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Check In</button>
+                                                <button class="btn btn-success btn-block waves-effect waves-light" name="" type="submit">Check In</button>
                                             </div>
 
                                             <!-- <div class="mt-4">

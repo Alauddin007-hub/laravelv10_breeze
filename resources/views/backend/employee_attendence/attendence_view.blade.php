@@ -32,6 +32,11 @@
                         <div class="card-body p-4">
                             <div class="p-2">
                                 <h5 class="mb-5 text-center">Registration</h5>
+                                @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                                @endif
                                 <form class="form-horizontal" method="get" action="{{ route('attendence.create')}}">
                                     <!-- @csrf -->
                                     <div class="row">
@@ -45,16 +50,16 @@
                                                     <option value="{{$employee->id}}">{{$employee->lastname}}</option>
                                                     @endforeach
                                                 </select>
-                                                
+
                                             </div>
 
                                             <!-- <input type="hidden" name="id" value="{{$employee->id}}"> -->
-                                            
+
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="term-conditionCheck" required>
                                                 <label class="custom-control-label font-weight-normal" for="term-conditionCheck">I accept <a href="#" class="text-primary">Terms and Conditions</a></label>
                                             </div>
-                                            
+
                                             <div class="mt-4">
                                                 <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Go</button>
                                             </div>
