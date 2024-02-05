@@ -16,6 +16,7 @@ use App\Http\Controllers\EmployeeAttendenceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\TerminateController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -183,4 +184,15 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
     //     ->name('attendence.checkout');
+
+    // Termination
+
+    Route::get('view',[TerminateController::class,'index'])
+        ->name('views');
+
+    Route::get('termination/entry', [TerminateController::class, 'create'])
+        ->name('termination');
+
+    Route::post('termination',[TerminateController::class,'tarminated'])
+        ->name('tarminated');
 });
