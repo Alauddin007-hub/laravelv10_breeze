@@ -21,19 +21,19 @@
 
     <body class="bg-primary bg-pattern">
         <div class="home-btn d-none d-sm-block">
-            <a href="index.html"><i class="mdi mdi-home-variant h2 text-white"></i></a>
+            <a href="{{route('login')}}"><i class="mdi mdi-home-variant h2 text-white"></i></a>
         </div>
 
         <div class="account-pages my-5 pt-5">
             <div class="container">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center mb-5">
                             <a href="index.html" class="logo"><img src="assets/images/logo-light.png" height="24" alt="logo"></a>
                             <h5 class="font-size-16 text-white-50 mb-4">Responsive Bootstrap 4 Admin Dashboard</h5>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- end row -->
 
                 <div class="row justify-content-center">
@@ -41,7 +41,7 @@
                         <div class="card">
                             <div class="card-body p-4">
                                 <div class="p-2">
-                                    <h5 class="mb-5 text-center">Sign in to continue to Apaxy.</h5>
+                                    <h5 class="mb-5 text-center">Sign in to continue.</h5>
                                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                         @csrf
 
@@ -73,7 +73,7 @@
                                                     <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Log In</button>
                                                 </div>
                                                 <div class="mt-4 text-center">
-                                                    <a href="auth-register.html" class="text-muted"><i class="mdi mdi-account-circle mr-1"></i> Create an account</a>
+                                                    <a href="{{route('register')}}" class="text-muted"><i class="mdi mdi-account-circle mr-1"></i> Create an account</a>
                                                 </div>
                                             </div>
                                         </div>

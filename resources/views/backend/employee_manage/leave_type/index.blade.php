@@ -33,7 +33,7 @@
 
                             <h4 class="header-title">Buttons example</h4>
                             <div>
-                                <a href="{{route('leavetype.create')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                                <a href="{{route('leavetype.create')}}" class="btn btn-success fa fa-plus"> Add Leave Type</a>
                             </div><br>
 
                             @if(session('success'))
@@ -56,7 +56,7 @@
                                     @foreach($leave_types as $leave_type)
                                     <tr>
                                         <td>{{$leave_type->type}}</td>
-                                        <td>{{$leave_type->days}} {{ Str::plural('day',$leave_type->days) }}</td>
+                                        <td>{{$leave_type->days}} </td>
                                         <th>
                                             <a class="btn btn-secondary" href="{{route('leavetype.edit', $leave_type->id)}}"><i class="bi bi-pencil-square">Edit</i></a>
 

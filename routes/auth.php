@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdvanceController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -14,9 +15,12 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeAttendenceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\TerminateController;
+use App\Http\Controllers\WarningController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -132,13 +136,13 @@ Route::middleware('auth')->group(function () {
         ->name('leavetype.destroy');
 
         // Applicant
-    Route::get('leave/applicant',[LeaveTypeController::class,'leave_apply_index'])
+    Route::get('leave/applicant',[EmployeeLeaveController::class,'leave_apply_index'])
         ->name('leavetype.leave_apply_index');
 
-    Route::get('leave/apply_form',[LeaveTypeController::class,'leave_application'])
+    Route::get('leave/apply_form',[EmployeeLeaveController::class,'leave_application'])
         ->name('leave.leave_form');
 
-    Route::post('leave/apply_form',[LeaveTypeController::class,'leave_application'])
+    Route::post('leave/apply/',[EmployeeLeaveController::class,'apply'])
         ->name('leave.leave_apply');
 
     //Holidays
@@ -186,7 +190,6 @@ Route::middleware('auth')->group(function () {
     //     ->name('attendence.checkout');
 
     // Termination
-
     Route::get('view',[TerminateController::class,'index'])
         ->name('views');
 
@@ -195,4 +198,34 @@ Route::middleware('auth')->group(function () {
 
     Route::post('termination',[TerminateController::class,'tarminated'])
         ->name('tarminated');
+
+    // warning
+    Route::get('view_list',[WarningController::class,'index'])
+        ->name('warning.views');
+
+    Route::get('warning/entry', [WarningController::class, 'create'])
+        ->name('warning');
+
+    Route::post('termination',[WarningController::class,'store'])
+        ->name('warning');
+       
+    // Advance
+    Route::get('advance',[AdvanceController::class,'index'])
+        ->name('views');
+
+    Route::get('advance/entry', [AdvanceController::class, 'create'])
+        ->name('advance.create');
+
+    Route::post('advance',[AdvanceController::class,'store'])
+        ->name('advance.store');
+    
+    // Overtimes
+    Route::get('overtime/index',[OvertimeController::class,'index'])
+        ->name('views');
+
+    Route::get('Overtime/entry', [OvertimeController::class, 'create'])
+        ->name('advance.create');
+
+    Route::post('Overtime',[OvertimeController::class,'store'])
+        ->name('Overtime.store');
 });

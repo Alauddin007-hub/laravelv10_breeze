@@ -44,10 +44,10 @@
                                     <li><a href="{{URL('designation')}}">Designation</a></li>
                                     <li><a href="{{URL('employees')}}">Employees</a></li>
                                     <li><a href="{{URL('branch')}}">Branch</a></li>
-                                    <li><a href="auth-lock-screen.html">Warning</a></li>
-                                    <li><a href="auth-lock-screen.html">Termination</a></li>
-                                    <li><a href="auth-lock-screen.html">Promotion</a></li>
-                                    <li><a href="auth-lock-screen.html">Employee Parmanent</a></li>
+                                    <li><a href="{{URL('view_list')}}">Warning</a></li>
+                                    <li><a href="{{URL('view')}}">Termination</a></li>
+                                    <li><a href="">Promotion</a></li>
+                                    <li><a href="{{URL('view')}}">Employee Parmanent</a></li>
                                 </ul>
                             </li>
                             
@@ -74,7 +74,7 @@
                                     <span>Leave Application</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="ui-alerts.html">Apply for leave</a></li>
+                                    <li><a href="{{URL('leave/applicant')}}">Apply for leave</a></li>
                                     <li><a href="ui-badge.html">Leave Report</a></li>
                                     <li><a href="ui-buttons.html">Summary Report</a></li>
                                     <li><a href="ui-cards.html">My Leave Report</a></li>
@@ -88,12 +88,6 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="advanced-alertify.html">Alertify</a></li>
-                                    <li><a href="advanced-rating.html">Rating</a></li>
-                                    <li><a href="advanced-nestable.html">Nestable</a></li>
-                                    <li><a href="advanced-rangeslider.html">Range Slider</a></li>
-                                    <li><a href="advanced-sweet-alert.html">Sweet-Alert</a></li>
-                                    <li><a href="advanced-lightbox.html">Lightbox</a></li>
-                                    <li><a href="advanced-maps.html">Maps</a></li>
                                 </ul>
                             </li>
 
@@ -103,10 +97,10 @@
                                     <span>Calculation</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="icons-materialdesign.html">Material Design</a></li>
-                                    <li><a href="icons-dripicons.html">Dripicons</a></li>
-                                    <li><a href="icons-fontawesome.html">Font Awesome 5</a></li>
-                                    <li><a href="icons-themify.html">Themify</a></li>
+                                    <li><a href="{{URL('advance')}}">Advanced</a></li>
+                                    <li><a href="{{URL('overtime/index')}}">Overtimes</a></li>
+                                    <li><a href="{{URL('advance')}}">Bounce</a></li>
+                                    <li><a href="{{URL('advance')}}">Deduction</a></li>
                                 </ul>
                             </li>
 

@@ -45,17 +45,17 @@
                                 
                                 <div class="form-group">
                                     <label>Employee<span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="employee_id" title="Select Department">
+                                    <select class="custom-select" name="employee" title="Select Department">
                                         <option disabled selected>Selected once</option>
                                         @foreach($employees as $employee)
-                                        <option value="{{$employee->id}}">{{$employee->lastname}}</option>
+                                        <option value="{{$employee->id}}">{{$employee->firstname}}.{{$employee->lastname}}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Leave Type<span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="leave_type_id" title="Select Department">
+                                    <select class="custom-select" name="leave_type" title="Select Department">
                                         <option disabled selected>Selected once</option>
                                         @foreach ($leave_types as $leave_type)
                                         <option value="{{$leave_type->id}}">{{$leave_type->type}}</option>

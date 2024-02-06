@@ -15,10 +15,10 @@ class CreateEmployeeAttendancesTable extends Migration
     {
         Schema::create('employee_attendances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')->nullable()->constrained()->onDelete('cascade');
+            $table->tinyInteger('employee_id')->nullable()->onDelete('cascade');
             $table->time('checkin')->useCurrent();
             $table->time('checkout')->useCurrent();
-            // $table->date('date')->useCurrent();
+            $table->date('date')->useCurrent();
             $table->string('status')->nullable();
             $table->timestamps();
         });

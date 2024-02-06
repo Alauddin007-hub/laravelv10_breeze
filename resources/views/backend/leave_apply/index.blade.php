@@ -33,7 +33,7 @@
 
                             <h4 class="header-title">Default Datatable</h4>
                             <div>
-                                <a href="{{route('leave.leave_form')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                                <a href="{{route('leave.leave_form')}}" class="btn btn-success fa fa-plus"> Apply for leave</a>
                             </div>
 
                             @if(session('success'))
@@ -46,24 +46,33 @@
                                 <thead>
                                     <tr>
                                         <th>#ID</th>
-                                        <th>Name</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
+                                        <th>Leave Type</th>
+                                        <th>Employee</th>
+                                        <th>From</th>
+                                        <th>to</th>
+                                        <th>Reason</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
 
                                     </tr>
+                                    <!-- 'leave_type_id','employee_id',
+        'from','to','reason','status', -->
                                 </thead>
 
 
                                 <tbody>
-                                    
+                                    @foreach($leaves as $leave)
                                     <tr>
+                                        <td>{{$leave->id}}</td>
+                                        <td>{{$leave->leaveType->type}}</td>
+                                        <td>{{$leave->employee->firstname}}</td>
+                                        <td>{{$leave->from}}</td>
+                                        <td>{{$leave->to}}</td>
+                                        <td>{{$leave->reason}}</td>
+                                        <td>{{$leave->status}}</td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
                                     </tr>
-                                   
+                                   @endforeach
                                 </tbody>
                             </table>
 
