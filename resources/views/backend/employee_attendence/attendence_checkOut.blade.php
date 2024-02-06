@@ -33,7 +33,7 @@
                             <div class="p-2">
                                 <h5 class="mb-5 text-center">Attendence</h5>
                                
-                                <form class="form-horizontal" method="POST" action="{{ route('attendence.update', $employees->id) }}">
+                                <form class="form-horizontal" method="POST" action="{{ route('attendence.update')}}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-12">
@@ -44,8 +44,9 @@
                                                 <label>Employee Name <span class="text-danger">*</span></label>
                                                 <select class="custom-select" name="employee_id" title="Select Department">
                                                     <option disabled selected>Selected once</option>
+                                                   
                                                     @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}" {{old('employee_id') == $employee->id ? 'selected':''}}>{{$employee->lastname}}</option>
+                                                    <option value="{{$employee->id}}">{{$employee->lastname}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

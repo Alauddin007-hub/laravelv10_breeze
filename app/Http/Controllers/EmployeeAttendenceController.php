@@ -145,14 +145,21 @@ class EmployeeAttendenceController extends Controller
     public function updated(Request $request, EmployeeAttendence $employeeAttendence)
     {
         date_default_timezone_set('Asia/Dhaka');
-        // $time = date('H:i');
-        // date_default_timezone_get($time);
-        $employeeAttendence = EmployeeAttendence::find($request->id);
-        $employeeAttendence->update([
+        $time = date('H:i');
+        $currentDate = getdate();
+        $date = $currentDate['mday'];
+        $data = [
             'employee_id' => $request->employee_id,
-            // 'checkout'=>$time,
-            
-        ]);
+            'checkout' => $time,
+        ];
+        // dd($data);
+
+        DB::table('employee_attendances')->where('employee_id', $request->employee_id)->whereDay('created_at',$date)->update(['checkout' =>$time]);
+
+        return redirect('attendence')->with('success', 'Checkout are successfully done');
+
+        // dd($query);
+        
     }
 
     /**

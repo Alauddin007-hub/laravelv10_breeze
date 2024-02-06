@@ -17,11 +17,12 @@ class TerminateController extends Controller
 
     public function create()
     {
-        return view('backend.terminated.terminate');
+        $employees = Employee::all();
+        return view('backend.terminated.terminate', compact('employees'));
     }
 
     public function tarminated()
     {
-        // 
+         
     }
 }

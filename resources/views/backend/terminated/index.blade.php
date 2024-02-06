@@ -33,7 +33,7 @@
 
                             <h4 class="header-title">Default Datatable</h4>
                             <div>
-                                <a href="{{route('department.create')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                                <a href="{{route('termination')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
                             </div>
 
                             @if(session('success'))
@@ -46,13 +46,17 @@
                                 <thead>
                                     <tr>
                                         <th>#ID</th>
-                                        <th>Name</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
+                                        <th>Employee</th>
+                                        <th>Termination Type</th>
+                                        <th>Subject</th>
+                                        <th>Terminated By</th>
+                                        <th>Notice Date</th>
+                                        <th>Terminated Date</th>
+                                        <th>Description</th>
 
                                     </tr>
                                 </thead>
-
+                                <!-- 'employee_id','termination_type','subject','role_type_id','notice_date','terminated_date','discription', -->
 
                                 <tbody>
                                     
@@ -61,7 +65,10 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                    
                                 </tbody>

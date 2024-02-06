@@ -183,7 +183,7 @@ Route::middleware('auth')->group(function () {
     Route::get('checkout',[EmployeeAttendenceController::class,'edit'])
         ->name('attendence.edit');
 
-    Route::post('attendence_checkOut/{id}',[EmployeeAttendenceController::class,'updated'])
+    Route::post('attendence_checkOut',[EmployeeAttendenceController::class,'updated'])
         ->name('attendence.update');
 
     // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
@@ -197,7 +197,7 @@ Route::middleware('auth')->group(function () {
         ->name('termination');
 
     Route::post('termination',[TerminateController::class,'tarminated'])
-        ->name('tarminated');
+        ->name('tarminated.store');
 
     // warning
     Route::get('view_list',[WarningController::class,'index'])

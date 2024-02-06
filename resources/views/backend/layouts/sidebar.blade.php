@@ -87,7 +87,7 @@
                                     <span>Attendence</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="advanced-alertify.html">Alertify</a></li>
+                                    <li><a href="{{url('attendence')}}">Attendence</a></li>
                                 </ul>
                             </li>
 
