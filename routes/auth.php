@@ -206,8 +206,8 @@ Route::middleware('auth')->group(function () {
     Route::get('warning/entry', [WarningController::class, 'create'])
         ->name('warning');
 
-    Route::post('termination',[WarningController::class,'store'])
-        ->name('warning');
+    Route::post('warning/store',[WarningController::class,'store'])
+        ->name('warning.store');
        
     // Advance
     Route::get('advance',[AdvanceController::class,'index'])

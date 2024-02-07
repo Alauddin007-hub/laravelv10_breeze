@@ -53,24 +53,26 @@
                                         <th>Notice Date</th>
                                         <th>Terminated Date</th>
                                         <th>Description</th>
+                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <!-- 'employee_id','termination_type','subject','role_type_id','notice_date','terminated_date','discription', -->
 
                                 <tbody>
-                                    
+                                    @foreach($terminates as $item)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->employee->firstname}}</td>
+                                        <td>{{$item->termination_type}}</td>
+                                        <td>{{$item->subject}}</td>
+                                        <td>{{$item->role_type_id}}</td>
+                                        <td>{{$item->notice_date}}</td>
+                                        <td>{{$item->terminated_date}}</td>
+                                        <td>{{$item->discription}}</td>
+                                        <td>Edit</td>
                                     </tr>
-                                   
+                                   @endforeach
                                 </tbody>
                             </table>
 

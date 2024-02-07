@@ -47,16 +47,16 @@
                                     <label>Employee <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="employee" title="Select Department">
                                         <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
-                                        
+                                        @foreach($employees as $item)
+                                        <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <!-- 'employee_id','termination_type','subject','role_type_id','notice_date','terminated_date','discription', -->
                                 <div class="form-group">
-                                    <label>termination_type</label>
-                                    <input type="text" class="form-control" name="firstname" required placeholder="Type something" />
+                                    <label>Termination Type</label>
+                                    <input type="text" class="form-control" name="termination_type" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Subject</label>
@@ -67,20 +67,20 @@
                                     <label>Terminated By <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="role_type_id" title="Select Department">
                                         <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
+                                        <option>Super Admin</option>
+                                        <option>Admin</option>
                                         
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Notice Date</label>
                                     <div>
-                                        <input data-parsley-type="number" type="text" name="notice_date" class="form-control" required placeholder="Enter only numbers" />
+                                        <input data-parsley-type="number" type="date" name="notice_date" class="form-control" required placeholder="Enter only numbers" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Terminated Date</label>
-                                    <input type="text" class="form-control" name="terminated_date" required placeholder="Type something" />
+                                    <input type="date" class="form-control" name="terminated_date" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
