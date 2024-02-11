@@ -27,9 +27,9 @@ class EmployeeLeaveController extends Controller
         $validate = $this->validate($request,[
             'employee'=>'required',
             'leave_type'=>'required',
-            // 'from'=>'required|email',
-            // 'to'=>'nullable|max:15',
-            // 'reason'=>'required|max:200',
+            // 'from'=>'required',
+            // 'to'=>'required',
+            // 'reason'=>'required|max:20',
             // 'doc'=>'image|mimes:jpg,jpeg,png,gif',
         ]);
         // $imageName = Null;
