@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('backend.login');
 });
+Route::get('pdf', function () {
+    return view('backend.payroll.pdf');
+});
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');

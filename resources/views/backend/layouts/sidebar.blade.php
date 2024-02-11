@@ -120,17 +120,13 @@
                             <li>
                                 <a href="javascript: void(0);" class="waves-effect">
                                     <i class="mdi mdi-file-document-box-check-outline"></i>
-                                    <span class="badge badge-pill badge-danger float-right">07</span>
+                                    <span class="badge badge-pill badge-danger float-right">03</span>
                                     <span>Payroll</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="form-elements.html">Form Elements</a></li>
-                                    <li><a href="form-validation.html">Form Validation</a></li>
-                                    <li><a href="form-advanced.html">Form Advanced</a></li>
-                                    <li><a href="form-editors.html">Form Editors</a></li>
-                                    <li><a href="form-uploads.html">Form File Upload</a></li>
-                                    <li><a href="form-mask.html">Form Mask</a></li>
-                                    <li><a href="form-summernote.html">Summernote</a></li>
+                                    <li><a href="form-elements.html">Employee Salary</a></li>
+                                    <li><a href="form-validation.html">Payslip</a></li>
+                                    <li><a href="form-advanced.html">Payroll Items</a></li>
                                 </ul>
                             </li>
 

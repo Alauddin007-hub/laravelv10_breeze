@@ -228,4 +228,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('Overtime',[OvertimeController::class,'store'])
         ->name('Overtime.store');
+    // Payroll
+    Route::get('overtime/index',[OvertimeController::class,'index'])
+        ->name('views');
+
+    Route::get('Overtime/entry', [OvertimeController::class, 'create'])
+        ->name('advance.create');
+
+    Route::post('Overtime',[OvertimeController::class,'store'])
+        ->name('Overtime.store');
 });
