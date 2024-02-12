@@ -23,7 +23,7 @@ class HolidayController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.employee_manage.holiday.create');
     }
 
     /**

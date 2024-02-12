@@ -208,6 +208,15 @@ Route::middleware('auth')->group(function () {
 
     Route::post('warning/store',[WarningController::class,'store'])
         ->name('warning.store');
+    // Branch
+    Route::get('branch',[BranchController::class,'index'])
+        ->name('branches');
+
+    Route::get('branch/entry', [BranchController::class, 'create'])
+        ->name('branch/entry');
+
+    Route::post('branch/store',[BranchController::class,'store'])
+        ->name('branch.store');
        
     // Advance
     Route::get('advance',[AdvanceController::class,'index'])

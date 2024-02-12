@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Warning;
 use Illuminate\Http\Request;
 
 class WarningController extends Controller
@@ -11,7 +12,8 @@ class WarningController extends Controller
      */
     public function index()
     {
-        //
+        $warnings = Warning::all();
+        return view('backend.warning.index');
     }
 
     /**
@@ -19,7 +21,7 @@ class WarningController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.warning.warning_form');
     }
 
     /**

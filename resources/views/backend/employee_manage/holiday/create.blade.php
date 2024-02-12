@@ -11,13 +11,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Form Validation</h4>
+                        <h4 class="mb-0 font-size-18">Admin</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Apaxy</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                <li class="breadcrumb-item active">Form Validation</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Leave Management</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Public Holidays</a></li>
+                                <li class="breadcrumb-item active">Added Holiday</li>
                             </ol>
                         </div>
 
@@ -31,7 +31,8 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="header-title">Emplyee Entry</h4>
+                            <h4 class="header-title">Add Leave Type</h4>
+
                             @if($errors->any())
                             <div class="alert alert-danger">
                                 @foreach($errors->all() as $err)
@@ -40,53 +41,55 @@
                             </div>
                             @endif
 
-                            <form class="custom-validation" action="{{route('tarminated.store')}}" method="post" enctype="multipart/form-data">
+                            <form class="custom-validation" action="" method="post" enctype="multipart/form-data">
                                 @csrf
-
                                 <div class="form-group">
-                                    <label>Employee <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="employee" title="Select Department">
-                                        <option disabled selected>Selected once</option>
-                                        @foreach($employees as $item)
-                                        <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <!-- 'employee_id','termination_type','subject','role_type_id','notice_date','terminated_date','discription', -->
-                                <div class="form-group">
-                                    <label>Termination Type</label>
-                                    <input type="text" class="form-control" name="termination_type" required placeholder="Type something" />
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" name="firstname" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Subject</label>
-                                    <input type="text" class="form-control" name="subject" required placeholder="Type something" />
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" name="lastname" required placeholder="Type something" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Terminated By <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="role_type_id" title="Select Department">
-                                        <option disabled selected>Selected once</option>
-                                        <option value="1">Super Admin</option>
-                                        <option value="2">Admin</option>
-                                        
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Notice Date</label>
+                                    <label>E-Mail</label>
                                     <div>
-                                        <input data-parsley-type="number" type="date" name="notice_date" class="form-control" required placeholder="Enter only numbers" />
+                                        <input type="email" class="form-control" name="email" required parsley-type="email" placeholder="Enter a valid e-mail" />
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Terminated Date</label>
-                                    <input type="date" class="form-control" name="terminated_date" required placeholder="Type something" />
+                                    <label>Phone Number</label>
+                                    <div>
+                                        <input data-parsley-type="number" type="text" name="phone" class="form-control" required placeholder="Enter only numbers" />
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
-                                    <div>
-                                        <textarea class="form-control" name="discription" id="" cols="30" rows="10"></textarea>
+                                    <label>Department <span class="text-danger">*</span></label>
+                                    <select class="custom-select" name="department" title="Select Department">
+                                        <option disabled selected>Selected once</option>
                                         
+                                        <option value=""></option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Designation <span class="text-danger">*</span></label>
+                                    <select class="custom-select" name="designation" title="Select Department">
+                                        <option disabled selected>Selected once</option>
+                                        
+                                        <option value=""></option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" name="company" required placeholder="Type something" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo Uploade</label>
+                                    <div>
+                                        <input type="file" class="form-control" name="avatar" multiple="multiple">
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">

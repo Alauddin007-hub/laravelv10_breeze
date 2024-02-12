@@ -5,20 +5,19 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class UsersSeeder extends Seeder
+class Role_typesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => "Alauddin",
-            'username' => 'admin',
-            'email' => "admin@admin.com",
-            'password' => Hash::make('admin'),
+        DB::table('role_types')->insert([
+            'type' => "Admin",
+        ]);
+        DB::table('role_types')->insert([
+            'type' => "Editor",
         ]);
     }
 }

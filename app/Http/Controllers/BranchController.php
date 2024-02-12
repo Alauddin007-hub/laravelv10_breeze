@@ -12,7 +12,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.employee_manage.branch.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.employee_manage.branch.create');
     }
 
     /**

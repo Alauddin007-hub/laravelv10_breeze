@@ -68,7 +68,7 @@ class EmployeeController extends Controller
                 'company'=>$request->company,
                 'department_id'=>$request->department,
                 'designation_id'=>$request->designation,
-                'avatar'=>$imageName,
+                'image'=>$imageName,
             ]);
             return redirect('employees')->with('success',"Employee has been added");
         }

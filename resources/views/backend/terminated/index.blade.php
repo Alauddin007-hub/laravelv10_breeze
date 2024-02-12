@@ -53,6 +53,7 @@
                                         <th>Notice Date</th>
                                         <th>Terminated Date</th>
                                         <th>Description</th>
+                                        <th>Status</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -70,6 +71,7 @@
                                         <td>{{$item->notice_date}}</td>
                                         <td>{{$item->terminated_date}}</td>
                                         <td>{{$item->discription}}</td>
+                                        <td>{{$item->status}}</td>
                                         <td>Edit</td>
                                     </tr>
                                    @endforeach

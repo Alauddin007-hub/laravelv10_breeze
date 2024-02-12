@@ -61,7 +61,7 @@
                                     <tr>
                                         <td>
                                             <div class="table-avatar">
-                                                <a href="javascript:void(0)" class="avatar"><img alt="avatar" src="@if(!empty($employee->avatar)) {{asset('storage/employees/'.$employee->avatar)}} @else assets/img/profiles/default.jpg @endif" width="50px" height="50px"></a>
+                                                <a href="javascript:void(0)" class="avatar"><img alt="avatar" src="@if(empty($employee->avatar)) {{asset('storage/employees/'.$employee->image)}} @else assets/img/profiles/default.jpg @endif" width="50px" height="50px"></a>
                                                 <a href="javascript:void(0)">{{$employee->firstname}} {{$employee->lastname}}</a>
                                             </div>
                                         </td>

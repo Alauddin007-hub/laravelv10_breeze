@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_attendences', function (Blueprint $table) {
+        Schema::create('employee_advance_payments', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('employee_id');
-            $table->string('checkin')->nullable();
-            $table->string('checkout')->nullable();
-            $table->date('date')->nullable();
-            $table->string('total_work_hours')->nullable();
-            $table->string('status')->nullable();
+            $table->integer('loan');
+            $table->string('approval_amount')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_attendences');
+        Schema::dropIfExists('employee_advance_payments');
     }
 };

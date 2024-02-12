@@ -11,23 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employee_attendences', function (Blueprint $table) {
+        Schema::create('employee_leaves', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('leave_type_id');
             $table->tinyInteger('employee_id');
-            $table->string('checkin')->nullable();
-            $table->string('checkout')->nullable();
-            $table->date('date')->nullable();
-            $table->string('total_work_hours')->nullable();
-            $table->string('status')->nullable();
+            $table->date('from')->nullable();
+            $table->date('to')->nullable();
+            $table->string('total_leave')->nullable();
+            $table->string('reason')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
+
+    // 
+    //     'from','to','reason','status',
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('employee_attendences');
+        Schema::dropIfExists('employee_leave');
     }
 };
