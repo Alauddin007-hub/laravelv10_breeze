@@ -19,6 +19,7 @@ use App\Http\Controllers\EmployeeLeaveController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\OvertimeController;
+use App\Http\Controllers\PayrolleController;
 use App\Http\Controllers\TerminateController;
 use App\Http\Controllers\WarningController;
 use Illuminate\Support\Facades\Route;
@@ -238,12 +239,12 @@ Route::middleware('auth')->group(function () {
     Route::post('Overtime',[OvertimeController::class,'store'])
         ->name('Overtime.store');
     // Payroll
-    Route::get('overtime/index',[OvertimeController::class,'index'])
-        ->name('views');
+    Route::get('payroll/index',[PayrolleController::class,'index'])
+        ->name('payroll');
 
-    Route::get('Overtime/entry', [OvertimeController::class, 'create'])
+    Route::get('Overtime/entry', [PayrolleController::class, 'create'])
         ->name('advance.create');
 
-    Route::post('Overtime',[OvertimeController::class,'store'])
+    Route::post('Overtime',[PayrolleController::class,'store'])
         ->name('Overtime.store');
 });

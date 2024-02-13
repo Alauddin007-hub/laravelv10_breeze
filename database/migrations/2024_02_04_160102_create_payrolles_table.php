@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('employee_id');
             $table->tinyInteger('salary_sheets_id');
-            $table->integer('advance')->nullable();
+            $table->tinyInteger('advance_id')->nullable();
             $table->integer('pf')->nullable();
             $table->integer('leave')->nullable();
             $table->integer('prof_tax')->nullable();

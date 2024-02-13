@@ -55,8 +55,7 @@
                                         <th>Action</th>
 
                                     </tr>
-                                    <!-- 'leave_type_id','employee_id',
-        'from','to','reason','status', -->
+                                   
                                 </thead>
 
 
