@@ -33,11 +33,12 @@
                         <div class="card-body">
                             <div class="media">
                                 <div class="media-body">
-                                    <h5 class="font-size-14">Number of Sales</h5>
+                                    <h5 class="font-size-14">Number of Employee</h5>
                                 </div>
                                 <div class="avatar-xs">
                                     <span class="avatar-title rounded-circle bg-primary">
-                                        <i class="dripicons-box"></i>
+                                        <!-- <i class="dripicons-box"></i> -->
+                                        <i class="mdi mdi-account-group"></i>
                                     </span>
                                 </div>
                             </div>

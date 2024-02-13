@@ -46,7 +46,7 @@
                                     <li><a href="{{URL('branch')}}">Branch</a></li>
                                     <li><a href="{{URL('view_list')}}">Warning</a></li>
                                     <li><a href="{{URL('view')}}">Termination</a></li>
-                                    <li><a href="">Promotion</a></li>
+                                    <li><a href="#">Promotion</a></li>
                                     <li><a href="{{URL('view')}}">Employee Parmanent</a></li>
                                 </ul>
                             </li>

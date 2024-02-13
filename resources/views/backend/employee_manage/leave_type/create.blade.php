@@ -17,7 +17,7 @@
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Leave Management</a></li>
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Leave Type</a></li>
-                                <li class="breadcrumb-item active">Added Leave</li>
+                                <li class="breadcrumb-item active">Added Leave Type</li>
                             </ol>
                         </div>
 

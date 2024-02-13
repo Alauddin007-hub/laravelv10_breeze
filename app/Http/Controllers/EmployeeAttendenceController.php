@@ -24,13 +24,12 @@ class EmployeeAttendenceController extends Controller
         $employees = Employee::get();
         // print_r($employees);        
         return view('backend.employee_attendence.attendence_view', compact('employees'));
-
     }
 
     public function checking(Request $request)
     {
-        $currentDate = now();
-        EmployeeAttendence::find($request->employee_id)->Where();
+        // $currentDate = now();
+        // EmployeeAttendence::find($request->employee_id)->Where();
 
     }
 
@@ -44,14 +43,13 @@ class EmployeeAttendenceController extends Controller
         $date = $currentDate['mday'];
 
 
-        $query = DB::table('employee_attendances')->where('employee_id', $request->employee_id)->whereDay('created_at',$date)->first(); 
+        $query = DB::table('employee_attendences')->where('employee_id', $request->employee_id)->whereDay('created_at', $date)->first();
         // dd($query);
         // return $query->checkin;
         $employees = Employee::get();
         // $empAttendence = EmployeeAttendence::where('employee_id', $request->id)->where($currentDate, 'created_at');
         if (isset($query)) {
             return view('backend.employee_attendence.attendence_checkout', compact('employees'));
-
         } else {
             # code...
             return view('backend.employee_attendence.attendence_checkIn', compact('employees'));
@@ -70,10 +68,10 @@ class EmployeeAttendenceController extends Controller
         ];
         // print_r($data);
 
-        if($data['checkin']){
-            if($time < '09:15'){
+        if ($data['checkin']) {
+            if ($time < '09:15') {
                 $status = 'ontime';
-            }else{
+            } else {
                 $status = 'late';
             }
         }
@@ -82,44 +80,13 @@ class EmployeeAttendenceController extends Controller
             'employee_id' => $request->employee_id,
             'checkin' => $time,
             'status' => $status,
-    ]);
+        ]);
 
-    return redirect('attendence')->with('success', 'Checkin are successfully done');
+        return redirect('attendence')->with('success', 'Checkin are successfully done');
 
 
         // dd($request->all());
-        // $attendances = EmployeeAttendence::latest()->get();
-
-        // if(!$attendances->employee_id && !$attendances->checkin){
-        //     return view('backend.employee_attendence.attendence_checkIn');
-        // } else {
-        //     return view('backend.employee_attendence.attendence_checkOut');
-        // }
-        // $this->validate($request,[
-        //     'employee' => 'required',
-        //     'checkin' => 'required',
-        // ]);
-        // $settings = new AttendanceSettings();
-        // $time = date('H:i');
-        // $min_checkin_time = strtotime($settings->checkin_time) + 1800;
-        // if($request->checkin){
-        //     if($time < $settings->checkin_time){
-        //         $status = 'early';
-        //     }if($time <= date('H:i',$min_checkin_time)){
-        //         $status = 'ontime';
-        //     }else{
-        //         $status = 'late';
-        //     }
-        // }
-            
-        // EmployeeAttendance::create([
-        //     'employee_id' => $request->employee,
-        //     'checkin' => $request->checkin,
-        //     'checkout' => $request->checkout,
-        //     'status' => $status,
-        // ]);
-        // $notification = notify('employee attendance has been created');
-        // return back()->with($notification);
+        
     }
 
     /**
@@ -148,18 +115,36 @@ class EmployeeAttendenceController extends Controller
         $time = date('H:i');
         $currentDate = getdate();
         $date = $currentDate['mday'];
-        $data = [
-            'employee_id' => $request->employee_id,
-            'checkout' => $time,
-        ];
+
+        $attendance = EmployeeAttendence::where('employee_id', $request->employee_id)
+            ->whereDay('created_at', $date)->first();
+
+        $checkinTime = strtotime($attendance->checkin);
+        $checkoutTime = strtotime($time);
+        $total_work = ($checkoutTime - $checkinTime) / 3600; // Convert seconds to hours
+
+
+        
+        // $data = [
+        //     'employee_id' => $request->employee_id,
+        //     'checkout' => $time,
+        //     'total_work_hours' => $total_work,
+        // ];
         // dd($data);
 
-        DB::table('employee_attendances')->where('employee_id', $request->employee_id)->whereDay('created_at',$date)->update(['checkout' =>$time]);
+        DB::table('employee_attendences')
+            ->where('employee_id', $request->employee_id)
+            ->whereDay('created_at', $date)
+            ->update([
+                'checkout' => $time,
+                'total_work_hours' => $total_work,
+            ]);
+
 
         return redirect('attendence')->with('success', 'Checkout are successfully done');
 
         // dd($query);
-        
+
     }
 
     /**
@@ -170,7 +155,8 @@ class EmployeeAttendenceController extends Controller
         //
     }
 
-    public function checkout(){
+    public function checkout()
+    {
         $employees = Employee::get();
         return view('backend.employee_attendence.attendence_checkOut', compact('employees'));
     }

@@ -33,7 +33,7 @@
 
                             <h4 class="header-title">Default Datatable</h4>
                             <div>
-                                <a href="{{route('termination')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                                <a href="{{route('termination')}}" class="btn btn-success fa fa-plus"> Terminate Employee</a>
                             </div>
 
                             @if(session('success'))

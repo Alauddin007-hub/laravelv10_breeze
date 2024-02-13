@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
-            $table->string('education_experiance');
+            $table->string('education_experiance')->nullable();
             $table->string('phone')->nullable();
             $table->bigInteger('department_id')->nullable();
             $table->bigInteger('designation_id')->nullable();

@@ -33,7 +33,7 @@
 
                             <h4 class="header-title">Buttons example</h4>
                             <div>
-                                <a href="{{route('holidays.create')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                                <a href="{{route('holidays.create')}}" class="btn btn-success fa fa-plus"> Add Public Holiday</a>
                             </div><br>
 
                             @if(session('success'))

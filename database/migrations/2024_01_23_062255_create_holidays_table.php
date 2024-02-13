@@ -18,7 +18,8 @@ class CreateHolidaysTable extends Migration
             $table->string('name');
             $table->date('holiday_date');
             $table->boolean('completed')->default(false);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
