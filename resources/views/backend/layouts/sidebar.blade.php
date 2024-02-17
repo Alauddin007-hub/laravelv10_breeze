@@ -97,7 +97,7 @@
                                     <span>Calculation</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{URL('advance')}}">Advanced</a></li>
+                                    <li><a href="{{URL('advance/index')}}">Advanced</a></li>
                                     <li><a href="{{URL('overtime/index')}}">Overtimes</a></li>
                                     <li><a href="{{URL('advance')}}">Bounce</a></li>
                                     <li><a href="{{URL('advance')}}">Deduction</a></li>

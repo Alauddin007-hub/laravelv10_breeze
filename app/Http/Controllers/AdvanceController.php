@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advance;
 use Illuminate\Http\Request;
 
 class AdvanceController extends Controller
@@ -11,15 +12,17 @@ class AdvanceController extends Controller
      */
     public function index()
     {
-        //
+        $loans = Advance::all();
+        return view('backend.advance.index');
     }
 
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('backend.advance.create');
     }
 
     /**

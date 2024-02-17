@@ -220,7 +220,7 @@ Route::middleware('auth')->group(function () {
         ->name('branch.store');
        
     // Advance
-    Route::get('advance',[AdvanceController::class,'index'])
+    Route::get('advance/index',[AdvanceController::class,'index'])
         ->name('views');
 
     Route::get('advance/entry', [AdvanceController::class, 'create'])
@@ -231,10 +231,10 @@ Route::middleware('auth')->group(function () {
     
     // Overtimes
     Route::get('overtime/index',[OvertimeController::class,'index'])
-        ->name('views');
+        ->name('overtime.views');
 
     Route::get('Overtime/entry', [OvertimeController::class, 'create'])
-        ->name('advance.create');
+        ->name('overtime.create');
 
     Route::post('Overtime',[OvertimeController::class,'store'])
         ->name('Overtime.store');
@@ -243,8 +243,8 @@ Route::middleware('auth')->group(function () {
         ->name('payroll');
 
     Route::get('Overtime/entry', [PayrolleController::class, 'create'])
-        ->name('advance.create');
+        ->name('payroll.create');
 
-    Route::post('Overtime',[PayrolleController::class,'store'])
-        ->name('Overtime.store');
+    Route::post('payroll',[PayrolleController::class,'store'])
+        ->name('payroll.store');
 });
