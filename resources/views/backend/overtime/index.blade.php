@@ -16,8 +16,8 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Management</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);"></a>Warning</li>
-                                <li class="breadcrumb-item active">Employees warning</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);"></a>Other</li>
+                                <li class="breadcrumb-item active">Employees Overtime</li>
                             </ol>
                         </div>
 
