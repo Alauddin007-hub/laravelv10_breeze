@@ -10,7 +10,10 @@
 	<meta name="robots" content="noindex, nofollow">
 	<title>Reports</title>
 	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}">
+
+	<link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+
+	<!-- <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}"> -->
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{ URL::to('assets/css2/bootstrap.min.css') }}">
 	<!-- Fontawesome CSS -->

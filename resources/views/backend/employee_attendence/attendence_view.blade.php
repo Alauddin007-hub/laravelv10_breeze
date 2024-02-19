@@ -47,7 +47,7 @@
                                                 <select class="custom-select" name="employee_id" title="Select Department">
                                                     <option disabled selected>Selected once</option>
                                                     @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}">{{$employee->lastname}}</option>
+                                                    <option value="{{$employee->id}}">{{$employee->firstname}} {{$employee->lastname}}</option>
                                                     @endforeach
                                                 </select>
 

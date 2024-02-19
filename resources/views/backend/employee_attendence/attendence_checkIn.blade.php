@@ -32,7 +32,7 @@
                         <div class="card-body p-4">
                             <div class="p-2">
                                 <h5 class="mb-5 text-center">Attendence</h5>
-                               
+
                                 <form class="form-horizontal" method="POST" action="{{ route('attendence.store') }}">
                                     @csrf
                                     <div class="row">
@@ -43,7 +43,7 @@
                                                 <select class="custom-select" name="employee_id" title="Select Department">
                                                     <option disabled selected>Selected once</option>
                                                     @foreach($employees as $employee)
-                                                    <option value="{{$employee->id}}" {{old('employee_id') == $employee->id ? 'selected':''}}>{{$employee->lastname}}</option>
+                                                    <option value="{{$employee->id}}" {{old('employee_id') == $employee->id ? 'selected':''}}>{{$employee->firstname}} {{$employee->lastname}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                 </form>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
     </div>
     <!-- end Account pages -->
 
-    
+
 
     <!-- JAVASCRIPT -->
     <script src="{{asset('')}}assets/libs/jquery/jquery.min.js"></script>

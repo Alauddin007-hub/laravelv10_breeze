@@ -28,54 +28,7 @@
                     </div>
 
                     <!-- Search Filter -->
-                    <div class="row filter-row">
-                        <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                            <div class="form-group form-focus">
-                                <input type="text" class="form-control floating">
-                                <label class="focus-label">Employee Name</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                            <div class="form-group form-focus select-focus">
-                                <select class="select floating">
-                                    <option value=""> -- Select -- </option>
-                                    <option value="">Employee</option>
-                                    <option value="1">Manager</option>
-                                </select>
-                                <label class="focus-label">Role</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                            <div class="form-group form-focus select-focus">
-                                <select class="select floating">
-                                    <option> -- Select -- </option>
-                                    <option> Pending </option>
-                                    <option> Approved </option>
-                                    <option> Rejected </option>
-                                </select>
-                                <label class="focus-label">Leave Status</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                            <div class="form-group form-focus">
-                                <div class="cal-icon">
-                                    <input class="form-control floating datetimepicker" type="text">
-                                </div>
-                                <label class="focus-label">From</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                            <div class="form-group form-focus">
-                                <div class="cal-icon">
-                                    <input class="form-control floating datetimepicker" type="text">
-                                </div>
-                                <label class="focus-label">To</label>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                            <a href="#" class="btn btn-success btn-block"> Search </a>
-                        </div>
-                    </div>
+                    
                     <!-- /Search Filter -->
                     <div class="row">
                         <div class="col-md-12">
@@ -137,7 +90,7 @@
                                             <td></td>
                                             <td></td>
                                             <td hidden class="salary"></td>
-                                            <td><a class="btn btn-sm btn-primary" href="" target="_blank">Generate Slip</a></td>
+                                            <td><a class="btn btn-sm btn-primary" href="{{ url('salary/view') }}" target="_blank">Generate Slip</a></td>
                                             <td class="text-right">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
