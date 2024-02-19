@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EmployeeAttendenceController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\PayrolleController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\TerminateController;
 use App\Http\Controllers\WarningController;
 use Illuminate\Support\Facades\Route;
@@ -238,13 +240,58 @@ Route::middleware('auth')->group(function () {
 
     Route::post('Overtime',[OvertimeController::class,'store'])
         ->name('Overtime.store');
+
     // Payroll
     Route::get('payroll/index',[PayrolleController::class,'index'])
         ->name('payroll');
 
-    Route::get('Overtime/entry', [PayrolleController::class, 'create'])
-        ->name('payroll.create');
+    Route::get('salary/view', [PayrolleController::class, 'salaryView'])
+        ->name('payroll.salaryView');
 
     Route::post('payroll',[PayrolleController::class,'store'])
         ->name('payroll.store');
+
+    // Employee Salary
+    Route::get('salary/index',[SalaryController::class,'index'])
+        ->name('salaries');
+
+    Route::get('add_salary', [SalaryController::class, 'create'])
+        ->name('salaryAdd');
+
+    Route::post('salary/store',[SalaryController::class,'store'])
+        ->name('salary.store');
+
+    Route::get('salary/rewrite',[SalaryController::class,'edit'])
+        ->name('salary.rewrite');
+
+    Route::post('salary/update',[SalaryController::class,'update'])
+        ->name('salary.update');
+
+    // Employee Deduction
+    Route::get('index',[DeductionController::class,'index'])
+        ->name('List');
+
+    Route::get('deducte', [DeductionController::class, 'create'])
+        ->name('Add');
+
+    Route::post('deducte/store',[DeductionController::class,'store'])
+        ->name('deducte.store');
+
+    Route::get('deducte/rewrite',[DeductionController::class,'edit'])
+        ->name('deducte.rewrite');
+
+    Route::post('deducte/update',[DeductionController::class,'update'])
+        ->name('deducte.update');
 });
+
+
+// Route::controller(PayrollController::class)->group(function () {
+//     Route::get('form/salary/page', 'salary')->middleware('auth')->name('form/salary/page');
+//     Route::post('form/salary/save','saveRecord')->middleware('auth')->name('form/salary/save');
+//     Route::post('form/salary/update', 'updateRecord')->middleware('auth')->name('form/salary/update');
+//     Route::post('form/salary/delete', 'deleteRecord')->middleware('auth')->name('form/salary/delete');
+//     Route::get('form/salary/view/{user_id}', 'salaryView')->middleware('auth');
+//     Route::get('form/payroll/items', 'payrollItems')->middleware('auth')->name('form/payroll/items');    
+//     Route::get('extra/report/pdf', 'reportPDF')->middleware('auth');    
+//     Route::get('extra/report/excel', 'reportExcel')->middleware('auth');    
+// });

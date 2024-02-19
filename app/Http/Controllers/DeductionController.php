@@ -2,19 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee;
-use App\Models\Salary_Sheets;
 use Illuminate\Http\Request;
 
-class SalaryController extends Controller
+class DeductionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $em_salaries = Salary_Sheets::all();
-        return view('backend.salary.salaryList', compact('em_salaries'));
+        //
     }
 
     /**
@@ -22,8 +19,7 @@ class SalaryController extends Controller
      */
     public function create()
     {
-        $employees = Employee::all();
-        return view('backend.salary.employeeSalary', compact('employees'));
+        //
     }
 
     /**
@@ -47,8 +43,7 @@ class SalaryController extends Controller
      */
     public function edit(string $id)
     {
-        $employees = Employee::all();
-        return view('backend.salary.edit', compact('employees'));
+        //
     }
 
     /**

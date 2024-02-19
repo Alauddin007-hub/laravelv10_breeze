@@ -100,7 +100,7 @@
                                     <li><a href="{{URL('advance/index')}}">Advanced</a></li>
                                     <li><a href="{{URL('overtime/index')}}">Overtimes</a></li>
                                     <li><a href="{{URL('advance')}}">Bounce</a></li>
-                                    <li><a href="{{URL('advance')}}">Deduction</a></li>
+                                    <li><a href="{{URL('')}}">Deduction</a></li>
                                 </ul>
                             </li>
 
@@ -110,8 +110,8 @@
                                     <span>Salary Sheet</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="tables-basic.html">Basic Tables</a></li>
-                                    <li><a href="tables-datatable.html">Data Tables</a></li>
+                                    <li><a href="{{URL('salary/index')}}">Grose Salary</a></li>
+                                    <li><a href="{{URL('')}}">Total Deduction</a></li>
                                     <li><a href="tables-responsive.html">Responsive Table</a></li>
                                     <li><a href="tables-editable.html">Editable Table</a></li>
                                 </ul>
@@ -124,9 +124,9 @@
                                     <span>Payroll</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="form-elements.html">Employee Salary</a></li>
-                                    <li><a href="form-validation.html">Payslip</a></li>
-                                    <li><a href="form-advanced.html">Payroll Items</a></li>
+                                    <li><a href="{{URL('payroll/index')}}">Employee Salary</a></li>
+                                    <li><a href="{{URL('payroll.salaryView')}}">Payslip</a></li>
+                                    <li><a href="{{URL('advance')}}">Payroll Items</a></li>
                                 </ul>
                             </li>
 

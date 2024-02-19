@@ -48,6 +48,7 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
             @yield('content')
+            @yield('script')
             <!-- end main content-->
 
         </div>

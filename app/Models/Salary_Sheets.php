@@ -12,7 +12,7 @@ class Salary_Sheets extends Model
     protected $table = 'salary_sheets';
 
     protected $fillable = [
-        'employee_id','basic','dine_allowance','conveneynce_allowance', 'madical_allowance', 'rent_allowance', 'net_salary', 'created_by'
+        'employee_id','basic','dine_allowance','conveneynce_allowance', 'madical_allowance', 'rent_allowance', 'net_salary', 'created_by', 'status',
     ];
     
 
