@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('role_types', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
