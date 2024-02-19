@@ -18,7 +18,8 @@ return new class extends Migration
             $table->tinyInteger('salary_sheet_id');
             $table->integer('per_hour_salary');
             $table->integer('total_amount');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

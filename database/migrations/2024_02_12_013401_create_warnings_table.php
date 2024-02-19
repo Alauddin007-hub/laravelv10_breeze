@@ -19,7 +19,8 @@ return new class extends Migration
             $table->tinyInteger('warning_by')->nullable();
             $table->date('warning_date')->nullable();
             $table->string('description')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

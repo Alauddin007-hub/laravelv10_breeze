@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('parmanents', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->tinyInteger('employee_id');
+            $table->boolean('status')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();        
         });
     }
 

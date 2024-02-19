@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('branch_name');
             $table->string('location');
-            $table->timestamps();
+            $table->boolean('status')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

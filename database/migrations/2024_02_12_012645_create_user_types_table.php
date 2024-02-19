@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('user_types', function (Blueprint $table) {
             $table->id();
             $table->string('type_name')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
 
         DB::table('user_types')->insert([

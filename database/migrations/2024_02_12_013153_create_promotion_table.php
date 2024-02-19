@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('promotion', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger('department_id');
+            $table->tinyInteger('designation_id');
             $table->timestamps();
         });
     }

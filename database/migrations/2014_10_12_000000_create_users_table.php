@@ -21,7 +21,8 @@ return new class extends Migration
             $table->tinyInteger('role_types_id')->nullable();
             $table->boolean('status')->default(0);
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

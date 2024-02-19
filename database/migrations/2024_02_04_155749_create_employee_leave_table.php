@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('total_leave')->nullable();
             $table->string('reason')->nullable();
             $table->boolean('status')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

@@ -15,13 +15,15 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('employee_id');
             $table->tinyInteger('salary_sheets_id');
-            $table->tinyInteger('advance_id')->nullable();
+            $table->tinyInteger('deduction_id')->nullable();
             $table->integer('pf')->nullable();
             $table->integer('leave')->nullable();
             $table->integer('prof_tax')->nullable();
             $table->integer('leabour_welfare')->nullable();
+            $table->boolean('status')->default(0);
             $table->integer('created_by')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

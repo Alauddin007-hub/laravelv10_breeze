@@ -271,16 +271,16 @@ Route::middleware('auth')->group(function () {
     Route::get('index',[DeductionController::class,'index'])
         ->name('List');
 
-    Route::get('deducte', [DeductionController::class, 'create'])
+    Route::get('deduct', [DeductionController::class, 'create'])
         ->name('Add');
 
-    Route::post('deducte/store',[DeductionController::class,'store'])
-        ->name('deducte.store');
+    Route::post('deduct/store',[DeductionController::class,'store'])
+        ->name('deduct.store');
 
-    Route::get('deducte/rewrite',[DeductionController::class,'edit'])
+    Route::get('deduct/rewrite',[DeductionController::class,'edit'])
         ->name('deducte.rewrite');
 
-    Route::post('deducte/update',[DeductionController::class,'update'])
+    Route::post('deduct/update',[DeductionController::class,'update'])
         ->name('deducte.update');
 });
 

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('employee_id');
             $table->string('off_days');
             $table->boolean('status')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

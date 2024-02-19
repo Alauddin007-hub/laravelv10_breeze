@@ -21,7 +21,8 @@ return new class extends Migration
             $table->date('terminated_date');
             $table->string('discription')->nullable();
             $table->boolean('status')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

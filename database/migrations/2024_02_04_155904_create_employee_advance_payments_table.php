@@ -17,7 +17,8 @@ return new class extends Migration
             $table->integer('loan');
             $table->string('approval_amount')->nullable();
             $table->boolean('status')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

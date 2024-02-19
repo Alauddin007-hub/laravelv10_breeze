@@ -11,23 +11,28 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('advances', function (Blueprint $table) {
+        Schema::create('deduction', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('employee_id');
-            $table->string('month_of_advance')->nullable();
-            $table->string('apply_amount')->nullable();
-            $table->string('approved_amount')->nullable();
+            $table->tinyInteger('advance_id');
+            $table->tinyInteger('leave_id');
+            $table->string('Provident_fund')->nullable();
+            $table->string('prof_tax')->nullable();
+            $table->string('leabour_welfare')->nullable();
             $table->boolean('status')->default(0);
+            $table->string('created_by')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
     }
+
+    // 'employee_id','salary_sheets_id','advance_id','pf', 'leave', 'prof_tax', 'leabour_welfare', 'created_by
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('advances');
+        Schema::dropIfExists('deduction');
     }
 };

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('role_types_id')->nullable();
             $table->bigInteger('users_id')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->string('total_work_hours')->nullable();
             $table->string('status')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent(); 
         });
     }
 
