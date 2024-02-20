@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Designation;
 use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
@@ -58,6 +59,9 @@ class EmployeeController extends Controller
 
         if($validate){
             $request->avatar->move(('storage/employees'), $imageName);
+
+            $dt        = Carbon::now();
+            $todayDate = $dt->toDayDateTimeString();
             
             Employee::create([
                 'uuid' =>$uuid,
@@ -65,6 +69,7 @@ class EmployeeController extends Controller
                 'lastname'=>$request->lastname,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
+                'join_date' => $todayDate,
                 'company'=>$request->company,
                 'department_id'=>$request->department,
                 'designation_id'=>$request->designation,
