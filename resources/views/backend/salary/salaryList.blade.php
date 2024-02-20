@@ -48,28 +48,29 @@
                                         <th>#ID</th>
                                         <th>Employee</th>
                                         <th>Basic Salary</th>
-                                        <th>Dine Allowance</th>
+                                        <th>Daily Rate</th>
+                                        <th>Dine</th>
                                         <th>Conveneynce</th>
-                                        <th>Madical Allowance</th>
-                                        <th>Rent Allowance</th>
-                                        <th>Net Salary</th>
+                                        <th>Madical</th>
+                                        <th>Rent</th>
+                                        <th>Gross Salary</th>
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
 
-                                <!-- // 'employee_id','basic','dine_allowance','conveneynce_allowance', 'madical_allowance', 'rent_allowance', 'net_salary', 'created_by'  -->
                                 <tbody>
                                     @foreach($em_salaries as $key=>$item)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{$item->employee->name}}</td>
+                                        <td>{{$item->employee->firstname}}</td>
                                         <td>{{$item->basic}}</td>
+                                        <td>{{$item->daily_rate}}</td>
                                         <td>{{$item->dine_allowance}}</td>
                                         <td>{{$item->conveneynce_allowance}}</td>
                                         <td>{{$item->madical_allowance}}</td>
                                         <td>{{$item->rent_allowance}}</td>
-                                        <td>{{$item->net_salary}}</td>
+                                        <td>{{$item->gross_salary}}</td>
                                         <td>Edit | Delete</td>
 
                                     </tr>

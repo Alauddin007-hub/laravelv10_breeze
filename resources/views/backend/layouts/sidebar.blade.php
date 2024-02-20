@@ -100,7 +100,7 @@
                                     <li><a href="{{URL('advance/index')}}">Advanced</a></li>
                                     <li><a href="{{URL('overtime/index')}}">Overtimes</a></li>
                                     <li><a href="{{URL('advance')}}">Bounce</a></li>
-                                    <li><a href="{{URL('')}}">Deduction</a></li>
+                                    <li><a href="{{URL('index')}}">Deduction</a></li>
                                 </ul>
                             </li>
 
@@ -111,7 +111,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{URL('salary/index')}}">Grose Salary</a></li>
-                                    <li><a href="{{URL('')}}">Total Deduction</a></li>
+                                    <li><a href="{{URL('index')}}">Total Deduction</a></li>
                                     <li><a href="tables-responsive.html">Responsive Table</a></li>
                                     <li><a href="tables-editable.html">Editable Table</a></li>
                                 </ul>
@@ -127,52 +127,6 @@
                                     <li><a href="{{URL('payroll/index')}}">Employee Salary</a></li>
                                     <li><a href="{{URL('payroll.salaryView')}}">Payslip</a></li>
                                     <li><a href="{{URL('advance')}}">Payroll Items</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="mdi mdi-poll"></i>
-                                    <span>Charts</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="charts-morris.html">Morris</a></li>
-                                    <li><a href="charts-apex.html">Apex</a></li>
-                                    <li><a href="charts-chartist.html">Chartist</a></li>
-                                    <li><a href="charts-chartjs.html">Chartjs</a></li>
-                                    <li><a href="charts-flot.html">Flot</a></li>
-                                    <li><a href="charts-sparkline.html">Sparkline</a></li>
-                                    <li><a href="charts-knob.html">Jquery Knob</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="mdi mdi-flip-horizontal"></i>
-                                    <span>Layouts</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="layouts-light-sidebar.html">Light Sidebar</a></li>
-                                    <li><a href="layouts-sidebar-sm.html">Small Sidebar</a></li>
-                                    <li><a href="layouts-icon-sidebar.html">Icon Sidebar</a></li>
-                                    <li><a href="layouts-dark-topbar.html">Dark Topbar</a></li>
-                                    <li><a href="layouts-boxed.html">Boxed Layout</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="mdi mdi-share-variant"></i>
-                                    <span>Multi Level</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="true">
-                                    <li><a href="javascript: void(0);">Level 1.1</a></li>
-                                    <li><a href="javascript: void(0);" class="has-arrow">Level 1.2</a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li><a href="javascript: void(0);">Level 2.1</a></li>
-                                            <li><a href="javascript: void(0);">Level 2.2</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </li>
 

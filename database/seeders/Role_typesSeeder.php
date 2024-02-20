@@ -20,13 +20,13 @@ class Role_typesSeeder extends Seeder
             'type' => "Admin",
         ]);
         DB::table('role_types')->insert([
-            'type' => "Editor",
-        ]);
-        DB::table('role_types')->insert([
             'type' => "Employee",
         ]);
         DB::table('role_types')->insert([
-            'type' => "Normal User",
+            'type' => "Company",
         ]);
+        // DB::table('role_types')->insert([
+        //     'type' => "Normal User",
+        // ]);
     }
 }

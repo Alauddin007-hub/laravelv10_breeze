@@ -15,9 +15,9 @@
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Management</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Warning</a></li>
-                                <li class="breadcrumb-item active">Employee Warning</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Salary Calculation</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Salary</a></li>
+                                <li class="breadcrumb-item active">Employee Grose Salary</li>
                             </ol>
                         </div>
 
@@ -40,54 +40,24 @@
                             </div>
                             @endif
 
-                            <form class="custom-validation" action="" method="post" enctype="multipart/form-data">
+                            <form class="custom-validation" action="{{route('salary.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
 
-                                <!-- // id 	employee_id 	warning_type 	subject 	warning_by 	warning_date 	description 	created_at 	updated_at  -->
+                                
                                 <div class="form-group">
                                     <label>Employee <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="employee_id" title="Select Department">
                                         <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
-                                        
+                                        @foreach($employees as $employee)
+                                        <option value="{{$employee->id}}">{{$employee->firstname}} {{$employee->lastname}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Warning Type</label>
-                                    <input type="text" class="form-control" name="warning_type" required placeholder="Type something" />
+                                    <label>Basic Salary</label>
+                                    <input type="text" class="form-control" name="basic" required placeholder="Type something" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Subject</label>
-                                    <input type="text" class="form-control" name="subject" required placeholder="Type something" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Warning By</label>
-                                    <div>
-                                        <input data-parsley-type="number" type="text" name="warning_by" class="form-control" required placeholder="Enter only numbers" />
-                                    </div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label>Designation <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="designation" title="Select Department">
-                                        <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
-                                        
-                                    </select>
-                                </div> -->
-                                <div class="form-group">
-                                    <label>Warning Date</label>
-                                    <input type="date" class="form-control" name="warning_date" required placeholder="Type something" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <div>
-                                        <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
-                                        
-                                    </div>
-                                </div>
+                                
                                 <div class="form-group mb-0">
                                     <div>
                                         <button type="submit" class="btn btn-primary waves-effect waves-light mr-1">

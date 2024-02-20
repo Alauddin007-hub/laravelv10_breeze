@@ -108,6 +108,85 @@
             </div>
             <!-- end row -->
 
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title mb-4">Sales Analytics</h4>
+                            <div class="row justify-content-center">
+                                <div class="col-sm-4">
+                                    <div class="text-center">
+                                        <p>This Month</p>
+                                        <h4>$ 46,543</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="text-center">
+                                        <p>This Week</p>
+                                        <h4>$ 7,842</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="revenue-chart" class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title mb-4">Marketplaces Earning</h4>
+
+                            <div dir="ltr">
+
+                                <div class="slick-slider slider-for hori-timeline-desc pt-0">
+                                    <div>
+                                        <p class="font-size-16">Daily Earning</p>
+                                        <h4 class="mb-4">$ 1,452</h4>
+                                        <div id="earning-day-chart" class="apex-charts"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-size-16">Weekly Earning</p>
+                                        <h4 class="mb-4">$ 6,536</h4>
+                                        <div id="earning-weekly-chart" class="apex-charts"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-size-16">Monthly Earning</p>
+                                        <h4 class="mb-4">$ 24,562</h4>
+                                        <div id="earning-monthly-chart" class="apex-charts"></div>
+                                    </div>
+                                    <div>
+                                        <p class="font-size-16">Yearly Earning</p>
+                                        <h4 class="mb-4">$ 2,82,562</h4>
+                                        <div id="earning-yearly-chart" class="apex-charts"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-11">
+                                        <div class="slick-slider slider-nav hori-timeline-nav">
+                                            <div class="slider-nav-item">
+                                                <h5 class="nav-title font-size-14 mb-0">Day</h5>
+                                            </div>
+                                            <div class="slider-nav-item">
+                                                <h5 class="nav-title font-size-14 mb-0">Week</h5>
+                                            </div>
+                                            <div class="slider-nav-item">
+                                                <h5 class="nav-title font-size-14 mb-0">Month</h5>
+                                            </div>
+                                            <div class="slider-nav-item">
+                                                <h5 class="nav-title font-size-14 mb-0">Year</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->

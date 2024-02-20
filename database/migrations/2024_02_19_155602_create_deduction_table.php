@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('deduction', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('employee_id');
+            $table->tinyInteger('salary_sheets_id');
             $table->tinyInteger('advance_id');
             $table->tinyInteger('leave_id');
             $table->string('Provident_fund')->nullable();

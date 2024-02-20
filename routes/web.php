@@ -21,6 +21,39 @@ Route::get('pdf', function () {
     return view('backend.payroll.pdf');
 });
 
+
+
+            // Multi user
+Route::group(['middleware' => 'superAdmin'], function(){
+
+    Route::get('dashboard/super_admin', function () {
+        return view('backend.super_admin_dashboard');
+    });
+});
+
+Route::group(['middleware' => 'adnin'], function(){
+
+    Route::get('dashboard/admin', function () {
+        return view('backend.admin_dashboard');
+    });
+});
+
+Route::group(['middleware' => 'employee'], function(){
+
+    Route::get('dashboard/employee', function () {
+        return view('backend.employee_dashboard');
+    });
+});
+
+Route::group(['middleware' => 'company'], function(){
+
+    Route::get('dashboard/company', function () {
+        return view('backend.company_dashboard');
+    });
+});
+
+
+
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

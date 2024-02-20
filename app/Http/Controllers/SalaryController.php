@@ -31,7 +31,50 @@ class SalaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $this->validate($request,[
+            'employee_id'=>'required',
+            'basic'=>'required',
+            
+        ]);
+
+            $basic = $request->basic;
+            $dine = $request->basic /100*10;
+            $daily_rate = round($request->basic /22);
+            // $daily_rate = $request->basic /22;
+            $convence = $request->basic /100*10;
+            $madical = $request->basic /100*10;
+            $rent = $request->basic /100*30;
+            $gross_salary = $basic + $dine + $convence + $madical + $rent ;
+
+        if($validate){
+            // $dt        = Carbon::now();
+            // $todayDate = $dt->toDayDateTimeString();
+
+            // $salary = [
+            //     'basic' =>$basic,
+            //     'daily_rate' =>$daily_rate,
+            //     'dine' => $dine, 
+            //     'convence' => $convence,
+            //     'madical' => $madical,
+            //     'rent' => $rent,
+            //     'gross_salary' => $gross_salary
+            // ];
+            // dd($salary);
+            
+            Salary_Sheets::create([
+                'employee_id' =>$request->employee_id,
+                'basic' =>$request->basic,
+                'daily_rate' =>$daily_rate,
+                'dine_allowance' =>$dine,
+                'conveneynce_allowance' =>$convence,
+                'madical_allowance' => $madical,
+                'rent_allowance' =>$rent,
+                'gross_salary' =>$gross_salary,
+                // 'created_by'=>$request->designation,
+                
+            ]);
+            return redirect('salary/index')->with('success',"Employee gross salary updated");
+        }
     }
 
     /**

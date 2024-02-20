@@ -40,10 +40,10 @@
                             </div>
                             @endif
 
-                            <form class="custom-validation" action="" method="post" enctype="multipart/form-data">
+                            <form class="custom-validation" action="{{route('salary.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
 
-                                <!-- // 'employee_id','basic','dine_allowance','conveneynce_allowance', 'madical_allowance', 'rent_allowance', 'net_salary', 'created_by'  -->
+                                
                                 <div class="form-group">
                                     <label>Employee <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="employee_id" title="Select Department">
@@ -57,35 +57,7 @@
                                     <label>Basic Salary</label>
                                     <input type="text" class="form-control" name="basic" required placeholder="Type something" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Dine Allowance</label>
-                                    <input type="text" class="form-control" name="dine_allowance" required placeholder="Type something" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Conveneynce Allowance</label>
-                                    <div>
-                                        <input data-parsley-type="number" type="text" name="conveneynce_allowance" class="form-control" required placeholder="Enter only numbers" />
-                                    </div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label>Designation <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="designation" title="Select Department">
-                                        <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
-                                        
-                                    </select>
-                                </div> -->
-                                <div class="form-group">
-                                    <label>Madical Allowance</label>
-                                    <input type="text" class="form-control" name="madical_allowance" required placeholder="Type something" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Rent Allowance</label>
-                                    <input type="text" class="form-control" name="rent_allowance" required placeholder="Type something" />
-                                </div>
-
+                                
                                 <div class="form-group mb-0">
                                     <div>
                                         <button type="submit" class="btn btn-primary waves-effect waves-light mr-1">
