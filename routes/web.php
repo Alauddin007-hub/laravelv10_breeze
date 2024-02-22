@@ -54,7 +54,7 @@ Route::group(['middleware' => 'company'], function(){
 
 
 
-Route::get('/dashboard', function () {
+Route::get('dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

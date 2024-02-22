@@ -110,7 +110,7 @@
                                     <span>Salary Sheet</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{URL('salary/index')}}">Grose Salary</a></li>
+                                    <li><a href="{{URL('payroll/index')}}">Grose Salary</a></li>
                                     <li><a href="{{URL('index')}}">Total Deduction</a></li>
                                     <li><a href="tables-responsive.html">Responsive Table</a></li>
                                     <li><a href="tables-editable.html">Editable Table</a></li>

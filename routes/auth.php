@@ -251,6 +251,17 @@ Route::middleware('auth')->group(function () {
     Route::post('payroll',[PayrolleController::class,'store'])
         ->name('payroll.store');
 
+
+
+    Route::get('payrolls',[PayrolleController::class,'create'])
+        ->name('payroll.create');
+
+    Route::post('salaryrecord',[PayrolleController::class,'salaryrecord'])
+        ->name('payroll.salaryrecord');
+
+    Route::post('payslip',[PayrolleController::class,'saveRecord'])
+        ->name('payslip');
+
     // Employee Salary
     Route::get('salary/index',[SalaryController::class,'index'])
         ->name('salaries');

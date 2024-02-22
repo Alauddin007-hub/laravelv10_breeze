@@ -41,10 +41,12 @@ class SalaryController extends Controller
             $dine = $request->basic /100*10;
             $daily_rate = round($request->basic /22);
             // $daily_rate = $request->basic /22;
-            $convence = $request->basic /100*10;
-            $madical = $request->basic /100*10;
-            $rent = $request->basic /100*30;
-            $gross_salary = $basic + $dine + $convence + $madical + $rent ;
+            $hourly_rate = $daily_rate /24;
+
+            // $convence = $request->basic /100*10;
+            // $madical = $request->basic /100*10;
+            // $rent = $request->basic /100*30;
+            // $gross_salary = $basic + $dine + $convence + $madical + $rent ;
 
         if($validate){
             // $dt        = Carbon::now();
@@ -65,11 +67,12 @@ class SalaryController extends Controller
                 'employee_id' =>$request->employee_id,
                 'basic' =>$request->basic,
                 'daily_rate' =>$daily_rate,
-                'dine_allowance' =>$dine,
-                'conveneynce_allowance' =>$convence,
-                'madical_allowance' => $madical,
-                'rent_allowance' =>$rent,
-                'gross_salary' =>$gross_salary,
+                'hourly_rate' =>$hourly_rate,
+
+                // 'conveneynce_allowance' =>$convence,
+                // 'madical_allowance' => $madical,
+                // 'rent_allowance' =>$rent,
+                // 'gross_salary' =>$gross_salary,
                 // 'created_by'=>$request->designation,
                 
             ]);
@@ -90,8 +93,9 @@ class SalaryController extends Controller
      */
     public function edit(string $id)
     {
+        $salaries = Salary_Sheets::find($id);
         $employees = Employee::all();
-        return view('backend.salary.edit', compact('employees'));
+        return view('backend.salary.edit', compact('employees','salaries'));
     }
 
     /**

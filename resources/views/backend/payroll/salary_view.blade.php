@@ -18,15 +18,12 @@
                     </div>
                     <div class="col-auto float-right ml-auto">
                         <div class="btn-group btn-group-sm">
-<<<<<<< HEAD
                             <button class="btn btn-white" style="color: green"><i class="fa fa-file-excel-o"></i><a href=""> Excel</a></button>
                             <button class="btn btn-white" style="color: red"><i class="fa fa-file-pdf-o"></i> <a href="">PDF</a></button>
                             <button class="btn btn-white" style="color: black"><i class="fa fa-print fa-lg"></i><a href="" @click.prevent="printme" target="_blank"> Print</a></button>
-=======
-                            <!-- <button class="btn btn-white" style="color: green"><i class="fa fa-file-excel-o"></i><a href="{{ url("extra/report/excel/?user_id=$users->user_id") }}"> Excel</a></button> -->
-                            <!-- <button class="btn btn-white" style="color: red"><i class="fa fa-file-pdf-o"></i> <a href="{{ url("extra/report/pdf/?user_id=$users->user_id") }}">PDF</a></button> -->
-                            <!-- <button class="btn btn-white" style="color: black"><i class="fa fa-print fa-lg"></i><a href="" @click.prevent="printme" target="_blank"> Print</a></button> -->
->>>>>>> 02e7ed1d90121aef2fccc4faf9fe63ec755cd559
+                            <button class="btn btn-white" style="color: green"><i class="fa fa-file-excel-o"></i><a href="{{ url("extra/report/excel") }}"> Excel</a></button> -->
+                            <button class="btn btn-white" style="color: red"><i class="fa fa-file-pdf-o"></i> <a href="{{ url("extra/report/pdf/") }}">PDF</a></button>
+                            <!-- <button class="btn btn-white" style="color: black"><i class="fa fa-print fa-lg"></i><a href="" @click.prevent="printme" target="_blank"> Print</a></button>
                         </div>
                     </div>
                 </div>
@@ -38,7 +35,6 @@
                             <h4 class="payslip-title">Payslip for the month of {{ \Carbon\Carbon::now()->format('M') }}   {{ \Carbon\Carbon::now()->year }}  </h4>
                             <div class="row">
                                 <div class="col-sm-6 m-b-20">
-<<<<<<< HEAD
                                     
                                     <img src="" class="inv-logo" alt="">
                                     
@@ -46,40 +42,36 @@
                                         <li></li>
                                         <li></li>
                                         <li></li>
-=======
                                     <!-- @if(!empty($users->avatar))
                                     <img src="{{ URL::to('/assets/images/'. $users->avatar) }}" class="inv-logo" alt="{{ $users->name }}">
                                     @endif -->
                                     <ul class="list-unstyled mb-0">
-                                        <!-- <li>{{ $users->name }}</li>
-                                        <li>{{ $users->address }}</li>
-                                        <li>{{ $users->country }}</li> -->
->>>>>>> 02e7ed1d90121aef2fccc4faf9fe63ec755cd559
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
                                     </ul>
                                 </div>
                                 <div class="col-sm-6 m-b-20">
                                     <div class="invoice-details">
                                         <h3 class="text-uppercase">Payslip #49029</h3>
                                         <ul class="list-unstyled">
-                                            <li>Salary Month: <span>{{ \Carbon\Carbon::now()->format('M') }}  , {{ \Carbon\Carbon::now()->year }}  </span></li>
-                                        </ul>
+    <li>Salary Month: <span>{{ \Carbon\Carbon::now()->format('F') }}, {{ \Carbon\Carbon::now()->year }}</span></li>
+</ul>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 m-b-20">
                                     <ul class="list-unstyled">
-<<<<<<< HEAD
                                         <li><h5 class="mb-0"><strong></strong></h5></li>
                                         <li><span></span></li>
                                         <li>Employee ID: </li>
                                         <li>Joining Date: </li>
-=======
-                                        <!-- <li><h5 class="mb-0"><strong>{{ $users->name }}</strong></h5></li>
-                                        <li><span>{{ $users->position }}</span></li>
-                                        <li>Employee ID: {{ $users->user_id }}</li>
-                                        <li>Joining Date: {{ $users->join_date }}</li> -->
->>>>>>> 02e7ed1d90121aef2fccc4faf9fe63ec755cd559
+                                        <li><h5 class="mb-0"><strong></strong></h5></li>
+                                        <li><span></span></li>
+                                        <li>Employee ID: </li>
+                                        <li>Joining Date: </li>
                                     </ul>
                                 </div>
                             </div>

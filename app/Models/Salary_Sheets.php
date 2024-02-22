@@ -9,10 +9,10 @@ class Salary_Sheets extends Model
 {
     use HasFactory;
 
-    protected $table = 'salary_sheets';
+    protected $table = 'salary_details';
 
     protected $fillable = [
-        'employee_id','basic','daily_rate','dine_allowance','conveneynce_allowance', 'madical_allowance', 'rent_allowance', 'gross_salary', 'created_by', 'status',
+        'employee_id','basic','daily_rate','hourly_rate', 'created_by', 'status',
     ];
     
 

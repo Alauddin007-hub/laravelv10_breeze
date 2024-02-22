@@ -87,13 +87,19 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label>Joining Date</label>
+                                    <div>
+                                        <input data-parsley-type="number" type="date" name="Joining_date" class="form-control" value="{{$employees->Joining_date ? $employees->Joining_date : old('Joining_date') }}" required placeholder="Enter only numbers" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Company</label>
                                     <input type="text" class="form-control" name="company" value="{{$employees->company ? $employees->company : old('company') }}" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
                                     <label>Photo Uploade</label>
                                     <div>
-                                    <img src="{{asset('storage/employees/'.$employees->avatar)}}" width="60px" height="50px" alt="">
+                                    <img src="{{asset('storage/employees/'.$employees->image)}}" width="60px" height="50px" alt="">
                                     <input type="file" class="form-control" name="avatar" multiple="multiple">
                                     </div>
                                 </div>

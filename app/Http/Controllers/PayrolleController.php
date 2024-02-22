@@ -3,21 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use PDF;
 use App\Exports\SalaryExcel;
+use App\Models\Employee;
+use App\Models\Payrolles;
+use App\Models\Salary_Sheets;
 use Maatwebsite\Excel\Facades\Excel;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\DB;
 
 class PayrolleController extends Controller
 {
     public function index()
-    {
+    {   
         return view('backend.payroll.employee_salary');
+    }
+
+    public function create()
+    {
+        $employee = Employee::all();
+        // $salary = Salary_Sheets::all();
+        return view('backend.payroll.employeerecord', compact('employee'));
+    }
+
+    public function salaryrecord(Request $request )
+    {
+        // $salary = Salary_Sheets::get();
+        $salary = Salary_Sheets::get();
+        // return $request;
+       $salarydetail = DB::table('salary_details')->where('employee_id', $request->employee_id)->first();
+    //    dd($salarydetail);
+
+       if (isset($salarydetail)) {
+        return view('backend.payroll.create', compact('salary'));
+    } else {
+        return redirect('add_salary');
+    }
     }
 
     public function saveRecord(Request $request)
     {
+        
+
         // $request->validate([
         //     'name'         => 'required|string|max:255',
         //     'salary'       => 'required|string|max:255',
@@ -64,6 +91,13 @@ class PayrolleController extends Controller
         //     return redirect()->back();
         // }
     }
+
+    public function entry()
+    {
+        $employee = Employee::all();
+        return view('backend.payroll.create',compact('employee'));
+    }
+
 
     public function salaryView()
     {

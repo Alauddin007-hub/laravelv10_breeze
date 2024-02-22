@@ -16,11 +16,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $title="employees";
-       $employees = Employee::with('department','designation')->get();
+        $title = "employees";
+        $employees = Employee::with('department', 'designation')->get();
 
-       return view('backend.employee_manage.employee.index',compact('title','employees'));
-        
+        return view('backend.employee_manage.employee.index', compact('title', 'employees'));
     }
 
     /**
@@ -31,7 +30,7 @@ class EmployeeController extends Controller
         $designations = Designation::get();
         $departments = Department::get();
 
-        return view('backend.employee_manage.employee.create',compact('designations','departments'));
+        return view('backend.employee_manage.employee.create', compact('designations', 'departments'));
     }
 
     /**
@@ -39,46 +38,49 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $this->validate($request,[
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'email'=>'required|email',
-            'phone'=>'nullable|max:15',
-            'company'=>'required|max:200',
-            'avatar'=>'image|mimes:jpg,jpeg,png,gif',
-            'department'=>'required',
-            'designation'=>'required',
+        $validate = $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'nullable|max:15',
+            'company' => 'required|max:200',
+            'avatar' => 'image|mimes:jpg,jpeg,png,gif',
+            'department' => 'required',
+            'designation' => 'required',
         ]);
         // $imageName = Null;
-        $imageName = time().'.'.$request->avatar->extension();
-            
-        
+        $imageName = time() . '.' . $request->avatar->extension();
+
+
         // echo $imageName;
 
-        $uuid = IdGenerator::generate(['table' => 'employees','field'=>'uuid', 'length' => 7, 'prefix' =>'EMP-']);
+        $uuid = IdGenerator::generate(['table' => 'employees', 'field' => 'uuid', 'length' => 7, 'prefix' => 'EMP-']);
 
-        if($validate){
+        if ($validate) {
             $request->avatar->move(('storage/employees'), $imageName);
 
             // $dt        = Carbon::now();
             // $join = $request->joining_date;
             // $join = Carbon::parse($request->joining_date);
             // $todayDate = $join->toDayDateTimeString();
-            
+
+
+            $joiningDate = Carbon::parse($request->joining_date)->format('Y-m-d');
+
             Employee::create([
-                'uuid' =>$uuid,
-                'firstname'=>$request->firstname,
-                'lastname'=>$request->lastname,
-                'email'=>$request->email,
-                'phone'=>$request->phone,
-                // 'Joining_date' => $todayDate,
-                'Joining_date' => $request->joining_date,
-                'company'=>$request->company,
-                'department_id'=>$request->department,
-                'designation_id'=>$request->designation,
-                'image'=>$imageName,
+                'uuid' => $uuid,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'Joining_date' => $joiningDate,
+                // 'Joining_date' => $request->joining_date,
+                'company' => $request->company,
+                'department_id' => $request->department,
+                'designation_id' => $request->designation,
+                'image' => $imageName,
             ]);
-            return redirect('employees')->with('success',"Employee has been added");
+            return redirect('employees')->with('success', "Employee has been added");
         }
     }
 
@@ -96,10 +98,10 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $designations = Designation::get();
-       $departments = Department::get();
-       $employees = Employee::find($id);
+        $departments = Department::get();
+        $employees = Employee::find($id);
 
-        return view('backend.employee_manage.employee.edit',compact('designations','departments','employees'));
+        return view('backend.employee_manage.employee.edit', compact('designations', 'departments', 'employees'));
     }
 
     /**
@@ -107,15 +109,15 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $validate = $this->validate($request,[
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'email'=>'required|email',
-            'phone'=>'nullable|max:15',
-            'company'=>'required|max:200',
-            'avatar'=>'file|image|mimes:jpg,jpeg,png,gif',
-            'department'=>'required',
-            'designation'=>'required',
+        $validate = $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'phone' => 'nullable|max:15',
+            'company' => 'required|max:200',
+            'avatar' => 'file|image|mimes:jpg,jpeg,png,gif',
+            'department' => 'required',
+            'designation' => 'required',
         ]);
         // if ($request->hasFile('avatar')){
         //     $imageName = time().'.'.$request->avatar->extension();
@@ -124,24 +126,30 @@ class EmployeeController extends Controller
         //     $imageName = Null;
         // }
 
-        $imageName = time().'.'.$request->avatar->extension();
-        
+        $imageName = time() . '.' . $request->avatar->extension();
+
+        // $joiningDate = ($request->joining_date)->format('Y-m-d');
+        $joiningDate = Carbon::parse($request->joining_date)->toDateString();
+
+
         $employee = Employee::find($request->id);
 
-        if($validate){
+        if ($validate) {
             $request->avatar->move(('storage/employees'), $imageName);
-        $employee->update([
-            'uuid' => $employee->uuid,
-            'firstname'=>$request->firstname,
-            'lastname'=>$request->lastname,
-            'email'=>$request->email,
-            'phone'=>$request->phone,
-            'company'=>$request->company,
-            'department_id'=>$request->department,
-            'designation_id'=>$request->designation,
-            'avatar'=>$imageName,
-        ]);
-        return redirect('employees')->with('success',"Employee details has been updated");
+            $employee->update([
+                'uuid' => $employee->uuid,
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'Joining_date' => $joiningDate,
+                // 'Joining_date' => $request->joining_date,
+                'company' => $request->company,
+                'department_id' => $request->department,
+                'designation_id' => $request->designation,
+                'image' => $imageName,
+            ]);
+            return redirect('employees')->with('success', "Employee details has been updated");
         }
     }
 
@@ -152,6 +160,6 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($request->id);
         $employee->delete();
-        return back()->with('success',"Employee has been deleted");
+        return back()->with('success', "Employee has been deleted");
     }
 }
