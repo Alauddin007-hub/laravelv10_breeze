@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Warning;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class WarningController extends Controller
      */
     public function create()
     {
-        return view('backend.warning.warning_form');
+        $employees = Employee::all();
+        return view('backend.warning.warning_form',compact('employees'));
     }
 
     /**
@@ -29,7 +31,25 @@ class WarningController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $this->validate($request,[
+            'employee'=>'required',
+            'warning_type'=>'required',
+            'subject'=>'required',
+            'warning_date'=>'required',
+        ]);
+
+        if($validate){
+            
+            Warning::create([
+                'employee_id'=>$request->employee,
+                'warning_type'=>$request->warning_type,
+                'subject'=>$request->subject,
+                'warning_by'=>$request->warning_by,
+                'warning_date'=>$request->warning_date,
+                'description'=>$request->discription,
+            ]);
+            return redirect('view')->with('success',"Employee has been Terminated");
+        }
     }
 
     /**

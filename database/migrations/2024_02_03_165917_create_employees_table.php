@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('uuid')->nullable();
             $table->string('firstname');
             $table->string('lastname');
-            $table->string('email');
-            $table->string('join_date')->unique();
+            $table->string('email')->unique();
+            $table->date('join_date')->nullable();
             $table->string('education_experiance')->nullable();
             $table->string('phone')->nullable();
             $table->bigInteger('department_id')->nullable();

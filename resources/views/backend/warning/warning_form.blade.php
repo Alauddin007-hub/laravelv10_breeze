@@ -40,17 +40,17 @@
                             </div>
                             @endif
 
-                            <form class="custom-validation" action="" method="post" enctype="multipart/form-data">
+                            <form class="custom-validation" action="{{route('warning.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
 
                                 <!-- // id 	employee_id 	warning_type 	subject 	warning_by 	warning_date 	description 	created_at 	updated_at  -->
                                 <div class="form-group">
                                     <label>Employee <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="employee_id" title="Select Department">
+                                    <select class="custom-select" name="employee" title="Select Department">
                                         <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
-                                        
+                                        @foreach($employees as $item)
+                                        <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -62,21 +62,21 @@
                                     <input type="text" class="form-control" name="subject" required placeholder="Type something" />
                                 </div>
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>Warning By</label>
                                     <div>
                                         <input data-parsley-type="number" type="text" name="warning_by" class="form-control" required placeholder="Enter only numbers" />
                                     </div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label>Designation <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="designation" title="Select Department">
+                                </div> -->
+                                <div class="form-group">
+                                    <label>Terminated By <span class="text-danger">*</span></label>
+                                    <select class="custom-select" name="warning_by" title="Select Department">
                                         <option disabled selected>Selected once</option>
-                                        
-                                        <option value=""></option>
+                                        <option value="1">Super Admin</option>
+                                        <option value="2">Admin</option>
                                         
                                     </select>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <label>Warning Date</label>
                                     <input type="date" class="form-control" name="warning_date" required placeholder="Type something" />

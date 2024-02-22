@@ -68,7 +68,7 @@
                                         <td>{{$employee->uuid}}</td>
                                         <td>{{$employee->email}}</td>
                                         <td>{{$employee->phone}}</td>
-                                        <td>{{date_format(date_create($employee->date_created),"d M,Y")}}</td>
+                                        <td>{{date_format(date_create($employee->joining),"d M,Y")}}</td>
                                         <td>
                                             {{$employee->designation->name}}
                                         </td>

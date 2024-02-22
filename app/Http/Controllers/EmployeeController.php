@@ -60,8 +60,10 @@ class EmployeeController extends Controller
         if($validate){
             $request->avatar->move(('storage/employees'), $imageName);
 
-            $dt        = Carbon::now();
-            $todayDate = $dt->toDayDateTimeString();
+            // $dt        = Carbon::now();
+            // $join = $request->joining_date;
+            // $join = Carbon::parse($request->joining_date);
+            // $todayDate = $join->toDayDateTimeString();
             
             Employee::create([
                 'uuid' =>$uuid,
@@ -69,7 +71,8 @@ class EmployeeController extends Controller
                 'lastname'=>$request->lastname,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
-                'join_date' => $todayDate,
+                // 'Joining_date' => $todayDate,
+                'Joining_date' => $request->joining_date,
                 'company'=>$request->company,
                 'department_id'=>$request->department,
                 'designation_id'=>$request->designation,

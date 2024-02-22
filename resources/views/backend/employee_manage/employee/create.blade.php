@@ -64,6 +64,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Joining Date</label>
+                                    <div>
+                                        <input data-parsley-type="number" type="date" name="Joining_date" class="form-control" required placeholder="Enter only numbers" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Department <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="department" title="Select Department">
                                         <option disabled selected>Selected once</option>
