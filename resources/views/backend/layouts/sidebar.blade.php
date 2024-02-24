@@ -124,7 +124,7 @@
                                     <span>Payroll</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="{{URL('payroll/index')}}">Employee Salary</a></li>
+                                    <li><a href="{{URL('salaries/list')}}">Employee Salary</a></li>
                                     <li><a href="{{URL('payroll.salaryView')}}">Payslip</a></li>
                                     <li><a href="{{URL('advance')}}">Payroll Items</a></li>
                                 </ul>

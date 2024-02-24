@@ -16,13 +16,16 @@ return new class extends Migration
         Schema::create('payrolles', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('employee_id');
-            $table->tinyInteger('salary_sheets_id');
+            $table->tinyInteger('basic');
             $table->string('month_of_salary')->nullable();
             $table->integer('dine_allowance')->nullable();
             $table->integer('conveneynce_allowance')->nullable();
-            $table->integer('madical_allowance')->nullable();
+            $table->integer('medical_allowance')->nullable();
+            $table->integer('allowance')->nullable();
             $table->integer('rent_allowance')->nullable();
             $table->integer('gross_salary')->nullable();
+            $table->integer('tds')->nullable();
+            $table->integer('esi')->nullable();
             $table->integer('pf')->nullable();
             $table->integer('leave')->nullable();
             $table->integer('prof_tax')->nullable();

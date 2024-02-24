@@ -242,16 +242,19 @@ Route::middleware('auth')->group(function () {
         ->name('Overtime.store');
 
     // Payroll
-    Route::get('payroll/index',[PayrolleController::class,'index'])
-        ->name('payroll');
+    // Route::get('payroll/index',[PayrolleController::class,'index'])
+    //     ->name('payroll');
 
-    Route::get('salary/view', [PayrolleController::class, 'salaryView'])
-        ->name('payroll.salaryView');
+    // Route::get('salary/view', [PayrolleController::class, 'salaryView'])
+    //     ->name('payroll.salaryView');
 
-    Route::post('payroll',[PayrolleController::class,'store'])
-        ->name('payroll.store');
+    // Route::post('payroll',[PayrolleController::class,'store'])
+    //     ->name('payroll.store');
 
 
+
+    Route::get('salaries/list',[PayrolleController::class,'list'])
+        ->name('payroll.list');
 
     Route::get('payrolls',[PayrolleController::class,'create'])
         ->name('payroll.create');
@@ -259,8 +262,14 @@ Route::middleware('auth')->group(function () {
     Route::post('salaryrecord',[PayrolleController::class,'salaryrecord'])
         ->name('payroll.salaryrecord');
 
-    Route::post('payslip',[PayrolleController::class,'saveRecord'])
+    Route::post('payslips',[PayrolleController::class,'saveRecord'])
         ->name('payslip');
+
+    Route::post('salary/view/{id}',[PayrolleController::class,'salaryView'])
+        ->name('salaryViews');
+
+    // Route::get('salary',[PayrolleController::class,'empsalary'])
+    //     ->name('empsalary');
 
     // Employee Salary
     Route::get('salary/index',[SalaryController::class,'index'])

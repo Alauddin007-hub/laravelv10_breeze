@@ -11,12 +11,19 @@ use App\Models\Salary_Sheets;
 use Maatwebsite\Excel\Facades\Excel;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\Return_;
 
 class PayrolleController extends Controller
 {
-    public function index()
-    {   
-        return view('backend.payroll.employee_salary');
+    // public function index()
+    // {   
+    //     return view('backend.payroll.employee_salary');
+    // }
+
+    public function list()
+    {
+        $payrolles = Payrolles::all();
+        return view('backend.payroll.show', compact('payrolles'));
     }
 
     public function create()
@@ -28,14 +35,16 @@ class PayrolleController extends Controller
 
     public function salaryrecord(Request $request )
     {
-        // $salary = Salary_Sheets::get();
+        // $employee = Employee::get();
         $salary = Salary_Sheets::get();
         // return $request;
        $salarydetail = DB::table('salary_details')->where('employee_id', $request->employee_id)->first();
     //    dd($salarydetail);
 
        if (isset($salarydetail)) {
-        return view('backend.payroll.create', compact('salary'));
+        // $employee = Employee::all();
+        $emp_id = $request->employee_id;
+        return view('backend.payroll.create', compact('salarydetail', 'emp_id'));
     } else {
         return redirect('add_salary');
     }
@@ -43,53 +52,59 @@ class PayrolleController extends Controller
 
     public function saveRecord(Request $request)
     {
-        
 
-        // $request->validate([
-        //     'name'         => 'required|string|max:255',
-        //     'salary'       => 'required|string|max:255',
-        //     'basic' => 'required|string|max:255',
-        //     'da'    => 'required|string|max:255',
-        //     'hra'    => 'required|string|max:255',
-        //     'conveyance' => 'required|string|max:255',
-        //     'allowance'  => 'required|string|max:255',
-        //     'medical_allowance' => 'required|string|max:255',
-        //     'tds' => 'required|string|max:255',
-        //     'esi' => 'required|string|max:255',
-        //     'pf'  => 'required|string|max:255',
-        //     'leave'    => 'required|string|max:255',
-        //     'prof_tax' => 'required|string|max:255',
-        //     'labour_welfare' => 'required|string|max:255',
-        // ]);
+        // dd($request);
 
-        // DB::beginTransaction();
-        // try {
-        //     $salary = StaffSalary::updateOrCreate(['user_id' => $request->user_id]);
-        //     $salary->name              = $request->name;
-        //     $salary->user_id            = $request->user_id;
-        //     $salary->salary            = $request->salary;
-        //     $salary->basic             = $request->basic;
-        //     $salary->da                = $request->da;
-        //     $salary->hra               = $request->hra;
-        //     $salary->conveyance        = $request->conveyance;
-        //     $salary->allowance         = $request->allowance;
-        //     $salary->medical_allowance = $request->medical_allowance;
-        //     $salary->tds               = $request->tds;
-        //     $salary->esi               = $request->esi;
-        //     $salary->pf                = $request->pf;
-        //     $salary->leave             = $request->leave;
-        //     $salary->prof_tax          = $request->prof_tax;
-        //     $salary->labour_welfare    = $request->labour_welfare;
-        //     $salary->save();
+            $basic = $request->basic;
+            $dine = ($request->basic /100)*($request->da);
+            $house = ($request->basic /100)*($request->hra);
+            $conveyance = $request->conveyance;
+            $allowance = $request->allowance;
+            $medical_allowance = $request->medical_allowance;
 
-        //     DB::commit();
-        //     Toastr::success('Create new Salary successfully :)','Success');
-        //     return redirect()->back();
-        // } catch(\Exception $e) {
-        //     DB::rollback();
-        //     Toastr::error('Add Salary fail :)','Error');
-        //     return redirect()->back();
-        // }
+            $gross_salary = $basic + $dine + $house + $conveyance + $allowance + $medical_allowance;
+
+            // dd($gross_salary);
+
+            $tds = $request->tds;
+            $esi = $request->esi;
+            $pf = $request->pf;
+            $leave = $request->leave;
+            $prof_tax = $request->prof_tax;
+            $labour_welfare = $request->labour_welfare;
+
+            $net_salary = $gross_salary - ($tds + $esi + $pf + $leave + $prof_tax + $labour_welfare);
+
+            $data = [
+                'employee_id' =>$request->employee_id,
+                'basic' => $basic,
+                'month_of_salary' => $request->month_of_salary,
+                'dine_allowance' => $dine,
+                'rent_allowance' => $house,
+                'conveneynce_allowance' => $conveyance,
+                'allowance' => $allowance,
+                'medical_allowance' => $medical_allowance,
+                'gross_salary' => $gross_salary,
+                'tds' => $tds,
+                'esi' => $esi,
+                'pf' => $pf,
+                'leave' => $leave,
+                'prof_tax' => $prof_tax,
+                'labour_welfare' => $labour_welfare,
+                'net_salary' => $net_salary,
+            ];
+
+            // dd($data);
+
+            $query = DB::table('payrolles')->where('employee_id', $request->employee_id)->where('month_of_salary', $request->month_of_salary)->first();
+
+            if(!$query){
+                // dd($data);
+                Payrolles::create($data);
+                return redirect('payroll/index')->with('success', 'Salary Generated');
+            } else {
+                return redirect('payrolls')->with('success', 'Payslip already created');
+            }
     }
 
     public function entry()
@@ -99,7 +114,7 @@ class PayrolleController extends Controller
     }
 
 
-    public function salaryView()
+    public function salaryView($id)
     {
         // $users = DB::table('users')
         //         ->join('staff_salaries', 'users.user_id', 'staff_salaries.user_id')
@@ -112,8 +127,9 @@ class PayrolleController extends Controller
         //     Toastr::warning('Please update information user :)','Warning');
         //     return redirect()->route('profile_user');
         // }
+        $payrolles = Payrolles::find($id);
 
-        return view('backend.payroll.salary_view');
+        return view('backend.payroll.salary_view', compact('payrolles'));
     }
 
     // public function updateRecord(Request $request)
@@ -203,4 +219,12 @@ class PayrolleController extends Controller
             
     //         return Excel::download(new SalaryExcel($user_id),'ReportDetailSalary'.'.xlsx');
     // }
+
+    // public function empsalary()
+    // {
+    //     $employees = Employee::get();
+    //     return view('backend.payroll.emp_pay', compact('employees'));
+    // }
 }
+
+

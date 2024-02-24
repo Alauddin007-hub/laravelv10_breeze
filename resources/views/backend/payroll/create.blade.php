@@ -39,22 +39,45 @@
                                 @endforeach
                             </div>
                             @endif
+                            @php
+                            //echo $emp_id;
+                            //echo $salary;
+                            @endphp
 
                             <form action="{{route('payslip' )}}" method="POST">
                                 @csrf
 
-                                
+
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h4 class="text-primary">Earnings</h4>
+                                        <input class="form-control" type="hidden" name="employee_id" value="{{$salarydetail->employee_id}}" readonly>
+                                        <div class="form-group">
+                                            <label>Basic Salary</label>
+                                            <input type="text" class="form-control" name="basic" value="{{$salarydetail->basic}}" required placeholder="Type something" />
+                                        </div>
                                         <div class="form-group">
                                             <label>Month of Salary</label>
-                                            <input type="text" class="form-control" name="name" required placeholder="Type something" />
+                                            <select class="custom-select" name="month_of_salary" title="Select Department">
+                                                <option disabled selected>Selected once</option>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="Augest">Augest</option>
+                                                <option value="September">September</option>
+                                                <option value="Octomber">Octomber</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label>DA(10%)</label>
-                                            <input class="form-control @error('da') is-invalid @enderror" type="number" name="da" id="da" value="{{ old('da') }}" placeholder="Enter DA(40%)">
+                                            <input class="form-control @error('da') is-invalid @enderror" type="number" name="da" id="da" value="{{ old('da') }}" placeholder="Enter DA(10%)">
                                             @error('da')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -63,8 +86,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label>HRA(30%)</label>
-                                            <input class="form-control @error('hra') is-invalid @enderror" type="number" name="hra" id="hra" value="{{ old('hra') }}" placeholder="Enter HRA(15%)">
+                                            <label>HRA(35%)</label>
+                                            <input class="form-control @error('hra') is-invalid @enderror" type="number" name="hra" id="hra" value="{{ old('hra') }}" placeholder="Enter HRA(35%)">
                                             @error('hra')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
