@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('backend.login');
 });
 Route::get('pdf', function () {
-    return view('backend.payroll.pdf');
+    return view('backend.slip_generate.pdf');
 });
 
 

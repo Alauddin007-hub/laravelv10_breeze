@@ -265,8 +265,15 @@ Route::middleware('auth')->group(function () {
     Route::post('payslips',[PayrolleController::class,'saveRecord'])
         ->name('payslip');
 
-    Route::post('salary/view/{id}',[PayrolleController::class,'salaryView'])
+    Route::get('salary/view/{id}',[PayrolleController::class,'salaryView'])
         ->name('salaryViews');
+
+    Route::get('extra/report/pdf',[PayrolleController::class,'reportPDF'])
+        ->name('report.pdf');
+        
+    Route::get('extra/report/excel',[PayrolleController::class,'reportExcel'])
+        ->name('report.excel');
+   
 
     // Route::get('salary',[PayrolleController::class,'empsalary'])
     //     ->name('empsalary');

@@ -172,8 +172,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Loan</label>
-                                            <input class="form-control @error('labour_welfare') is-invalid @enderror" type="number" name="labour_welfare" id="labour_welfare" value="{{ old('labour_welfare') }}" placeholder="Enter Loan">
-                                            @error('labour_welfare')
+                                            <input class="form-control @error('loan') is-invalid @enderror" type="number" name="loan" id="labour_welfare" value="{{ old('loan') }}" placeholder="Enter Loan">
+                                            @error('loan')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

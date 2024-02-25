@@ -271,18 +271,18 @@
                 <td>
                     <div class="row">
                         <div class="col-sm-6 m-b-20">
-                           dddd
+                        <img src="{{ URL::to('storage/employees/'.$employees->image) }}" class="inv-logo" alt="{{ $employees->firstname }}">
                             <ul class="list-unstyled mb-0">
-                                <li>{{ $users->name }}</li>
-                                <li>{{ $users->address }}</li>
-                                <li>{{ $users->country }}</li>
+                                <li>{{ $employees->firstname }} {{ $employees->lastname }}</li>
+                                <li>{{ $employees->phone }}</li>
+                                <li></li>
                             </ul>
                         </div>
                         <div class="col-sm-6 m-b-20">
                             <div class="invoice-details">
                                 <h3 class="text-uppercase">Payslip #49029</h3>
                                 <ul class="list-unstyled">
-                                    <!-- <li>Salary Month: <span>{{ \Carbon\Carbon::now()->format('M') }}  , {{ \Carbon\Carbon::now()->year }}  </span></li> -->
+                                {{ $payrolles->month_of_salary }} {{ \Carbon\Carbon::now()->year }}
                                 </ul>
                             </div>
                         </div>

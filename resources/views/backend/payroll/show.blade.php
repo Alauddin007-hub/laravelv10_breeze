@@ -52,19 +52,19 @@
 
 
                                 <tbody>
-                                    @foreach($payrolles as $item)
+                                    @foreach($payrolles as $key=>$item)
                                     <tr>
-                                        <td>#001</td>
+                                        <td>{{++$key}}</td>
                                         <td>
                                         <div class="table-avatar">
-                                                <a href="javascript:void(0)" class="avatar"><img alt="avatar" src="" width="50px" height="50px"></a>
-                                                <a href="javascript:void(0)"></a>
+                                                <a href="javascript:void(0)" class="avatar"><img alt="avatar" src="{{asset('storage/employees/'.$item->employee->image)}}" width="50px" height="50px"></a>
+                                                <a href="javascript:void(0)">{{$item->employee->firstname}} {{$item->employee->lastname}}</a>
                                             </div>
                                         </td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
+                                        <td>{{$item->employee->joining_date}}</td>
+                                        <td>{{$item->month_of_salary}}</td>
+                                        <td>{{$item->basic}}</td>
+                                        <td>{{$item->net_salary}}</td>
                                         <td>
                                         <a class="btn btn-sm btn-primary" href="{{route('salaryViews',$item->id)}}" target="_blank">Generate Slip</a>
                                         </td>
