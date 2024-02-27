@@ -32,7 +32,7 @@ class SuperAdminMiddleware
         else 
         {
             Auth::logout();
-            return redirect(url(''));
+            return redirect(url('login'));
         }
     }
 }

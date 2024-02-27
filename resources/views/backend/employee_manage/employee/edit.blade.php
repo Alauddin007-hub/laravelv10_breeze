@@ -15,9 +15,9 @@
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Apaxy</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                <li class="breadcrumb-item active">Form Validation</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Management</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Employee</a></li>
+                                <li class="breadcrumb-item active">Employee Edit Form</li>
                             </ol>
                         </div>
 
@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="header-title">Emplyee Entry</h4>
+                            <h4 class="header-title">Emplyee Edit</h4>
 
                             @if($errors->any())
                             <div class="alert alert-danger">

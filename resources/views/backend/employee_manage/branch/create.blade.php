@@ -30,8 +30,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Bootstrap Validation - Normal</h4>
-                            <p class="card-title-desc">For custom Bootstrap form validation messages, you’ll need to add the <code>novalidate</code> boolean attribute to your <code>&lt;form&gt;</code>.</p>
+                            <h4 class="header-title">Add Branch</h4>
 
                             <form class="needs-validation" novalidate>
                                 <div class="row">

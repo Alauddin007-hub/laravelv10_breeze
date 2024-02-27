@@ -87,6 +87,7 @@
                                     <span>Attendence</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{url('attendences')}}">Attendence List</a></li>
                                     <li><a href="{{url('attendence')}}">Attendence</a></li>
                                 </ul>
                             </li>
@@ -112,8 +113,6 @@
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{URL('payroll/index')}}">Grose Salary</a></li>
                                     <li><a href="{{URL('index')}}">Total Deduction</a></li>
-                                    <li><a href="tables-responsive.html">Responsive Table</a></li>
-                                    <li><a href="tables-editable.html">Editable Table</a></li>
                                 </ul>
                             </li>
 

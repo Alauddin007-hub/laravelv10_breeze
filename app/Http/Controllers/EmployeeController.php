@@ -65,21 +65,24 @@ class EmployeeController extends Controller
             // $todayDate = $join->toDayDateTimeString();
 
 
-            $joiningDate = Carbon::parse($request->joining_date)->format('Y-m-d');
+            // $joiningDate = Carbon::parse($request->joining_date)->format('Y-m-d');
 
-            Employee::create([
+            $data = [
                 'uuid' => $uuid,
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'Joining_date' => $joiningDate,
-                // 'Joining_date' => $request->joining_date,
+                // 'Joining_date' => $joiningDate,
+                'joining_date' => $request->joining_date,
                 'company' => $request->company,
                 'department_id' => $request->department,
                 'designation_id' => $request->designation,
                 'image' => $imageName,
-            ]);
+            ];
+
+            // dd($data);
+            Employee::create($data);
             return redirect('employees')->with('success', "Employee has been added");
         }
     }
@@ -129,7 +132,7 @@ class EmployeeController extends Controller
         $imageName = time() . '.' . $request->avatar->extension();
 
         // $joiningDate = ($request->joining_date)->format('Y-m-d');
-        $joiningDate = Carbon::parse($request->joining_date)->toDateString();
+        // $joiningDate = Carbon::parse($request->joining_date)->toDateString();
 
 
         $employee = Employee::find($request->id);
@@ -142,8 +145,8 @@ class EmployeeController extends Controller
                 'lastname' => $request->lastname,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'Joining_date' => $joiningDate,
-                // 'Joining_date' => $request->joining_date,
+                // 'Joining_date' => $joiningDate,
+                'Joining_date' => $request->joining_date,
                 'company' => $request->company,
                 'department_id' => $request->department,
                 'designation_id' => $request->designation,

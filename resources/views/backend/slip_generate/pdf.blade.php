@@ -1,318 +1,178 @@
 <!DOCTYPE html>
-<html>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<html lang="en">
+
 <head>
-    <title>Eform Rrport Manual</title>
-    <style>
-        @page {
-            footer: page-footer;
-            margin: 0;
-            margin-top: 20px;
-            margin-bottom: 50px;
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="SoengSouy Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="author" content="SoengSouy Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Reports</title>
+    <!-- Favicon -->
 
-        @page :first {
-            margin-top: 0;
-        }
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        body {
-            margin: 0;
-            font-family: Khmeros;
-        }
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}"> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css2/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="assets/css2/font-awesome.min.css">
+    <!-- Lineawesome CSS -->
+    <link rel="stylesheet" href="assets/css2/line-awesome.min.css">
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href="assets/css2/dataTables.bootstrap4.min.css">
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="assets/css2/select2.min.css">
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="assets/css2/bootstrap-datetimepicker.min.css">
+    <!-- Chart CSS -->
+    <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css2/style.css">
 
-        table,
-        tr,
-        td {
-            padding: 5px;
-            border-collapse: collapse;
-        }
+    {{-- message toastr --}}
+    <link rel="stylesheet" href="assets/css2/toastr.min.css">
+    <script src="assets/js2/toastr_jquery.min.js"></script>
+    <script src="assets/js2/toastr.min.js"></script>
 
-        table {
-            width: 100%;
-        }
-
-        td {
-            vertical-align: center;
-        }
-
-        .page-break-before {
-            page-break-before: always;
-        }
-
-        .container {
-            padding: 0 10pt;
-        }
-
-        main .container {
-            margin-top: 2em;
-        }
-
-        main h2 {
-            margin: 0 0 .8em;
-            page-break-after: avoid;
-        }
-
-        main p,
-        main .table-wrapper {
-            margin: 0 0 1em;
-        }
-
-        .clearfix {
-            clear: botd;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .vertical-bar {
-            display: block;
-            width: 100px;
-            border-bottom: 1px solid #45B6FE;
-            margin: 0 auto;
-        }
-
-        .col1 {
-            width: 8.33333%;
-        }
-
-        .col2 {
-            width: 16.66667%;
-        }
-
-        .col3 {
-            width: 25%;
-        }
-
-        .col4 {
-            width: 33.33333%;
-        }
-
-        .col5 {
-            width: 41.66667%;
-        }
-
-        .col6 {
-            width: 50%;
-        }
-
-        .col7 {
-            width: 58.33333%;
-        }
-
-        .col8 {
-            width: 66.66667%;
-        }
-
-        .col9 {
-            width: 75%;
-        }
-
-        .col10 {
-            width: 83.33333%;
-        }
-
-        .col11 {
-            width: 91.66667%;
-        }
-
-        .col12 {
-            width: 100%;
-        }
-
-        .request-payment label {
-            font-size: 14px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .request-payment span {
-            font-size: 12px;
-            color: gray;
-            font-style: italic;
-        }
-
-        .currency {
-            margin-top: 5px;
-            border: 1px solid;
-            display: flex;
-        }
-
-        .currency .cur-label {
-            border-right: 1px solid;
-            padding: 5px;
-            font-size: 12px;
-            background-color: #dad0be;
-        }
-
-        .currency .sub-cur-label {
-            width: 100px;
-            padding: 5px;
-            text-align: center;
-            font-size: 12px;
-        }
-
-
-        .table-border td {
-            border: 1px solid #ddd;
-            padding: 5px;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .margin-top-10 {
-            margin-top: 10px;
-        }
-
-        .main {
-            padding: 10px;
-        }
-
-        .department {
-            width: 250px;
-            border: 1px solid;
-        }
-
-        ul {
-            padding: 10px;
-            margin: 0;
-        }
-
-        ul li {
-            list-style: none;
-        }
-
-        .vertical-middle td{
-            vertical-align: middle;
-            text-align: center;
-        }
-        .table-left td{
-            text-align: left;
-        }
-        .no-border{
-            border-style: hidden !important;
-        }
-        .table-space{
-            background-color: white !important;
-            border-top: hidden !important;
-            border-bottom: hidden !important;
-            width: 1% !important;
-        }
-        .table-header{
-            vertical-align: middle !important;
-            font-weight: bold !important;
-            font-size: 13px !important;
-        }
-        .td-border-top{
-            border-top: 1px solid #45B6FE;
-        }
-        .td-border-left{
-            border-left: 1px solid #45B6FE;
-        }
-        .td-border-right{
-            border-right: 1px solid #45B6FE;
-        }
-        .td-border-bottom{
-            border-bottom: 1px solid #45B6FE;
-        }
-        
-        .payslip-title {
-            margin-bottom: 20px;
-            text-align: center;
-            text-decoration: underline;
-            text-transform: uppercase;
-        }
-        
-        h4, .h4 {
-            font-size: 1.125rem;
-        }
-
-        .row {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            margin-right: -15px;
-            margin-left: -15px;
-        }
-        .m-b-20 {
-            margin-bottom: 20px !important;
-        }
-        .inv-logo {
-            height: auto;
-            margin-bottom: 20px;
-            max-height: 100px;
-            width: auto;
-        }
-        .invoice-details, .invoice-payment-details > li span {
-            float: right;
-            text-align: right;
-        }
-        .list-unstyled {
-            padding-left: 0;
-            list-style: none;
-        }
-        li {
-            display: list-item;
-            text-align: -webkit-match-parent;
-        }
-
-    </style>
-
+    <script src="js2/app.js" defer></script>
 </head>
 
-<body style="font-size: 10px;">
-    <div class="container">
-        <table>
-            <tr style="text-align: center;font-weight: bolder;">
-                <!-- <td><h4 class="payslip-title">Payslip for the month of {{ \Carbon\Carbon::now()->format('M') }}   {{ \Carbon\Carbon::now()->year }}</h4></td> -->
-            </tr>
-            <tr>
-                <td>
-                    <div class="row">
-                        <div class="col-sm-6 m-b-20">
-                        <img src="{{ URL::to('storage/employees/'.$employees->image) }}" class="inv-logo" alt="{{ $employees->firstname }}">
-                            <ul class="list-unstyled mb-0">
-                                <li>{{ $employees->firstname }} {{ $employees->lastname }}</li>
-                                <li>{{ $employees->phone }}</li>
-                                <li></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6 m-b-20">
-                            <div class="invoice-details">
-                                <h3 class="text-uppercase">Payslip #49029</h3>
-                                <ul class="list-unstyled">
-                                {{ $payrolles->month_of_salary }} {{ \Carbon\Carbon::now()->year }}
-                                </ul>
+<body>
+    <div class="main-wrapper">
+        <div class="page-wrapper">
+            <!-- Page Content -->
+            <div class="content container" id="app">
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row" style="margin-left: -240px;">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="payslip-title">Payslip for the month of {{ $payrolles->month_of_salary }} {{ \Carbon\Carbon::now()->year }} </h4>
+                                    <div class="row">
+                                        <div class="col-sm-6 m-b-20">
+                                            <ul class="list-unstyled mb-0">
+                                                <li>Name: {{$employees->firstname}} {{$employees->lastname}}</li>
+                                                <li>Phone: {{$employees->phone}}</li>
+                                                <li>Address: </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-6 m-b-20">
+                                            <div class="invoice-details">
+                                                <h3 class="text-uppercase">Payslip {{ $payrolles->slipID }}</h3>
+                                                <ul class="list-unstyled">
+                                                    <li>Salary Month: <span>{{ $payrolles->month_of_salary }}, {{ \Carbon\Carbon::now()->year }}</span></li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 m-b-20">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <h5 class="mb-0"><strong></strong></h5>
+                                                </li>
+                                                <li><span></span></li>
+                                                <li>Employee ID: {{$employees->uuid}} </li>
+                                                <li>Joining Date: {{$employees->joining_date}}</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <h4 class="m-b-10"><strong>Earnings</strong></h4>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <?php
+                                                        $a =  (int)$payrolles->dine_allowance;
+                                                        $b =  (int)$payrolles->allowance;
+                                                        $c =  (int)$payrolles->medical_allowance;
+                                                        // $e =  (int)$users->allowance;
+                                                        $other_allowance   = $a + $b + $c;
+                                                        ?>
+                                                        <tr>
+                                                            <td><strong>Basic Salary</strong> <span class="float-right">{{$payrolles->basic}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>House Rent Allowance (H.R.A.)</strong> <span class="float-right">{{$payrolles->rent_allowance}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Conveyance</strong> <span class="float-right">{{$payrolles->conveneynce_allowance}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Other Allowance</strong> <span class="float-right">{{$other_allowance}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Total Earnings</strong> <span class="float-right"><strong>{{$payrolles->gross_salary}} tk</strong></span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <h4 class="m-b-10"><strong>Deductions</strong></h4>
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <?php
+                                                        $a =  (int)$payrolles->tds;
+                                                        $b =  (int)$payrolles->pf;
+                                                        $c =  (int)$payrolles->leave;
+                                                        $d =  (int)$payrolles->loan;
+                                                        $e =  (int)$payrolles->esi;
+                                                        $f =  (int)$payrolles->prof_tax;
+
+                                                        $other = $e + $f;
+
+                                                        $Total_Deductions   = $a + $b + $c + $d + $other;
+
+                                                        ?>
+                                                        <tr>
+                                                            <td><strong>Tax Deducted at Source (T.D.S.)</strong> <span class="float-right">{{$payrolles->tds}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Provident Fund</strong> <span class="float-right">{{$payrolles->pf}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Leave</strong> <span class="float-right">{{$payrolles->leave}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Loan</strong> <span class="float-right">{{$payrolles->loan}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Other</strong> <span class="float-right">{{$other}} tk</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Total Deductions</strong> <span class="float-right"><strong>{{$Total_Deductions}} tk</strong></span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <p><strong>Net Salary: {{$payrolles->net_salary}} tk</strong> ( {{$spell}} only.)</p>
+                                            @php
+                                            //echo $spell;
+                                            //echo $salary;
+                                            @endphp
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </td>
-            </tr>
-        </table>
+                </div>
+                <!-- /Page Content -->
+            </div>
+            <!-- /Page Wrapper -->
+        </div>
     </div>
-    <div class="container" style="padding-top: 8px; ">
-        <table class="table-border" style="border: 1px solid #45B6FE;">
-            <tr style="background-color: #45B6FE; font-weight: bold;">
-                <td style="width:12%;text-align: left;">Division</td>
-                <td style="width:14%;text-align: left;">Department</td>
-                <td style="width:12%;text-align: left;">Manual Code</td>
-                <td style="width:34%;text-align: left;">Manual Title</td>
-                <td style="width:13%;text-align: left;">Approved Date</td>
-                <td style="width:10%;text-align: left;">Approved By</td>
-                <td style="width:6%;text-align: left;">Status</td>
-            </tr>
-                <tr>
-                    <td style="text-align: left;">ddd</td>
-                    <td style="text-align: left;">ddd</td>
-                    <td style="text-align: left;">ddd</td>
-                    <td style="text-align: left;">ddd</td>
-                    <td style="text-align: left;">ddd</td>
-                    <td style="text-align: left;">ddd</td>
-                    <td style="text-align: left;">ddd</td>
-                </tr>
-        </table>
-    </div>
-   
+    <!-- /Main Wrapper -->
 </body>
+
 </html>

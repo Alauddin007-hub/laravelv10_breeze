@@ -1,5 +1,6 @@
 <?php
 
+use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend.login');
+Route::get('/', function(){
+    return Inertia::render('Home');
 });
+Route::get('/about', function(){
+    return Inertia::render('AboutPage');
+})->name('about');
+Route::get('/service', function(){
+    return Inertia::render('ServicePage');
+});
+Route::get('/team', function(){
+    return Inertia::render('TeamPage');
+});
+Route::get('/contact', function(){
+    return Inertia::render('ContactPage');
+});
+
+// Route::get('/', function () {
+//     return view('backend.login');
+// });
 Route::get('pdf', function () {
     return view('backend.slip_generate.pdf');
 });

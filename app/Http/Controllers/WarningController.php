@@ -14,7 +14,7 @@ class WarningController extends Controller
     public function index()
     {
         $warnings = Warning::all();
-        return view('backend.warning.index');
+        return view('backend.warning.index', compact('warnings'));
     }
 
     /**
@@ -46,9 +46,9 @@ class WarningController extends Controller
                 'subject'=>$request->subject,
                 'warning_by'=>$request->warning_by,
                 'warning_date'=>$request->warning_date,
-                'description'=>$request->discription,
+                'description'=>$request->description,
             ]);
-            return redirect('view')->with('success',"Employee has been Terminated");
+            return redirect('view_list')->with('success',"Employee will be received warning message");
         }
     }
 

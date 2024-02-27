@@ -52,24 +52,26 @@
                                         <th>Warning By</th>
                                         <th>Warning Date</th>
                                         <th>Description</th>
+                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
 
                                 <!-- // id 	employee_id 	warning_type 	subject 	warning_by 	warning_date 	description 	created_at 	updated_at  -->
                                 <tbody>
-                                    
+                                    @foreach($warnings as $key=>$item)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{++$key}}</td>
+                                        <td>{{$item->employee->firstname}} {{$item->employee->lastname}}</td>
+                                        <td>{{$item->warning_type}}</td>
+                                        <td>{{$item->subject}}</td>
+                                        <td>{{$item->warning_by}}</td>
+                                        <td>{{$item->warning_date}}</td>
+                                        <td>{{$item->description}}</td>
+                                        <td>Edit | Delete</td>
 
                                     </tr>
-                                   
+                                   @endforeach
                                 </tbody>
                             </table>
 

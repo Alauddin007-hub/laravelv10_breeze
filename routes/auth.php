@@ -242,15 +242,8 @@ Route::middleware('auth')->group(function () {
         ->name('Overtime.store');
 
     // Payroll
-    // Route::get('payroll/index',[PayrolleController::class,'index'])
-    //     ->name('payroll');
-
     // Route::get('salary/view', [PayrolleController::class, 'salaryView'])
     //     ->name('payroll.salaryView');
-
-    // Route::post('payroll',[PayrolleController::class,'store'])
-    //     ->name('payroll.store');
-
 
 
     Route::get('salaries/list',[PayrolleController::class,'list'])
@@ -273,10 +266,6 @@ Route::middleware('auth')->group(function () {
         
     Route::get('extra/report/excel',[PayrolleController::class,'reportExcel'])
         ->name('report.excel');
-   
-
-    // Route::get('salary',[PayrolleController::class,'empsalary'])
-    //     ->name('empsalary');
 
     // Employee Salary
     Route::get('salary/index',[SalaryController::class,'index'])
@@ -310,15 +299,3 @@ Route::middleware('auth')->group(function () {
     Route::post('deduct/update',[DeductionController::class,'update'])
         ->name('deducte.update');
 });
-
-
-// Route::controller(PayrollController::class)->group(function () {
-//     Route::get('form/salary/page', 'salary')->middleware('auth')->name('form/salary/page');
-//     Route::post('form/salary/save','saveRecord')->middleware('auth')->name('form/salary/save');
-//     Route::post('form/salary/update', 'updateRecord')->middleware('auth')->name('form/salary/update');
-//     Route::post('form/salary/delete', 'deleteRecord')->middleware('auth')->name('form/salary/delete');
-//     Route::get('form/salary/view/{user_id}', 'salaryView')->middleware('auth');
-//     Route::get('form/payroll/items', 'payrollItems')->middleware('auth')->name('form/payroll/items');    
-//     Route::get('extra/report/pdf', 'reportPDF')->middleware('auth');    
-//     Route::get('extra/report/excel', 'reportExcel')->middleware('auth');    
-// });

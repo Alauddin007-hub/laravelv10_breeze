@@ -10,7 +10,7 @@ class Warning extends Model
     use HasFactory;
 
     protected $fillable = [
-        'employee_id','warning_type','subject','role_type_id','warning_date','discription',
+        'employee_id','warning_type','subject','role_type_id','warning_by','warning_date','description',
     ];
 
     public function employee(){

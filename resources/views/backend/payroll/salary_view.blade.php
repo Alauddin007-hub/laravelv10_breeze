@@ -158,8 +158,8 @@
                     </div>
                 </div>
             </div>
-            <!-- /Page Content
-</div>
-<!-- /Page Wrapper -->
+            <!-- /Page Content -->
         </div>
-        @endsection
+        <!-- /Page Wrapper -->
+    </div>
+    @endsection

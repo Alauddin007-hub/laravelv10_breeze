@@ -17,10 +17,6 @@ use Rmunate\Utilities\SpellNumber;
 
 class PayrolleController extends Controller
 {
-    // public function index()
-    // {   
-    //     return view('backend.payroll.employee_salary');
-    // }
 
     public function list()
     {
@@ -121,14 +117,7 @@ class PayrolleController extends Controller
 
 
     public function salaryView($id)
-    {
-        // if (!empty($users)) {
-        //     return view('payroll.salaryview',compact('users'));
-        // } else {
-        //     Toastr::warning('Please update information user :)','Warning');
-        //     return redirect()->route('profile_user');
-        // }
-        
+    {        
         $payrolles = Payrolles::find($id);
         $employees = DB::table('employees')->where('id', $payrolles->employee_id)->first();
 
@@ -223,31 +212,29 @@ class PayrolleController extends Controller
 
             $spell = ucfirst($spell);
 
-        
-        // $user_id = $request->user_id;
-        // $users = DB::table('users')
-        //     ->join('staff_salaries', 'users.user_id', 'staff_salaries.user_id')
-        //     ->join('profile_information', 'users.user_id', 'profile_information.user_id')
-        //     ->select('users.*', 'staff_salaries.*','profile_information.*')
-        //     ->where('staff_salaries.user_id',$user_id)->first();
-
             $pdf = PDF::loadView('backend.slip_generate.pdf',compact('payrolles','employees','spell'))->setPaper('a4', 'landscape');
             return $pdf->download('ReportDetailSalary'.'.pdf');
     }
 
     // /** export Excel */
-    public function reportExcel(Request $request)
-    {
-        $result = $request->id;
-        echo $result;
-        // $users = DB::table('users')
-        //     ->join('staff_salaries', 'users.user_id', 'staff_salaries.user_id')
-        //     ->join('profile_information', 'users.user_id', 'profile_information.user_id')
-        //     ->select('users.*', 'staff_salaries.*','profile_information.*')
-        //     ->where('staff_salaries.user_id',$user_id)->get();
+    // public function reportExcel(Request $request)
+    // {
+    //     $result = $request->id;
+    //     // dd($result);
 
-        //     return Excel::download(new SalaryExcel($user_id),'ReportDetailSalary'.'.xlsx');
-    }
+    //     $payrolles = DB::table('payrolles')->where('id', $request->id)->first();
+    //     $employees = DB::table('employees')->where('id', $payrolles->employee_id)->first(); 
+
+    //     $spell = SpellNumber::value($payrolles->net_salary)
+    //         ->locale('en') 
+    //         ->currency('Taka')
+    //         ->fraction('Paisa')
+    //         ->toMoney();
+
+    //         $spell = ucfirst($spell);
+
+    //         return Excel::download(new SalaryExcel($payrolles,$employees),'ReportDetailSalary'.'.xlsx');
+    // }
 
     // public function empsalary()
     // {

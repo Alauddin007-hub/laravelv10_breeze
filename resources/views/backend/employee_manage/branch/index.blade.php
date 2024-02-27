@@ -11,13 +11,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Branch</h4>
+                        <h4 class="mb-0 font-size-18">Dashboard</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Branch List</a></li>
-                                <li class="breadcrumb-item active">Branches</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Management</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Branch</a></li>
+                                <li class="breadcrumb-item active">Branche List</li>
                             </ol>
                         </div>
 
@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="header-title">Default Datatable</h4>
+                            <h4 class="header-title">Branch List</h4>
                             <div><a href="{{URL('employee/entry')}}" class="btn btn-success fa fa-plus"> Add Branch</a></div>
                             <p class="card-title-desc">DataTables has most features enabled by
                                 default, so all you need to do to use it with your own tables is to call
