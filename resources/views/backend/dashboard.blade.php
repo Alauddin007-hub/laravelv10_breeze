@@ -86,7 +86,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <h4 class="m-0 align-self-center">$12.74</h4>
+                            <h4 class="m-0 align-self-center">2</h4>
                             <p class="mb-0 mt-3 text-muted"><span class="text-danger">4.35 % <i class="mdi mdi-trending-down mr-1"></i></span> From previous period</p>
                         </div>
                     </div>
