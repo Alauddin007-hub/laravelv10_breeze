@@ -40,6 +40,22 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'auperAdmin' => [
+            'driver' => 'session',
+            'provider' => 'superAdmins',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ],
     ],
 
     /*
@@ -61,6 +77,22 @@ return [
 
     'providers' => [
         'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'superAdmins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'companies' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],

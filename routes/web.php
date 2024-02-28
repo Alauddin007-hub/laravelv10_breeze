@@ -82,5 +82,25 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::group(['middleware' => 'superAdmin'],function(){
+     Route::get('superAdmin/dashboard', function(){
+        return view('backend.super_admin_dashboard');
+     });
+});
+Route::group(['middleware' => 'admin'],function(){
+     Route::get('admin/dashboard', function(){
+        return view('backend.admin_dashboard');
+     });
+});
+Route::group(['middleware' => 'employee'],function(){
+     Route::get('employee/dashboard', function(){
+        return view('backend.employee_dashboard');
+     });
+});
+Route::group(['middleware' => 'company'],function(){
+     Route::get('company/dashboard', function(){
+        return view('backend.company_dashboard');
+     });
+});
 
 require __DIR__.'/auth.php';
