@@ -46,7 +46,7 @@ class EmployeeAttendenceController extends Controller
         $query = DB::table('employee_attendences')->where('employee_id', $request->employee_id)->whereDay('created_at', $date)->first();
         // dd($query);
         // return $query->checkin;
-        $employees = Employee::get();
+        $employees = Employee::where('id', $request->employee_id)->get();
         // $empAttendence = EmployeeAttendence::where('employee_id', $request->id)->where($currentDate, 'created_at');
         if (isset($query)) {
             return view('backend.employee_attendence.attendence_checkout', compact('employees'));

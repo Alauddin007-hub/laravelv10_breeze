@@ -17,10 +17,6 @@ return new class extends Migration
             $table->integer('basic')->nullable();
             $table->integer('daily_rate')->nullable();
             $table->integer('hourly_rate')->nullable();
-            // $table->integer('conveneynce_allowance')->nullable();
-            // $table->integer('madical_allowance')->nullable();
-            // $table->integer('rent_allowance')->nullable();
-            // $table->integer('gross_salary')->nullable();
             $table->integer('created_by')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamp('created_at')->useCurrent();

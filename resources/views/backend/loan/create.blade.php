@@ -16,8 +16,8 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Management</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Other</a></li>
-                                <li class="breadcrumb-item active">Employee Overtime</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Employee</a></li>
+                                <li class="breadcrumb-item active">Employee Add</li>
                             </ol>
                         </div>
 
@@ -40,12 +40,39 @@
                             </div>
                             @endif
 
-                            <form class="custom-validation" action="" method="post" enctype="multipart/form-data">
+                            <form class="custom-validation" action="{{route('advance.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                
+                                <!-- 'employee_id','month_of_advance','apply_amount','approved_amount', 'status' -->
                                 <div class="form-group">
-                                    <label>Employee <span class="text-danger">*</span></label>
-                                    <select class="custom-select" name="employee_id" title="Select Department">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" name="firstname" required placeholder="Type something" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" name="lastname" required placeholder="Type something" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label>E-Mail</label>
+                                    <div>
+                                        <input type="email" class="form-control" name="email" required parsley-type="email" placeholder="Enter a valid e-mail" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <div>
+                                        <input data-parsley-type="number" type="text" name="phone" class="form-control" required placeholder="Enter only numbers" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Joining Date</label>
+                                    <div>
+                                        <input data-parsley-type="number" type="date" name="joining_date" class="form-control" required placeholder="Enter only numbers" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Department <span class="text-danger">*</span></label>
+                                    <select class="custom-select" name="department" title="Select Department">
                                         <option disabled selected>Selected once</option>
                                         
                                         <option value=""></option>
@@ -53,21 +80,6 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Warning Type</label>
-                                    <input type="text" class="form-control" name="warning_type" required placeholder="Type something" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Subject</label>
-                                    <input type="text" class="form-control" name="subject" required placeholder="Type something" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Warning By</label>
-                                    <div>
-                                        <input data-parsley-type="number" type="text" name="warning_by" class="form-control" required placeholder="Enter only numbers" />
-                                    </div>
-                                </div>
-                                <!-- <div class="form-group">
                                     <label>Designation <span class="text-danger">*</span></label>
                                     <select class="custom-select" name="designation" title="Select Department">
                                         <option disabled selected>Selected once</option>
@@ -75,16 +87,15 @@
                                         <option value=""></option>
                                         
                                     </select>
-                                </div> -->
-                                <div class="form-group">
-                                    <label>Warning Date</label>
-                                    <input type="date" class="form-control" name="warning_date" required placeholder="Type something" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>Company</label>
+                                    <input type="text" class="form-control" name="company" required placeholder="Type something" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo Uploade</label>
                                     <div>
-                                        <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
-                                        
+                                        <input type="file" class="form-control" name="avatar" multiple="multiple">
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">

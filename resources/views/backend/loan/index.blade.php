@@ -31,8 +31,10 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="header-title">Branch List</h4>
-                            <div><a href="{{URL('branch/entry')}}" class="btn btn-success fa fa-plus"> Add Branch</a></div>
+                            <h4 class="header-title">Buttons example</h4>
+                            <div>
+                                <a href="{{URL('employee/entry')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
+                            </div><br>
 
                             @if(session('success'))
                             <div class="alert alert-success">
@@ -40,57 +42,19 @@
                             </div>
                             @endif
 
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <th>Branch Name</th>
-                                        <th>Locaton</th>
-                                        <th>Action</th>
-                                        
-                                    </tr>
-                                </thead>
-
-
-                                <tbody>
-
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
-
-            <!-- <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <h4 class="header-title">Buttons example</h4>
-                            <div>
-                                <a href="{{URL('employee/entry')}}" class="btn btn-success fa fa-plus"> Add Employee</a>
-                            </div><br>
-
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
+                                        <th>Employee</th>
+                                        <th>Month of Advance</th>
+                                        <th>Apply Amount</th>
+                                        <th>Approved Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
-
-
                                 <tbody>
+
                                     <tr>
                                         <td>Tiger Nixon</td>
                                         <td>System Architect</td>
@@ -99,12 +63,13 @@
                                         <td>2011/04/25</td>
                                         <td>$320,800</td>
                                     </tr>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div> 
-            </div>  -->
+            </div> 
             <!-- end row -->
 
         </div> <!-- container-fluid -->

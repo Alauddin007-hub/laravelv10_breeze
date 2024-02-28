@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeductionController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
@@ -230,6 +231,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('advance',[AdvanceController::class,'store'])
         ->name('advance.store');
+
+    Route::post('advance/update/{id}',[AdvanceController::class,'update'])
+        ->name('advance.update');
     
     // Overtimes
     Route::get('overtime/index',[OvertimeController::class,'index'])
@@ -298,4 +302,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('deduct/update',[DeductionController::class,'update'])
         ->name('deducte.update');
+    
+    Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    // Route::post('logout',[LogoutController::class,'index'])->name('logout');
 });

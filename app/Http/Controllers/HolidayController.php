@@ -26,20 +26,29 @@ class HolidayController extends Controller
         return view('backend.employee_manage.holiday.create');
     }
 
+    public function completed(Request $request,Holiday $holiday){
+        //    $holiday = Holiday::find($request->id);
+           $holiday->update([
+               'completed'=>1,
+           ]);
+           return back()->with('success',"Holiday marked as complete");
+        }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        Holiday::create($request->all());
+        return redirect('holidays')->with('success',"Holiday Has Been Successfully added.");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Holiday $holiday)
+    public function show(Request $request)
     {
-        //
+       //
     }
 
     /**
@@ -47,7 +56,7 @@ class HolidayController extends Controller
      */
     public function edit(Holiday $holiday)
     {
-        //
+        //return view('backend.employee_manage.holiday.edit');
     }
 
     /**
@@ -55,14 +64,21 @@ class HolidayController extends Controller
      */
     public function update(Request $request, Holiday $holiday)
     {
-        //
+        $holiday = Holiday::find($request->id);
+        $holiday->update([
+            'name'=>$request->name,
+            'holiday_date'=>$request->holiday_date,
+        ]);
+        return back()->with('success',"Holiday has been updated successfully!!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Holiday $holiday)
+    public function destroy(Request $request)
     {
-        //
+        $holiday = Holiday::find($request->id);
+        $holiday->delete();
+        return back()->with('success',"Holiday has been deleted successfully!!");
     }
 }

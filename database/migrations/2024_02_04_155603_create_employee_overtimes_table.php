@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->tinyInteger('employee_id');
             $table->tinyInteger('attendance_id');
-            $table->tinyInteger('salary_sheet_id');
-            $table->integer('per_hour_salary');
+            $table->tinyInteger('salary_detail_id');
             $table->integer('total_amount');
+            $table->boolean('status')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent(); 
         });
