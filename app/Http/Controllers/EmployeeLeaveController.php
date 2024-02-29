@@ -50,4 +50,12 @@ class EmployeeLeaveController extends Controller
             return redirect('leave/applicant')->with('success',"Leave Application has Done");
         }
     }
+
+    public function approve($id)
+    {
+        $status = Leave::find($id);
+        $status->status = 1;
+        $status->update();
+        return redirect()->back();
+    }
 }

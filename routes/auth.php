@@ -149,14 +149,16 @@ Route::middleware('auth')->group(function () {
     Route::post('leave/apply/',[EmployeeLeaveController::class,'apply'])
         ->name('leave.leave_apply');
 
+    Route::post('approve/{id}',[EmployeeLeaveController::class,'approve'])->name('approve');
+
     //Holidays
-    Route::get('holidays',[HolidayController::class,'index'])
+    Route::get('holiday/index',[HolidayController::class,'index'])
         ->name('holidays');
 
     Route::get('holidays/entry', [HolidayController::class, 'create'])
         ->name('holidays.create');
 
-    Route::post('holidays',[HolidayController::class,'store'])
+    Route::post('holiday',[HolidayController::class,'store'])
         ->name('holidays.store');
 
     Route::post('holidays/{holiday}',[HolidayController::class,'completed'])

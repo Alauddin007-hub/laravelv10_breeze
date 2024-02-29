@@ -40,7 +40,7 @@ class HolidayController extends Controller
     public function store(Request $request)
     {
         Holiday::create($request->all());
-        return redirect('holidays')->with('success',"Holiday Has Been Successfully added.");
+        return redirect('holiday/index')->with('success',"Holiday Has Been Successfully added.");
     }
 
     /**

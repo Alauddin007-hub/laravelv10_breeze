@@ -58,7 +58,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="pages-starter.html">Manage Holiday</a></li>
-                                    <li><a href="{{URL('holidays')}}">Public Holiday</a></li>
+                                    <li><a href="{{URL('holiday/index')}}">Public Holiday</a></li>
                                     <li><a href="">Weekly Type</a></li>
                                     <li><a href="{{URL('leavetype')}}">Leave Type</a></li>
                                     <li><a href="pages-gallery.html">Earn leave configure</a></li>

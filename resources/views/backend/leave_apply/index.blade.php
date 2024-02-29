@@ -55,7 +55,7 @@
                                         <th>Action</th>
 
                                     </tr>
-                                   
+
                                 </thead>
 
 
@@ -68,10 +68,19 @@
                                         <td>{{$leave->from}}</td>
                                         <td>{{$leave->to}}</td>
                                         <td>{{$leave->reason}}</td>
-                                        <td>{{$leave->status}}</td>
-                                        <td></td>
+                                        <td>
+                                            @if (!$leave->status==0)
+                                            <button class="btn btn-success">Approved</button>
+                                            @else
+                                            <form action="{{route('approve',$leave->id)}}" method="post">
+                                                @csrf
+                                                <button class="btn btn-warning" type="submit">Pending</button>
+                                            </form>
+                                            @endif
+                                        </td>
+                                        <td>Edit | Delete</td>
                                     </tr>
-                                   @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
 
