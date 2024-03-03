@@ -26,13 +26,7 @@ const ServicePage = () => {
                                         Grow Your Business
                                     </h2>
                                     <p className="animate__animated animate__fadeInUp">
-                                        Ut velit est quam dolor ad a aliquid qui
-                                        aliquid. Sequi ea ut et est quaerat
-                                        sequi nihil ut aliquam. Occaecati alias
-                                        dolorem mollitia ut. Similique ea
-                                        voluptatem. Esse doloremque accusamus
-                                        repellendus deleniti vel. Minus et
-                                        tempore modi architecto.
+                                    To want is how pain to a something who something. I followed them as it is and seeks to follow nothing. Darkened other pain relief as. Like that pleasure. We accuse him of being and suffering to be repelled by the tender or Less and less time for the architect.
                                     </p>
                                 </div>
                             </div>

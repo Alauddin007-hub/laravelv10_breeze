@@ -1,12 +1,13 @@
 @extends('backend.layouts.app')
 
-@section('title','Dashboard')
+@section('title','Super Admin Dashboard')
 
 @section('content')
 
 <div class="main-content">
 
     <div class="page-content">
+        @csrf
         <div class="container-fluid">
 
             <!-- start page title -->

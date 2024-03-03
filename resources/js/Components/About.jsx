@@ -8,30 +8,30 @@ const About = () => {
           <div className="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start" />
           <div className="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
             <div className="content d-flex flex-column justify-content-center">
-              <h3>Voluptatem dignissimos provident quasi</h3>
+              <h3>They provide the most valuable pleasure as it were</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
               </p>
               <div className="row">
                 <div className="col-md-6 icon-box">
                   <i className="bx bx-receipt" />
-                  <h4>Corporis voluptates sit</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                  <h4>Let it be the pleasures of the body</h4>
+                  <p>They are the result, or as it were, of something that is equal to these labors, except that some</p>
                 </div>
                 <div className="col-md-6 icon-box">
                   <i className="bx bx-cube-alt" />
-                  <h4>Ullamco laboris nisi</h4>
+                  <h4>Ullamco laboris is not</h4>
                   <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
                 </div>
                 <div className="col-md-6 icon-box">
                   <i className="bx bx-images" />
-                  <h4>Labore consequatur</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                  <h4>Hard work will result</h4>
+                  <p>Either he takes it with no one, or everyone. All the pains that the elders do</p>
                 </div>
                 <div className="col-md-6 icon-box">
                   <i className="bx bx-shield" />
-                  <h4>Beatae veritatis</h4>
-                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                  <h4>of the blessed truth</h4>
+                  <p>The expedients of the truth are of no consequence at the time of the praises of the covenants of life</p>
                 </div>
               </div>
             </div>{/* End .content*/}

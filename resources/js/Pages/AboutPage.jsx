@@ -17,7 +17,7 @@ const AboutPage = () => {
         <div className="carousel-item active" style={{backgroundImage: 'url(frontend/assets/img/slide/slide-3.jpg)'}}>
         <div className="carousel-container">
             <div className="carousel-content">
-              <h2 className="animate__animated animate__fadeInDown">Fuck Your Business</h2>
+              <h2 className="animate__animated animate__fadeInDown">Grow Your Business</h2>
               <p className="animate__animated animate__fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit commodi nostrum voluptatibus est esse veniam nihil, necessitatibus eius at quae possimus blanditiis molestias sit magni facilis quidem.!</p>
             </div>
         </div>

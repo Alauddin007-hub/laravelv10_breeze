@@ -6,13 +6,13 @@ const Services = () => {
       <div className="container">
         <div className="section-title">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>It takes great pains to benefit. His needs result from something that actually drives him away. Let them be what they want. Anyone whom anyone desires. And no one who hinders receives the others. Because he should flee in this office of convenience, which is here.</p>
         </div>
         <div className="row">
           <div className="col-lg-4 col-md-6 icon-box">
             <div className="icon"><i className="bi bi-briefcase" /></div>
             <h4 className="title"><a href>Lorem Ipsum</a></h4>
-            <p className="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <p className="description">The pleasures of the spoiled and corrupted do not foresee the pains and troubles they are about to experience, blinded by lust</p>
           </div>
           <div className="col-lg-4 col-md-6 icon-box">
             <div className="icon"><i className="bi bi-card-checklist" /></div>

@@ -46,24 +46,24 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        // if(Auth::user()->role_types_id == 1){
-        //     return redirect('backend.super_admin_dashboard');
-        // }
-        // else if(Auth::user()->role_types_id == 2){
-        //     return redirect('backend.admin_dashboard');
-        // }
-        // else if(Auth::user()->role_types_id == 3){
-        //     return redirect('backend.employee_dashboard');
-        // }
-        // else if(Auth::user()->role_types_id == 4){
-        //     return redirect('backend.company_dashboard');
-        // }
-        // else
-        // {
-        //     return redirect()->back()->with('success', 'Please enter correct email and password');
-        // }
+        if(Auth::user()->role_types_id == 1){
+            return redirect('superAdmin/dashboard');
+        }
+        else if(Auth::user()->role_types_id == 2){
+            return redirect('admin/dashboard');
+        }
+        else if(Auth::user()->role_types_id == 3){
+            return redirect('employee/dashboard');
+        }
+        else if(Auth::user()->role_types_id == 4){
+            return redirect('company/dashboard');
+        }
+        else
+        {
+            return redirect()->back()->with('success', 'Please enter correct email and password');
+        }
         
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // return redirect()->intended(RouteServiceProvider::HOME);
 
     }
 
@@ -78,6 +78,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('login');
     }
 }

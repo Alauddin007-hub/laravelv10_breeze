@@ -1,10 +1,11 @@
 @extends('backend.layouts.app')
 
-@section('title','Dashboard')
+@section('title','Admin Dashboard')
 
 @section('content')
 
 <div class="main-content">
+    @csrf
 
     <div class="page-content">
         <div class="container-fluid">
