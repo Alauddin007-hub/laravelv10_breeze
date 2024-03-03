@@ -19,21 +19,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        // if(!empty(Auth::check()))
-        // {
-        //     if(Auth::user()->role_types_id == 1){
-        //         return redirect('backend.super_admin_dashboard');
-        //     }
-        //     else if(Auth::user()->role_types_id == 2){
-        //         return redirect('backend.admin_dashboard');
-        //     }
-        //     else if(Auth::user()->role_types_id == 3){
-        //         return redirect('backend.employee_dashboard');
-        //     }
-        //     else if(Auth::user()->role_types_id == 4){
-        //         return redirect('backend.company_dashboard');
-        //     }
-        // }
         return view('backend.login');
     }
 

@@ -10,13 +10,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $title = 'Dashboard';
+        $title = 'Admin Dashboard';
         // $clients_count = Client::count();
         $currentDate = getdate();
         $date = $currentDate['mday'];
         $todayAttend = EmployeeAttendence::whereDay('created_at', $date)->count();
         // $todayAttend = $todayAttend->count();
         $employee_count = Employee::count();
-        return view('backend.dashboard',compact('title','employee_count','todayAttend'));
+        return view('backend.admin_dashboard',compact('title','employee_count','todayAttend'));
     }
 }
