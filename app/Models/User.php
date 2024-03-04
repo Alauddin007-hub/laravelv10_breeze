@@ -17,6 +17,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    // protected $guard = [
+    //     'superAdmin','admin','employee','company'
+
+    // ];
     protected $fillable = [
         'name',
         'email',
