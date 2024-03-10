@@ -103,7 +103,7 @@ class PayrolleController extends Controller
         if (!$query) {
             // dd($data);
             Payrolles::create($data);
-            return redirect('payroll/index')->with('success', 'Salary Generated');
+            return redirect('salaries/list')->with('success', 'Salary Generated');
         } else {
             return redirect('payrolls')->with('success', 'Payslip already created');
         }
