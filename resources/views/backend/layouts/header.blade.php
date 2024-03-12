@@ -3,7 +3,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="/" class="logo logo-light" style="font-size: 1.9rem; color: whitesmoke">
+                            <a href="#" class="logo logo-light" style="font-size: 1.9rem; color: whitesmoke">
                                 <span class="logo-sm">
                                     <!-- <img src="assets/images/logo-sm-light.png" alt="" height="22"> -->
                                 </span>

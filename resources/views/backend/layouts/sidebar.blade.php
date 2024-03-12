@@ -4,30 +4,7 @@
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
-            <!-- @if(Auth::user()->role_types_id == 1)
-            <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
-
-                <li>
-                    <a href="/dashboard" class="waves-effect">
-                        <i class="mdi mdi-view-dashboard"></i><span class="badge badge-pill badge-success float-right">3</span>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-            </ul>
-            @elseif(Auth::user()->role_types_id == 3)
-            <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title">Menu</li>
-
-                <li>
-                    <a href="/dashboard" class="waves-effect">
-                        <i class="mdi mdi-view-dashboard"></i><span class="badge badge-pill badge-success float-right">3</span>
-                        <span>Employee Dashboard</span>
-                    </a>
-                </li>
-            </ul>
-            @endif -->
-            <!-- Left Menu Start -->
+           
             @if(Auth::user()->role_types_id == 1)
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
@@ -83,7 +60,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="pages-starter.html">Manage Holiday</a></li>
                         <li><a href="{{URL('holiday/index')}}">Public Holiday</a></li>
-                        <li><a href="">Weekly Type</a></li>
+                        <li><a href="#">Weekly Type</a></li>
                         <li><a href="{{URL('leavetype')}}">Leave Type</a></li>
                         <li><a href="pages-gallery.html">Earn leave configure</a></li>
 
@@ -189,7 +166,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="pages-starter.html">Manage Holiday</a></li>
                         <li><a href="{{URL('holiday/index')}}">Public Holiday</a></li>
-                        <li><a href="">Weekly Type</a></li>
+                        <li><a href="#">Weekly Type</a></li>
                         <li><a href="{{URL('leavetype')}}">Leave Type</a></li>
                         <li><a href="pages-gallery.html">Earn leave configure</a></li>
 
@@ -349,7 +326,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="pages-starter.html">Manage Holiday</a></li>
                         <li><a href="{{URL('holiday/index')}}">Public Holiday</a></li>
-                        <li><a href="">Weekly Type</a></li>
+                        <li><a href="#">Weekly Type</a></li>
                         <li><a href="{{URL('leavetype')}}">Leave Type</a></li>
                         <li><a href="pages-gallery.html">Earn leave configure</a></li>
 

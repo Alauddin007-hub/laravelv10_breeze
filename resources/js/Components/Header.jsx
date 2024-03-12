@@ -15,7 +15,7 @@ const Header = () => {
           <li><Link className="nav-link scrollto" href="team">Team</Link></li>
           
           <li><Link className="nav-link scrollto" href="contact">Contact</Link></li>
-          <li><Link className="getstarted scrollto" href="#">Sign in</Link></li>
+          <li><Link className="getstarted scrollto" href="login">Sign in</Link></li>
         </ul>
         <i className="bi bi-list mobile-nav-toggle" />
       </nav>{/* .navbar */}
