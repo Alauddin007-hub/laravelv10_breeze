@@ -31,19 +31,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
+Route::get('/', function () {
     return Inertia::render('Home');
 });
-Route::get('/about', function(){
+Route::get('/about', function () {
     return Inertia::render('AboutPage');
 })->name('about');
-Route::get('/service', function(){
+Route::get('/service', function () {
     return Inertia::render('ServicePage');
 });
-Route::get('/team', function(){
+Route::get('/team', function () {
     return Inertia::render('TeamPage');
 });
-Route::get('/contact', function(){
+Route::get('/contact', function () {
     return Inertia::render('ContactPage');
 });
 
@@ -54,512 +54,512 @@ Route::get('pdf', function () {
     return view('backend.slip_generate.pdf');
 });
 
-Route::get('dash', [DashboardController::class, 'index']);
 
 
+// Multi user
+Route::group(['middleware' => 'superAdmin'], function () {
 
-            // Multi user
-Route::group(['middleware' => 'superAdmin'], function(){
+    // Route::get('dashboard/super_admin', function () {
+    //     return view('backend.super_admin_dashboard');
+    // });
+    //Employee
+    Route::get('employees', [EmployeeController::class, 'index'])
+        ->name('employee.index');
 
-    Route::get('dashboard/super_admin', function () {
-        return view('backend.super_admin_dashboard');
-    });
-     //Employee
-     Route::get('employees', [EmployeeController::class, 'index'])
-     ->name('employee.index');
+    Route::get('employee/entry', [EmployeeController::class, 'create'])
+        ->name('employee.create');
 
- Route::get('employee/entry', [EmployeeController::class, 'create'])
-     ->name('employee.create');
+    Route::post('employee/entry', [EmployeeController::class, 'store'])
+        ->name('employee.store');
 
- Route::post('employee/entry', [EmployeeController::class, 'store'])
-     ->name('employee.store');
+    Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])
+        ->name('employee.edit');
 
- Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])
-     ->name('employee.edit');
+    Route::post('employee/update/{id}', [EmployeeController::class, 'update'])
+        ->name('employee.update');
 
- Route::post('employee/update/{id}',[EmployeeController::class,'update'])
-     ->name('employee.update');
+    Route::get('employee/delete/{id}', [EmployeeController::class, 'destroy'])
+        ->name('employee.destroy');
 
- Route::get('employee/delete/{id}',[EmployeeController::class,'destroy'])
-     ->name('employee.destroy');
+    //Department
+    Route::get('department', [DepartmentController::class, 'index'])
+        ->name('department.index');
 
- //Department
- Route::get('department', [DepartmentController::class, 'index'])
-     ->name('department.index');
+    Route::get('department/entry', [DepartmentController::class, 'create'])
+        ->name('department.create');
 
- Route::get('department/entry', [DepartmentController::class, 'create'])
-     ->name('department.create');
+    Route::post('department/store', [DepartmentController::class, 'store'])
+        ->name('departments');
 
- Route::post('department/store', [DepartmentController::class, 'store'])
-     ->name('departments');
 
+    //Designation
+    Route::get('designation', [DesignationController::class, 'index'])
+        ->name('designation.index');
 
- //Designation
- Route::get('designation', [DesignationController::class, 'index'])
-     ->name('designation.index');
+    Route::get('designation/entry', [DesignationController::class, 'create'])
+        ->name('designation.create');
 
- Route::get('designation/entry', [DesignationController::class, 'create'])
-     ->name('designation.create');
+    Route::post('designation/entry', [DesignationController::class, 'store'])
+        ->name('designations');
 
- Route::post('designation/entry', [DesignationController::class, 'store'])
-     ->name('designations');
+    //Branch
+    Route::get('branch', [BranchController::class, 'index'])
+        ->name('branch.index');
 
- //Branch
- Route::get('branch', [BranchController::class, 'index'])
-     ->name('branch.index');
+    Route::get('branch/entry', [BranchController::class, 'create'])
+        ->name('branch.create');
 
- Route::get('branch/entry', [BranchController::class, 'create'])
-     ->name('branch.create');
+    //Leave-Type
+    Route::get('leavetype', [LeaveTypeController::class, 'index'])
+        ->name('leavetype.index');
 
- //Leave-Type
- Route::get('leavetype', [LeaveTypeController::class, 'index'])
-     ->name('leavetype.index');
+    Route::get('leavetype/entry', [LeaveTypeController::class, 'create'])
+        ->name('leavetype.create');
 
- Route::get('leavetype/entry', [LeaveTypeController::class, 'create'])
-     ->name('leavetype.create');
+    Route::post('leavetype/entry', [LeaveTypeController::class, 'store'])
+        ->name('leavetype.store');
 
- Route::post('leavetype/entry', [LeaveTypeController::class, 'store'])
-     ->name('leavetype.store');
+    Route::get('leavetype/edit/{id}', [LeaveTypeController::class, 'edit'])
+        ->name('leavetype.edit');
 
- Route::get('leavetype/edit/{id}', [LeaveTypeController::class, 'edit'])
-     ->name('leavetype.edit');
+    Route::post('leavetype/update/{id}', [LeaveTypeController::class, 'update'])
+        ->name('leavetype.update');
 
- Route::post('leavetype/update/{id}',[LeaveTypeController::class,'update'])
-     ->name('leavetype.update');
+    Route::get('leavetype/delete/{id}', [LeaveTypeController::class, 'destroy'])
+        ->name('leavetype.destroy');
 
- Route::get('leavetype/delete/{id}',[LeaveTypeController::class,'destroy'])
-     ->name('leavetype.destroy');
+    // Applicant
+    Route::get('leave/applicant', [EmployeeLeaveController::class, 'leave_apply_index'])
+        ->name('leavetype.leave_apply_index');
 
-     // Applicant
- Route::get('leave/applicant',[EmployeeLeaveController::class,'leave_apply_index'])
-     ->name('leavetype.leave_apply_index');
+    Route::get('leave/apply_form', [EmployeeLeaveController::class, 'leave_application'])
+        ->name('leave.leave_form');
 
- Route::get('leave/apply_form',[EmployeeLeaveController::class,'leave_application'])
-     ->name('leave.leave_form');
+    Route::post('leave/apply/', [EmployeeLeaveController::class, 'apply'])
+        ->name('leave.leave_apply');
 
- Route::post('leave/apply/',[EmployeeLeaveController::class,'apply'])
-     ->name('leave.leave_apply');
+    Route::post('approve/{id}', [EmployeeLeaveController::class, 'approve'])->name('approve');
 
- Route::post('approve/{id}',[EmployeeLeaveController::class,'approve'])->name('approve');
+    //Holidays
+    Route::get('holiday/index', [HolidayController::class, 'index'])
+        ->name('holidays');
 
- //Holidays
- Route::get('holiday/index',[HolidayController::class,'index'])
-     ->name('holidays');
+    Route::get('holidays/entry', [HolidayController::class, 'create'])
+        ->name('holidays.create');
 
- Route::get('holidays/entry', [HolidayController::class, 'create'])
-     ->name('holidays.create');
+    Route::post('holiday', [HolidayController::class, 'store'])
+        ->name('holidays.store');
 
- Route::post('holiday',[HolidayController::class,'store'])
-     ->name('holidays.store');
+    Route::post('holidays/{holiday}', [HolidayController::class, 'completed'])
+        ->name('completed');
 
- Route::post('holidays/{holiday}',[HolidayController::class,'completed'])
-     ->name('completed');
+    Route::put('holidays', [HolidayController::class, 'edit'])
+        ->name('holidays.edit');
 
- Route::put('holidays',[HolidayController::class,'edit'])
-     ->name('holidays.edit');
+    Route::put('holidays', [HolidayController::class, 'update'])
+        ->name('holidays.update');
 
- Route::put('holidays',[HolidayController::class,'update'])
-     ->name('holidays.update');
+    Route::delete('holidays', [HolidayController::class, 'destroy'])
+        ->name('holiday.destroy');
 
- Route::delete('holidays',[HolidayController::class,'destroy'])
-     ->name('holiday.destroy');
+    // Attendence
+    Route::get('attendences', [EmployeeAttendenceController::class, 'index'])
+        ->name('attendences');
 
- // Attendence
- Route::get('attendences',[EmployeeAttendenceController::class,'index'])
-     ->name('attendences');
+    Route::get('attendence', [EmployeeAttendenceController::class, 'attendence'])
+        ->name('employee.attendence');
 
- Route::get('attendence',[EmployeeAttendenceController::class,'attendence'])
-     ->name('employee.attendence');
+    Route::get('checkin', [EmployeeAttendenceController::class, 'create'])
+        ->name('attendence.create');
 
- Route::get('checkin', [EmployeeAttendenceController::class, 'create'])
-     ->name('attendence.create');
+    Route::post('attendence_checkIn', [EmployeeAttendenceController::class, 'store'])
+        ->name('attendence.store');
 
- Route::post('attendence_checkIn',[EmployeeAttendenceController::class,'store'])
-     ->name('attendence.store');
+    Route::get('checkout', [EmployeeAttendenceController::class, 'edit'])
+        ->name('attendence.edit');
 
- Route::get('checkout',[EmployeeAttendenceController::class,'edit'])
-     ->name('attendence.edit');
+    Route::post('attendence_checkOut', [EmployeeAttendenceController::class, 'updated'])
+        ->name('attendence.update');
 
- Route::post('attendence_checkOut',[EmployeeAttendenceController::class,'updated'])
-     ->name('attendence.update');
+    // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
+    //     ->name('attendence.checkout');
 
- // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
- //     ->name('attendence.checkout');
+    // Termination
+    Route::get('view', [TerminateController::class, 'index'])
+        ->name('views');
 
- // Termination
- Route::get('view',[TerminateController::class,'index'])
-     ->name('views');
+    Route::get('termination/entry', [TerminateController::class, 'create'])
+        ->name('termination');
 
- Route::get('termination/entry', [TerminateController::class, 'create'])
-     ->name('termination');
+    Route::post('termination', [TerminateController::class, 'tarminated'])
+        ->name('tarminated.store');
 
- Route::post('termination',[TerminateController::class,'tarminated'])
-     ->name('tarminated.store');
+    // warning
+    Route::get('view_list', [WarningController::class, 'index'])
+        ->name('warning.views');
 
- // warning
- Route::get('view_list',[WarningController::class,'index'])
-     ->name('warning.views');
+    Route::get('warning/entry', [WarningController::class, 'create'])
+        ->name('warning');
 
- Route::get('warning/entry', [WarningController::class, 'create'])
-     ->name('warning');
+    Route::post('warning/store', [WarningController::class, 'store'])
+        ->name('warning.store');
+    // Branch
+    Route::get('branch', [BranchController::class, 'index'])
+        ->name('branches');
 
- Route::post('warning/store',[WarningController::class,'store'])
-     ->name('warning.store');
- // Branch
- Route::get('branch',[BranchController::class,'index'])
-     ->name('branches');
+    Route::get('branch/entry', [BranchController::class, 'create'])
+        ->name('branch/entry');
 
- Route::get('branch/entry', [BranchController::class, 'create'])
-     ->name('branch/entry');
+    Route::post('branch/store', [BranchController::class, 'store'])
+        ->name('branch.store');
 
- Route::post('branch/store',[BranchController::class,'store'])
-     ->name('branch.store');
-    
- // Advance
- Route::get('advance/index',[AdvanceController::class,'index'])
-     ->name('views');
+    // Advance
+    Route::get('advance/index', [AdvanceController::class, 'index'])
+        ->name('views');
 
- Route::get('advance/entry', [AdvanceController::class, 'create'])
-     ->name('advance.create');
+    Route::get('advance/entry', [AdvanceController::class, 'create'])
+        ->name('advance.create');
 
- Route::post('advance',[AdvanceController::class,'store'])
-     ->name('advance.store');
+    Route::post('advance', [AdvanceController::class, 'store'])
+        ->name('advance.store');
 
- Route::post('advance/update/{id}',[AdvanceController::class,'update'])
-     ->name('advance.update');
- 
- // Overtimes
- Route::get('overtime/index',[OvertimeController::class,'index'])
-     ->name('overtime.views');
+    Route::post('advance/update/{id}', [AdvanceController::class, 'update'])
+        ->name('advance.update');
 
- Route::get('Overtime/entry', [OvertimeController::class, 'create'])
-     ->name('overtime.create');
+    // Overtimes
+    Route::get('overtime/index', [OvertimeController::class, 'index'])
+        ->name('overtime.views');
 
- Route::post('Overtime',[OvertimeController::class,'store'])
-     ->name('Overtime.store');
+    Route::get('Overtime/entry', [OvertimeController::class, 'create'])
+        ->name('overtime.create');
 
- // Payroll
- // Route::get('salary/view', [PayrolleController::class, 'salaryView'])
- //     ->name('payroll.salaryView');
+    Route::post('Overtime', [OvertimeController::class, 'store'])
+        ->name('Overtime.store');
 
+    // Payroll
+    // Route::get('salary/view', [PayrolleController::class, 'salaryView'])
+    //     ->name('payroll.salaryView');
 
- Route::get('salaries/list',[PayrolleController::class,'list'])
-     ->name('payroll.list');
 
- Route::get('payrolls',[PayrolleController::class,'create'])
-     ->name('payroll.create');
+    Route::get('salaries/list', [PayrolleController::class, 'list'])
+        ->name('payroll.list');
 
- Route::post('salaryrecord',[PayrolleController::class,'salaryrecord'])
-     ->name('payroll.salaryrecord');
+    Route::get('payrolls', [PayrolleController::class, 'create'])
+        ->name('payroll.create');
 
- Route::post('payslips',[PayrolleController::class,'saveRecord'])
-     ->name('payslip');
+    Route::post('salaryrecord', [PayrolleController::class, 'salaryrecord'])
+        ->name('payroll.salaryrecord');
 
- Route::get('salary/view/{id}',[PayrolleController::class,'salaryView'])
-     ->name('salaryViews');
+    Route::post('payslips', [PayrolleController::class, 'saveRecord'])
+        ->name('payslip');
 
- Route::get('extra/report/pdf',[PayrolleController::class,'reportPDF'])
-     ->name('report.pdf');
-     
- Route::get('extra/report/excel',[PayrolleController::class,'reportExcel'])
-     ->name('report.excel');
+    Route::get('salary/view/{id}', [PayrolleController::class, 'salaryView'])
+        ->name('salaryViews');
 
- // Employee Salary
- Route::get('salary/index',[SalaryController::class,'index'])
-     ->name('salaries');
+    Route::get('extra/report/pdf', [PayrolleController::class, 'reportPDF'])
+        ->name('report.pdf');
 
- Route::get('add_salary', [SalaryController::class, 'create'])
-     ->name('salaryAdd');
+    Route::get('extra/report/excel', [PayrolleController::class, 'reportExcel'])
+        ->name('report.excel');
 
- Route::post('salary/store',[SalaryController::class,'store'])
-     ->name('salary.store');
+    // Employee Salary
+    Route::get('salary/index', [SalaryController::class, 'index'])
+        ->name('salaries');
 
- Route::get('salary/rewrite',[SalaryController::class,'edit'])
-     ->name('salary.rewrite');
+    Route::get('add_salary', [SalaryController::class, 'create'])
+        ->name('salaryAdd');
 
- Route::post('salary/update',[SalaryController::class,'update'])
-     ->name('salary.update');
+    Route::post('salary/store', [SalaryController::class, 'store'])
+        ->name('salary.store');
 
- // Employee Deduction
- Route::get('index',[DeductionController::class,'index'])
-     ->name('List');
+    Route::get('salary/rewrite', [SalaryController::class, 'edit'])
+        ->name('salary.rewrite');
 
- Route::get('deduct', [DeductionController::class, 'create'])
-     ->name('Add');
+    Route::post('salary/update', [SalaryController::class, 'update'])
+        ->name('salary.update');
 
- Route::post('deduct/store',[DeductionController::class,'store'])
-     ->name('deduct.store');
+    // Employee Deduction
+    Route::get('index', [DeductionController::class, 'index'])
+        ->name('List');
 
- Route::get('deduct/rewrite',[DeductionController::class,'edit'])
-     ->name('deducte.rewrite');
+    Route::get('deduct', [DeductionController::class, 'create'])
+        ->name('Add');
 
- Route::post('deduct/update',[DeductionController::class,'update'])
-     ->name('deducte.update');
- 
- Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::post('deduct/store', [DeductionController::class, 'store'])
+        ->name('deduct.store');
+
+    Route::get('deduct/rewrite', [DeductionController::class, 'edit'])
+        ->name('deducte.rewrite');
+
+    Route::post('deduct/update', [DeductionController::class, 'update'])
+        ->name('deducte.update');
+
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::group(['middleware' => 'adnin'], function(){
+Route::group(['middleware' => 'adnin'], function () {
 
-    Route::get('dashboard/admin', function () {
-        return view('backend.admin_dashboard');
-    });
-     //Employee
-     Route::get('employees', [EmployeeController::class, 'index'])
-     ->name('employee.index');
+    // Route::get('dashboard/admin', function () {
+    //     return view('backend.admin_dashboard');
+    // });
+    //Employee
+    Route::get('employees', [EmployeeController::class, 'index'])
+        ->name('employee.index');
 
- Route::get('employee/entry', [EmployeeController::class, 'create'])
-     ->name('employee.create');
+    Route::get('employee/entry', [EmployeeController::class, 'create'])
+        ->name('employee.create');
 
- Route::post('employee/entry', [EmployeeController::class, 'store'])
-     ->name('employee.store');
+    Route::post('employee/entry', [EmployeeController::class, 'store'])
+        ->name('employee.store');
 
- Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])
-     ->name('employee.edit');
+    Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])
+        ->name('employee.edit');
 
- Route::post('employee/update/{id}',[EmployeeController::class,'update'])
-     ->name('employee.update');
+    Route::post('employee/update/{id}', [EmployeeController::class, 'update'])
+        ->name('employee.update');
 
- Route::get('employee/delete/{id}',[EmployeeController::class,'destroy'])
-     ->name('employee.destroy');
+    Route::get('employee/delete/{id}', [EmployeeController::class, 'destroy'])
+        ->name('employee.destroy');
 
- //Department
- Route::get('department', [DepartmentController::class, 'index'])
-     ->name('department.index');
+    //Department
+    Route::get('department', [DepartmentController::class, 'index'])
+        ->name('department.index');
 
- Route::get('department/entry', [DepartmentController::class, 'create'])
-     ->name('department.create');
+    Route::get('department/entry', [DepartmentController::class, 'create'])
+        ->name('department.create');
 
- Route::post('department/store', [DepartmentController::class, 'store'])
-     ->name('departments');
+    Route::post('department/store', [DepartmentController::class, 'store'])
+        ->name('departments');
 
 
- //Designation
- Route::get('designation', [DesignationController::class, 'index'])
-     ->name('designation.index');
+    //Designation
+    Route::get('designation', [DesignationController::class, 'index'])
+        ->name('designation.index');
 
- Route::get('designation/entry', [DesignationController::class, 'create'])
-     ->name('designation.create');
+    Route::get('designation/entry', [DesignationController::class, 'create'])
+        ->name('designation.create');
 
- Route::post('designation/entry', [DesignationController::class, 'store'])
-     ->name('designations');
+    Route::post('designation/entry', [DesignationController::class, 'store'])
+        ->name('designations');
 
- //Branch
- Route::get('branch', [BranchController::class, 'index'])
-     ->name('branch.index');
+    //Branch
+    Route::get('branch', [BranchController::class, 'index'])
+        ->name('branch.index');
 
- Route::get('branch/entry', [BranchController::class, 'create'])
-     ->name('branch.create');
+    Route::get('branch/entry', [BranchController::class, 'create'])
+        ->name('branch.create');
 
- //Leave-Type
- Route::get('leavetype', [LeaveTypeController::class, 'index'])
-     ->name('leavetype.index');
+    //Leave-Type
+    Route::get('leavetype', [LeaveTypeController::class, 'index'])
+        ->name('leavetype.index');
 
- Route::get('leavetype/entry', [LeaveTypeController::class, 'create'])
-     ->name('leavetype.create');
+    Route::get('leavetype/entry', [LeaveTypeController::class, 'create'])
+        ->name('leavetype.create');
 
- Route::post('leavetype/entry', [LeaveTypeController::class, 'store'])
-     ->name('leavetype.store');
+    Route::post('leavetype/entry', [LeaveTypeController::class, 'store'])
+        ->name('leavetype.store');
 
- Route::get('leavetype/edit/{id}', [LeaveTypeController::class, 'edit'])
-     ->name('leavetype.edit');
+    Route::get('leavetype/edit/{id}', [LeaveTypeController::class, 'edit'])
+        ->name('leavetype.edit');
 
- Route::post('leavetype/update/{id}',[LeaveTypeController::class,'update'])
-     ->name('leavetype.update');
+    Route::post('leavetype/update/{id}', [LeaveTypeController::class, 'update'])
+        ->name('leavetype.update');
 
- Route::get('leavetype/delete/{id}',[LeaveTypeController::class,'destroy'])
-     ->name('leavetype.destroy');
+    Route::get('leavetype/delete/{id}', [LeaveTypeController::class, 'destroy'])
+        ->name('leavetype.destroy');
 
-     // Applicant
- Route::get('leave/applicant',[EmployeeLeaveController::class,'leave_apply_index'])
-     ->name('leavetype.leave_apply_index');
+    // Applicant
+    Route::get('leave/applicant', [EmployeeLeaveController::class, 'leave_apply_index'])
+        ->name('leavetype.leave_apply_index');
 
- Route::get('leave/apply_form',[EmployeeLeaveController::class,'leave_application'])
-     ->name('leave.leave_form');
+    Route::get('leave/apply_form', [EmployeeLeaveController::class, 'leave_application'])
+        ->name('leave.leave_form');
 
- Route::post('leave/apply/',[EmployeeLeaveController::class,'apply'])
-     ->name('leave.leave_apply');
+    Route::post('leave/apply/', [EmployeeLeaveController::class, 'apply'])
+        ->name('leave.leave_apply');
 
- Route::post('approve/{id}',[EmployeeLeaveController::class,'approve'])->name('approve');
+    Route::post('approve/{id}', [EmployeeLeaveController::class, 'approve'])->name('approve');
 
- //Holidays
- Route::get('holiday/index',[HolidayController::class,'index'])
-     ->name('holidays');
+    //Holidays
+    Route::get('holiday/index', [HolidayController::class, 'index'])
+        ->name('holidays');
 
- Route::get('holidays/entry', [HolidayController::class, 'create'])
-     ->name('holidays.create');
+    Route::get('holidays/entry', [HolidayController::class, 'create'])
+        ->name('holidays.create');
 
- Route::post('holiday',[HolidayController::class,'store'])
-     ->name('holidays.store');
+    Route::post('holiday', [HolidayController::class, 'store'])
+        ->name('holidays.store');
 
- Route::post('holidays/{holiday}',[HolidayController::class,'completed'])
-     ->name('completed');
+    Route::post('holidays/{holiday}', [HolidayController::class, 'completed'])
+        ->name('completed');
 
- Route::put('holidays',[HolidayController::class,'edit'])
-     ->name('holidays.edit');
+    Route::put('holidays', [HolidayController::class, 'edit'])
+        ->name('holidays.edit');
 
- Route::put('holidays',[HolidayController::class,'update'])
-     ->name('holidays.update');
+    Route::put('holidays', [HolidayController::class, 'update'])
+        ->name('holidays.update');
 
- Route::delete('holidays',[HolidayController::class,'destroy'])
-     ->name('holiday.destroy');
+    Route::delete('holidays', [HolidayController::class, 'destroy'])
+        ->name('holiday.destroy');
 
- // Attendence
- Route::get('attendences',[EmployeeAttendenceController::class,'index'])
-     ->name('attendences');
+    // Attendence
+    Route::get('attendences', [EmployeeAttendenceController::class, 'index'])
+        ->name('attendences');
 
- Route::get('attendence',[EmployeeAttendenceController::class,'attendence'])
-     ->name('employee.attendence');
+    Route::get('attendence', [EmployeeAttendenceController::class, 'attendence'])
+        ->name('employee.attendence');
 
- Route::get('checkin', [EmployeeAttendenceController::class, 'create'])
-     ->name('attendence.create');
+    Route::get('checkin', [EmployeeAttendenceController::class, 'create'])
+        ->name('attendence.create');
 
- Route::post('attendence_checkIn',[EmployeeAttendenceController::class,'store'])
-     ->name('attendence.store');
+    Route::post('attendence_checkIn', [EmployeeAttendenceController::class, 'store'])
+        ->name('attendence.store');
 
- Route::get('checkout',[EmployeeAttendenceController::class,'edit'])
-     ->name('attendence.edit');
+    Route::get('checkout', [EmployeeAttendenceController::class, 'edit'])
+        ->name('attendence.edit');
 
- Route::post('attendence_checkOut',[EmployeeAttendenceController::class,'updated'])
-     ->name('attendence.update');
+    Route::post('attendence_checkOut', [EmployeeAttendenceController::class, 'updated'])
+        ->name('attendence.update');
 
- // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
- //     ->name('attendence.checkout');
+    // Route::get('checkout',[EmployeeAttendenceController::class,'checkout'])
+    //     ->name('attendence.checkout');
 
- // Termination
- Route::get('view',[TerminateController::class,'index'])
-     ->name('views');
+    // Termination
+    Route::get('view', [TerminateController::class, 'index'])
+        ->name('views');
 
- Route::get('termination/entry', [TerminateController::class, 'create'])
-     ->name('termination');
+    Route::get('termination/entry', [TerminateController::class, 'create'])
+        ->name('termination');
 
- Route::post('termination',[TerminateController::class,'tarminated'])
-     ->name('tarminated.store');
+    Route::post('termination', [TerminateController::class, 'tarminated'])
+        ->name('tarminated.store');
 
- // warning
- Route::get('view_list',[WarningController::class,'index'])
-     ->name('warning.views');
+    // warning
+    Route::get('view_list', [WarningController::class, 'index'])
+        ->name('warning.views');
 
- Route::get('warning/entry', [WarningController::class, 'create'])
-     ->name('warning');
+    Route::get('warning/entry', [WarningController::class, 'create'])
+        ->name('warning');
 
- Route::post('warning/store',[WarningController::class,'store'])
-     ->name('warning.store');
- // Branch
- Route::get('branch',[BranchController::class,'index'])
-     ->name('branches');
+    Route::post('warning/store', [WarningController::class, 'store'])
+        ->name('warning.store');
+    // Branch
+    Route::get('branch', [BranchController::class, 'index'])
+        ->name('branches');
 
- Route::get('branch/entry', [BranchController::class, 'create'])
-     ->name('branch/entry');
+    Route::get('branch/entry', [BranchController::class, 'create'])
+        ->name('branch/entry');
 
- Route::post('branch/store',[BranchController::class,'store'])
-     ->name('branch.store');
-    
- // Advance
- Route::get('advance/index',[AdvanceController::class,'index'])
-     ->name('views');
+    Route::post('branch/store', [BranchController::class, 'store'])
+        ->name('branch.store');
 
- Route::get('advance/entry', [AdvanceController::class, 'create'])
-     ->name('advance.create');
+    // Advance
+    Route::get('advance/index', [AdvanceController::class, 'index'])
+        ->name('views');
 
- Route::post('advance',[AdvanceController::class,'store'])
-     ->name('advance.store');
+    Route::get('advance/entry', [AdvanceController::class, 'create'])
+        ->name('advance.create');
 
- Route::post('advance/update/{id}',[AdvanceController::class,'update'])
-     ->name('advance.update');
- 
- // Overtimes
- Route::get('overtime/index',[OvertimeController::class,'index'])
-     ->name('overtime.views');
+    Route::post('advance', [AdvanceController::class, 'store'])
+        ->name('advance.store');
 
- Route::get('Overtime/entry', [OvertimeController::class, 'create'])
-     ->name('overtime.create');
+    Route::post('advance/update/{id}', [AdvanceController::class, 'update'])
+        ->name('advance.update');
 
- Route::post('Overtime',[OvertimeController::class,'store'])
-     ->name('Overtime.store');
+    // Overtimes
+    Route::get('overtime/index', [OvertimeController::class, 'index'])
+        ->name('overtime.views');
 
- // Payroll
- // Route::get('salary/view', [PayrolleController::class, 'salaryView'])
- //     ->name('payroll.salaryView');
+    Route::get('Overtime/entry', [OvertimeController::class, 'create'])
+        ->name('overtime.create');
 
+    Route::post('Overtime', [OvertimeController::class, 'store'])
+        ->name('Overtime.store');
 
- Route::get('salaries/list',[PayrolleController::class,'list'])
-     ->name('payroll.list');
+    // Payroll
+    // Route::get('salary/view', [PayrolleController::class, 'salaryView'])
+    //     ->name('payroll.salaryView');
 
- Route::get('payrolls',[PayrolleController::class,'create'])
-     ->name('payroll.create');
 
- Route::post('salaryrecord',[PayrolleController::class,'salaryrecord'])
-     ->name('payroll.salaryrecord');
+    Route::get('salaries/list', [PayrolleController::class, 'list'])
+        ->name('payroll.list');
 
- Route::post('payslips',[PayrolleController::class,'saveRecord'])
-     ->name('payslip');
+    Route::get('payrolls', [PayrolleController::class, 'create'])
+        ->name('payroll.create');
 
- Route::get('salary/view/{id}',[PayrolleController::class,'salaryView'])
-     ->name('salaryViews');
+    Route::post('salaryrecord', [PayrolleController::class, 'salaryrecord'])
+        ->name('payroll.salaryrecord');
 
- Route::get('extra/report/pdf',[PayrolleController::class,'reportPDF'])
-     ->name('report.pdf');
-     
- Route::get('extra/report/excel',[PayrolleController::class,'reportExcel'])
-     ->name('report.excel');
+    Route::post('payslips', [PayrolleController::class, 'saveRecord'])
+        ->name('payslip');
 
- // Employee Salary
- Route::get('salary/index',[SalaryController::class,'index'])
-     ->name('salaries');
+    Route::get('salary/view/{id}', [PayrolleController::class, 'salaryView'])
+        ->name('salaryViews');
 
- Route::get('add_salary', [SalaryController::class, 'create'])
-     ->name('salaryAdd');
+    Route::get('extra/report/pdf', [PayrolleController::class, 'reportPDF'])
+        ->name('report.pdf');
 
- Route::post('salary/store',[SalaryController::class,'store'])
-     ->name('salary.store');
+    Route::get('extra/report/excel', [PayrolleController::class, 'reportExcel'])
+        ->name('report.excel');
 
- Route::get('salary/rewrite',[SalaryController::class,'edit'])
-     ->name('salary.rewrite');
+    // Employee Salary
+    Route::get('salary/index', [SalaryController::class, 'index'])
+        ->name('salaries');
 
- Route::post('salary/update',[SalaryController::class,'update'])
-     ->name('salary.update');
+    Route::get('add_salary', [SalaryController::class, 'create'])
+        ->name('salaryAdd');
 
- // Employee Deduction
- Route::get('index',[DeductionController::class,'index'])
-     ->name('List');
+    Route::post('salary/store', [SalaryController::class, 'store'])
+        ->name('salary.store');
 
- Route::get('deduct', [DeductionController::class, 'create'])
-     ->name('Add');
+    Route::get('salary/rewrite', [SalaryController::class, 'edit'])
+        ->name('salary.rewrite');
 
- Route::post('deduct/store',[DeductionController::class,'store'])
-     ->name('deduct.store');
+    Route::post('salary/update', [SalaryController::class, 'update'])
+        ->name('salary.update');
 
- Route::get('deduct/rewrite',[DeductionController::class,'edit'])
-     ->name('deducte.rewrite');
+    // Employee Deduction
+    Route::get('index', [DeductionController::class, 'index'])
+        ->name('List');
 
- Route::post('deduct/update',[DeductionController::class,'update'])
-     ->name('deducte.update');
- 
- Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('deduct', [DeductionController::class, 'create'])
+        ->name('Add');
+
+    Route::post('deduct/store', [DeductionController::class, 'store'])
+        ->name('deduct.store');
+
+    Route::get('deduct/rewrite', [DeductionController::class, 'edit'])
+        ->name('deducte.rewrite');
+
+    Route::post('deduct/update', [DeductionController::class, 'update'])
+        ->name('deducte.update');
+
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::group(['middleware' => 'employee'], function(){
+Route::group(['middleware' => 'employee'], function () {
 
-    Route::get('dashboard/employee', function () {
-        return view('backend.employee_dashboard');
-    });
-    Route::get('dash', [DashboardController::class, 'index']);
+    // Route::get('dashboard/employee', function () {
+    //     return view('backend.employee_dashboard');
+    // });
+
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::group(['middleware' => 'company'], function(){
+Route::group(['middleware' => 'company'], function () {
 
-    Route::get('dashboard/company', function () {
-        return view('backend.company_dashboard');
-    });
-    Route::get('dash', [DashboardController::class, 'index']);
+    // Route::get('dashboard/company', function () {
+    //     return view('backend.company_dashboard');
+    // });
+
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 
 
-Route::get('dashboard', function () {
-    return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('dashboard', function () {
+//     return view('backend.dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -589,4 +589,4 @@ Route::group(['middleware' => 'company'],function(){
      });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

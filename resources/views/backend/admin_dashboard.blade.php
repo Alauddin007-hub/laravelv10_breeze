@@ -5,7 +5,6 @@
 @section('content')
 
 <div class="main-content">
-    @csrf
 
     <div class="page-content">
         <div class="container-fluid">
