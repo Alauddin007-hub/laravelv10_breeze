@@ -109,12 +109,6 @@ class PayrolleController extends Controller
         }
     }
 
-    public function entry()
-    {
-        $employee = Employee::all();
-        return view('backend.payroll.create', compact('employee'));
-    }
-
 
     public function salaryView($id)
     {        
@@ -134,41 +128,74 @@ class PayrolleController extends Controller
         return view('backend.payroll.salary_view', compact('payrolles', 'employees','spell'));
     }
 
-    // public function updateRecord(Request $request)
-    // {
-    //     DB::beginTransaction();
-    //     try{
-    //         $update = [
+    public function edit($id)
+    {
+        
+        $pay = Payrolles::find($id);
+        return view('backend.payroll.edit', compact('pay'));  
+    }
 
-    //             'id'      => $request->id,
-    //             'name'    => $request->name,
-    //             'salary'  => $request->salary,
-    //             'basic'   => $request->basic,
-    //             'da'      => $request->da,
-    //             'hra'     => $request->hra,
-    //             'conveyance' => $request->conveyance,
-    //             'allowance'  => $request->allowance,
-    //             'medical_allowance'  => $request->medical_allowance,
-    //             'tds'  => $request->tds,
-    //             'esi'  => $request->esi,
-    //             'pf'   => $request->pf,
-    //             'leave'     => $request->leave,
-    //             'prof_tax'  => $request->prof_tax,
-    //             'labour_welfare'  => $request->labour_welfare,
-    //         ];
+    public function updateRecord(Request $request)
+    {
+       // dd($request);
+
+        $basic = $request->basic;
+        $dine = ($request->basic / 100) * ($request->da);
+        $house = ($request->basic / 100) * ($request->hra);
+        $conveyance = $request->conveyance;
+        $allowance = $request->allowance;
+        $medical_allowance = $request->medical_allowance;
+
+        $gross_salary = $basic + $dine + $house + $conveyance + $allowance + $medical_allowance;
+
+        // dd($gross_salary);
+
+        $tds = $request->tds;
+        $esi = $request->esi;
+        $pf = $request->pf;
+        $leave = $request->leave;
+        $prof_tax = $request->prof_tax;
+        $loan = $request->loan;
+
+        $net_salary = $gross_salary - ($tds + $esi + $pf + $leave + $prof_tax + $loan);
 
 
-    //         StaffSalary::where('id',$request->id)->update($update);
-    //         DB::commit();
-    //         Toastr::success('Salary updated successfully :)','Success');
-    //         return redirect()->back();
+        $employee = Payrolles::find($request->id);
 
-    //     }catch(\Exception $e){
-    //         DB::rollback();
-    //         Toastr::error('Salary update fail :)','Error');
-    //         return redirect()->back();
-    //     }
-    // }
+
+        $data = [
+            'employee_id' => $employee,
+            'slipID' => $employee,
+            'basic' => $basic,
+            'month_of_salary' => $request->month_of_salary,
+            'dine_allowance' => $dine,
+            'rent_allowance' => $house,
+            'conveneynce_allowance' => $conveyance,
+            'allowance' => $allowance,
+            'medical_allowance' => $medical_allowance,
+            'gross_salary' => $gross_salary,
+            'tds' => $tds,
+            'esi' => $esi,
+            'pf' => $pf,
+            'leave' => $leave,
+            'prof_tax' => $prof_tax,
+            'loan' => $loan,
+            'net_salary' => $net_salary,
+        ];
+
+        // dd($data);
+
+
+        $query = DB::table('payrolles')->where('employee_id', $request->employee_id,)->where('month_of_salary', $request->month_of_salary)->first();
+
+        if (!$query) {
+            // dd($data);
+            Payrolles::create($data);
+            return redirect('salaries/list')->with('success', 'Salary Generated');
+        } else {
+            return redirect('payrolls')->with('success', 'Payslip already created');
+        }
+    }
 
     // /** delete record */
     // public function deleteRecord(Request $request)

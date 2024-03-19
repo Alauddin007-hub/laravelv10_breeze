@@ -16,7 +16,7 @@ class EmployeeAttendenceController extends Controller
     {
         $title = 'employee attendance';
         $attendances = EmployeeAttendence::latest()->get();
-        return view('backend.attendance', compact('title', 'attendances'));
+        return view('backend.employee_attendence.index', compact('title', 'attendances'));
     }
 
     public function attendence()
@@ -63,6 +63,7 @@ class EmployeeAttendenceController extends Controller
     {
         date_default_timezone_set('Asia/Dhaka');
         $time = date('H:i');
+        $date1 = date("d M,Y");
         $data = [
             'checkin' => $time,
         ];
@@ -79,10 +80,11 @@ class EmployeeAttendenceController extends Controller
         EmployeeAttendence::insert([
             'employee_id' => $request->employee_id,
             'checkin' => $time,
+            'date' => $date1,
             'status' => $status,
         ]);
 
-        return redirect('attendence')->with('success', 'Checkin are successfully done');
+        return redirect('attendences')->with('success', 'Checkin are successfully done');
 
 
         // dd($request->all());
@@ -123,14 +125,15 @@ class EmployeeAttendenceController extends Controller
         $checkoutTime = strtotime($time);
         $total_work = ($checkoutTime - $checkinTime) / 3600; // Convert seconds to hours
 
+        
 
         
+        // dd($date1);
         // $data = [
         //     'employee_id' => $request->employee_id,
         //     'checkout' => $time,
         //     'total_work_hours' => $total_work,
         // ];
-        // dd($data);
 
         DB::table('employee_attendences')
             ->where('employee_id', $request->employee_id)
@@ -140,8 +143,8 @@ class EmployeeAttendenceController extends Controller
                 'total_work_hours' => $total_work,
             ]);
 
-
-        return redirect('attendence')->with('success', 'Checkout are successfully done');
+            // "d M,Y"
+        return redirect('attendences')->with('success', 'Checkout are successfully done');
 
         // dd($query);
 

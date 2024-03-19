@@ -41,7 +41,6 @@
                                             <div class="form-group mb-4">
                                                 <label>Employee Name <span class="text-danger">*</span></label>
                                                 <select class="custom-select" name="employee_id" title="Select Department">
-                                                    <option disabled selected>Selected once</option>
                                                     @foreach($employees as $employee)
                                                     <option value="{{$employee->id}}" {{old('employee_id') == $employee->id ? 'selected':''}}>{{$employee->firstname}} {{$employee->lastname}}</option>
                                                     @endforeach
@@ -55,10 +54,6 @@
                                             <div class="mt-4">
                                                 <button class="btn btn-success btn-block waves-effect waves-light" name="" type="submit">Check In</button>
                                             </div>
-
-                                            <!-- <div class="mt-4">
-                                                <button class="btn btn-success btn-block waves-effect waves-light" type="submit">Check Out</button>
-                                            </div> -->
 
                                             <div class="mt-4 text-center">
                                                 <a href="auth-login.html" class="text-muted"><i class="mdi mdi-account-circle mr-1"></i> Already have account?</a>

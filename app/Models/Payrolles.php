@@ -12,7 +12,7 @@ class Payrolles extends Model
     protected $table = 'payrolles';
 
     protected $fillable = [
-        'employee_id', 'slipID','basic','month_of_salary','dine_allowance', 'conveneynce_allowance', 'medical_allowance', 'allowance', 'rent_allowance','gross_salary','tds','esi','pf','leave','prof_tax','leabour_welfare','net_salary','status','created_by',
+        'employee_id', 'slipID','basic','month_of_salary','dine_allowance', 'conveneynce_allowance', 'medical_allowance', 'allowance', 'rent_allowance','gross_salary','tds','esi','pf','leave','prof_tax','loan','net_salary','status','created_by',
     ];
 
     // employee_id 	basic 	month_of_salary 	dine_allowance 	conveneynce_allowance 	medical_allowance 	allowance 	rent_allowance 	gross_salary 	tds 	esi 	pf 	leave 	prof_tax 	leabour_welfare 	net_salary 	status 	created_by 
