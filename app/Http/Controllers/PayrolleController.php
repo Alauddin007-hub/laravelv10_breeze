@@ -69,7 +69,7 @@ class PayrolleController extends Controller
         $pf = $request->pf;
         $leave = $request->leave;
         $prof_tax = $request->prof_tax;
-        $loan = $request->labour_welfare;
+        $loan = $request->loan;
 
         $net_salary = $gross_salary - ($tds + $esi + $pf + $leave + $prof_tax + $loan);
 

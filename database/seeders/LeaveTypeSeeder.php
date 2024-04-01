@@ -15,27 +15,27 @@ class LeaveTypeSeeder extends Seeder
     {
         DB::table('leave_types')->insert([
             'type' => "Casual Leave",
-            'day' => '14',
+            'days' => '14',
         ]);
         DB::table('leave_types')->insert([
             'type' => "Sick Leave",
-            'day' => '21',
+            'days' => '21',
         ]);
         DB::table('leave_types')->insert([
             'type' => "Metanity Leave",
-            'day' => '90',
+            'days' => '90',
         ]);
         DB::table('leave_types')->insert([
             'type' => "Petarnity Leave",
-            'day' => '14',
+            'days' => '14',
         ]);
         DB::table('leave_types')->insert([
             'type' => "Earned Leave",
-            'day' => '10',
+            'days' => '10',
         ]);
         DB::table('leave_types')->insert([
             'type' => "Other Leave",
-            'day' => '14',
+            'days' => '14',
         ]);
     }
 }

@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('payrolles', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('employee_id');
-            $table->tinyInteger('basic');
+            $table->integer('basic');
             $table->string('month_of_salary')->nullable();
+            $table->string('slipID')->nullable();
             $table->integer('dine_allowance')->nullable();
             $table->integer('conveneynce_allowance')->nullable();
             $table->integer('medical_allowance')->nullable();
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->integer('pf')->nullable();
             $table->integer('leave')->nullable();
             $table->integer('prof_tax')->nullable();
-            $table->integer('leabour_welfare')->nullable();
+            $table->integer('loan')->nullable();
             $table->integer('net_salary')->nullable();
             $table->boolean('status')->default(0);
             $table->integer('created_by')->nullable();

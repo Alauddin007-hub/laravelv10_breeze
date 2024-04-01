@@ -37,11 +37,11 @@ class SalaryController extends Controller
             
         ]);
 
-            $basic = $request->basic;
-            $dine = $request->basic /100*10;
+            // $basic = $request->basic;
             $daily_rate = round($request->basic /22);
-            // $daily_rate = $request->basic /22;
             $hourly_rate = $daily_rate /24;
+            // $daily_rate = $request->basic /22;
+            // $dine = $request->basic /100*10;
 
             // $convence = $request->basic /100*10;
             // $madical = $request->basic /100*10;
